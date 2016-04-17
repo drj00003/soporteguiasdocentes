@@ -1,0 +1,23 @@
+GuiasDocentes\AppBundle\Entity\Perfil:
+    type: entity
+    table: Perfil
+    id:
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            id: true
+            column: Nombre
+            generator:
+                strategy: IDENTITY
+    manyToMany:
+        grupoSoporte:
+            targetEntity: GrupoSoporte
+            cascade: {  }
+            mappedBy: perfilNombre
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

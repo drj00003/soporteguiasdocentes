@@ -1,0 +1,29 @@
+GuiasDocentes\AppBundle\Entity\Administrador:
+    type: entity
+    table: Administrador
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+            column: Nombre
+        pass:
+            type: string
+            nullable: false
+            length: 32
+            fixed: false
+            comment: ''
+            column: Pass
+    lifecycleCallbacks: {  }

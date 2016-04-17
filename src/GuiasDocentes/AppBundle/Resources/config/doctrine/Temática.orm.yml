@@ -1,0 +1,51 @@
+GuiasDocentes\AppBundle\Entity\Temática:
+    type: entity
+    table: Temática
+    indexes:
+        fk_Temática_Personal1_idx:
+            columns:
+                - Personal_Email
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        enunciado:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Enunciado
+        tematica:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Tematica
+    manyToOne:
+        personalEmail:
+            targetEntity: Personal
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Personal_Email:
+                    referencedColumnName: Email
+            orphanRemoval: false
+    manyToMany:
+        grupoSoporte:
+            targetEntity: GrupoSoporte
+            cascade: {  }
+            mappedBy: temática
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

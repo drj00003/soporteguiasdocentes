@@ -1,0 +1,3 @@
+guias_docentes_app_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: GuiasDocentesAppBundle:Default:index }
