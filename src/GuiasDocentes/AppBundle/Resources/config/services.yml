@@ -1,4 +1,0 @@
-services:
-#    guias_docentes_app.example:
-#        class: GuiasDocentes\AppBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
