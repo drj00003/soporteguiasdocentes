@@ -1,0 +1,46 @@
+GuiasDocentes\AppBundle\Entity\Consulta:
+    type: entity
+    table: Consulta
+    indexes:
+        fk_Consulta_Hilo1_idx:
+            columns:
+                - Hilo_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        texto:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: Texto
+        visto:
+            type: boolean
+            nullable: true
+            comment: ''
+            column: Visto
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: Fecha
+    manyToOne:
+        hilo:
+            targetEntity: Hilo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Hilo_ID:
+                    referencedColumnName: ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,40 @@
+GuiasDocentes\AppBundle\Entity\Hilo:
+    type: entity
+    table: Hilo
+    indexes:
+        fk_Hilo_Personal1_idx:
+            columns:
+                - Personal_Email
+        fk_Hilo_Consultante1_idx:
+            columns:
+                - Consultante_Email
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        consultanteEmail:
+            targetEntity: Consultante
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Consultante_Email:
+                    referencedColumnName: Email
+            orphanRemoval: false
+        personalEmail:
+            targetEntity: Personal
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Personal_Email:
+                    referencedColumnName: Email
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,81 @@
+GuiasDocentes\AppBundle\Entity\Pf:
+    type: entity
+    table: PF
+    indexes:
+        fk_PF_Administrador1_idx:
+            columns:
+                - Modificador_ID
+        fk_PF_Grupo1_idx:
+            columns:
+                - Grupo_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        pregunta:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+            column: Pregunta
+        respuesta:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+            column: Respuesta
+        habilitada:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: Habilitada
+        creador:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+            comment: ''
+            column: Creador
+        fechaM:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha_M
+        orden:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            default: '0'
+            column: Orden
+    manyToOne:
+        modificador:
+            targetEntity: Administrador
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Modificador_ID:
+                    referencedColumnName: ID
+            orphanRemoval: false
+        grupo:
+            targetEntity: Grupo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Grupo_ID:
+                    referencedColumnName: ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
