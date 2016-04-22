@@ -15,6 +15,11 @@ class Perfil
     private $nombre;
 
     /**
+     * @var integer
+     */
+    private $orden;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $grupoSoporte;
@@ -41,6 +46,29 @@ class Perfil
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Set orden
+     *
+     * @param integer $orden
+     * @return Perfil
+     */
+    public function setOrden($orden)
+    {
+        $this->orden = $orden;
+
+        return $this;
+    }
+
+    /**
+     * Get orden
+     *
+     * @return integer 
+     */
+    public function getOrden()
+    {
+        return $this->orden;
     }
 
     /**

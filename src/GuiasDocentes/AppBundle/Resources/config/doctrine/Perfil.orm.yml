@@ -12,6 +12,13 @@ GuiasDocentes\AppBundle\Entity\Perfil:
             column: Nombre
             generator:
                 strategy: IDENTITY
+    fields:
+        orden:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: Orden
     manyToMany:
         grupoSoporte:
             targetEntity: GrupoSoporte

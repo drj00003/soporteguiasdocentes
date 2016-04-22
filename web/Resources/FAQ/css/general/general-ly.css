@@ -1,0 +1,192 @@
+/* ---------------------------------------------------- */
+/* Layout generico todas las webs (todos los navegadores) */
+/* ---------------------------------------------------- */
+
+
+/*-----General-------*/
+
+html,body,div,span,applet,object,iframe,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,form, table, fieldset,label,legend,caption,tbody,tfoot,thead,tr,th,td{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+}
+
+body{
+    line-height:1; 
+    margin-left:50px
+}
+
+h1{
+    height:6.5em;
+    margin:0em auto 9.3em auto;
+    width:96em
+}
+
+h2{
+    margin-left:12px;
+    margin-top:10px; 
+}
+
+h3{
+    margin:1em 0 0em 2em; 
+}
+
+.line-section{
+    height:2px;  
+}
+
+h1 a{
+    position:relative;
+    display:block;
+    margin:0;
+    height:5.5em;
+    padding-top:0.2em
+}
+h1 a span{
+    display:block;
+    height:5.5em;
+    margin:0em 0 0 1em;
+    text-indent:-9999em;
+    width:36em;
+}
+
+img{
+    padding-left:10px; 
+    padding-top:3px;
+    margin-right: 10px;
+}
+
+/*-----Cabecera----------*/
+
+#header{
+    position:relative;
+    width:98em;
+    height:auto;
+}
+
+#header .mainNav{
+    height:2.4em;
+    margin:0 0.9em 0 0.9em;
+    padding-left: 0px;
+}
+
+#header .mainNav li{
+    float:left;
+}
+
+#header .mainNav li a span{
+    display:inline-block;
+    width: 100%;
+}
+
+#header .mainNav a,#header .mainNav a:active,#header .mainNav a:focus{
+    display:inline;
+    height:2.4em;
+    padding:.6em;
+    margin-right: 0px;
+}
+
+.breadcrumb{
+    display:inline-block;
+    margin:.7em 0 .4em 2em;
+    padding:.4em .8em;
+}
+
+.breadcrumb li{
+    float:left;
+    margin:0 0 0 .5em;
+}
+
+
+#content #content-header h1.title, #content #content-header h2.title, #content #content-header h3.title {
+    margin:0.3em 0 0 1.2em;
+}
+
+#content{
+    position:relative;
+    width:98em;
+    padding-bottom:10px;
+}
+
+#wrapper{
+    width:98em;
+    margin:0 auto;
+}
+
+
+#main{
+    position:relative;
+    min-height:0em; 
+}
+
+
+#footer{
+    position:relative;
+    height:6em;
+    padding:0 0 0 0;
+}
+
+#footer-inner{
+    margin:1px;
+    padding:2px;
+}
+
+#footer-message{
+    position:absolute;
+    top:1.2em;
+    left:4.5em;
+}
+
+
+.langNav{
+    width:94em;
+    margin:0 auto;   
+    padding:.4em 0 .4em 2em;
+}
+
+.langNav li{
+    float:left;
+    font-size:1.1em;
+    margin:0 1em 0 0
+}
+
+
+#manuales #listas ul, ol{
+    margin:0.5em 0 0.5em 0em; 
+}
+
+#manuales #listas ul li img{
+    width: 19px;
+    height: 19px;
+}
+
+#choose-profile{
+    margin-left:50px; 
+}
+
+#perfiles-form{
+    margin:8px 4px 4px 50px;  
+}
+
+.cuadro{
+    width:80%;
+    height: 140px;
+    padding:10px;
+    margin-top:20px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.cuadro_titulo{
+    width:100%;
+    padding:3px;
+    margin:0 0 10px;
+}
+h3 img{
+    height:20px;
+}
+
+.perfiles-content{
+    padding-top: 20px;
+}

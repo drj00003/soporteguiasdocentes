@@ -1,0 +1,172 @@
+/* ---------------------------------------------------- */
+/* Sabor generico para todas las webs (todos los navegadores) */
+/* ---------------------------------------------------- */
+
+/*----General-----*/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,form, table, fieldset,label,legend,caption,tbody,tfoot,thead,tr,th,td{
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent; 
+}
+
+body{
+    background:#F1F1F1 url(../img/bg.png) top left repeat-x;
+    color:#404040;
+    font:62.5%/1.5em Helvetica,Arial,sans-serif
+}
+
+a:link,a:visited{
+    color:#0061AD;
+    text-decoration:none
+}
+
+a:hover,a:active,a:focus{
+    color:#049FE1;
+    text-decoration:underline
+}
+
+ul{
+    list-style:none
+}
+
+h1{
+    background:#F1F0EE url(../img/bglogo.png) top left repeat-x;
+}
+
+h2{ 
+    color: #049fe1;
+    font-size: 2.6em; 
+    font-weight:bold;
+}
+
+h3{
+    color:#049FE1;
+    font-size:2.4em;
+    font-weight:normal; 
+    line-height:120%
+}
+
+h1 a span{
+    background:url(../img/logo.png) top left no-repeat;
+}
+
+.line-section{
+    width:90%;
+    border:none;
+    background-color: #049fe1;
+}
+
+#content #content-header h1.title, #content #content-header h2.title, #content #content-header h3.title {
+    color: #049fe1;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+#content{
+    background:#FFF url(../img/bgshadow.png) top left repeat-y;
+    overflow:hidden;
+    font-family:Verdana,Helvetica,Arial,sans-serif; 
+}
+
+#header{
+    background:url(../img/banner_superior.jpg) -0.3em 8.9em no-repeat;
+}
+
+#main{
+    background:#FFF url(../img/bgshadow.png) top left repeat-y;
+    overflow:hidden
+}
+
+#footer{
+    background:url(../img/bgfooter.png) top left no-repeat;
+}
+
+#footer-inner{
+    border:0;
+}
+
+#footer-message{
+    color:#7f8182;
+    font-size:1.8em;
+    line-height:.9em;
+    font-weight:normal
+}
+
+.langNav{
+    background:#FFF;
+    border-bottom:2px solid #DDD;
+    color:#8B9295;
+    font-weight:bold;
+    overflow:auto
+}
+
+#header .mainNav{
+    background:url(../img/bgmainnav.png) top left repeat-x;
+    overflow:hidden;
+}
+
+
+#header .mainNav a,#header .mainNav a:active,#header .mainNav a:focus{
+    display:inline;
+    height:2.4em;
+    padding:.6em;
+    border-right:1px solid #ACB8C1;
+    border-left:1px solid #FFF;
+    line-height:2.4em;
+    text-align:center;
+    text-decoration:none;
+    color:#0061AD
+}
+#header .mainNav a:hover,#header .mainNav a.active{
+    background:#004E9E url(../img/bghovermainnav.png) top left repeat-x;
+    color:#FFF;
+    border-right:1px solid #0383C9;
+    border-left:1px solid #0383C9
+}
+#header .mainNav a #pageHome,#header .mainNav a:active #pageHome,#header .mainNav a:focus #pageHome {
+    line-height:2.4em;
+    text-align:center;
+    background:url(../img/pageHome.png) 0em .6em no-repeat
+}
+#header .mainNav a:hover #pageHome,#header .mainNav .active #pageHome{
+    background:url(../img/pageHomeHover.png) 0em .6em no-repeat
+}
+
+.breadcrumb{
+    background-color:#f4f4f4;
+    border-color:#dcdcdc;
+    border-radius:3px;
+    border-style:solid;
+    border-width:1px;
+    list-style:none outside none;
+    font-size:1.2em;
+}
+
+#listas ul, ol{
+    color:#049FE1;
+    font-size:1.8em;
+    line-height:130%
+}
+
+#choose-profile{
+    font-size:12px;
+    text-align :justify;
+}
+
+.cuadro{
+    background-color:#f1f1f1;
+    border:solid 0 #000;
+    box-shadow:2px 2px 10px 1px #666;
+    border-radius:4px;
+    background-image:linear-gradient(bottom,#d6d6d6 0,#f1f1f1 53%,#fff 100%);
+    background-image:-webkit-linear-gradient(bottom,#d6d6d6 0,#f1f1f1 53%,#fff 100%);
+    background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#d6d6d6),color-stop(0.53,#f1f1f1),color-stop(1,#fff));
+}
+
+.cuadro_titulo{
+    background-color:#049fe1;
+    border:solid 0 #000;
+    border-radius:4px;
+    color:#fff;
+}

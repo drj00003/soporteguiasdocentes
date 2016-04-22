@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+        <!-- Hojas de estilo correspondientes al sabor y layout ujaen -->
+        <link href=" {{ asset('Resources/FAQ/css/general/general-sb.css') }}" rel="stylesheet" />
+        <link href=" {{ asset('Resources/FAQ/css/general/general-ly.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div id="wrapper">
+        {% block header %}
+            <div id="header">
+              <ul class="langNav">
+                <li id="spanish">Espa&ntilde;ol</li>
+              </ul>
+              <h1>
+                  <a href="http://www.ujaen.es/" accesskey="h">
+                      <span>Universidad de Jaén</span>
+                  </a>
+              </h1>
+              <ul class="mainNav">
+			     <li><a href="http://www.ujaen.es" class="active"><span id="pageHome">&nbsp;</span></a></li>
+		        {% block barraNavegacion %}
+				{% endblock %}
+			</ul>
+            </div>
+        {% endblock %}
+        <div id="main">
+      		<div id="main-inner">
+        		<div class="breadcrumb">Inicio >> </div>
+        		{% block breadcrumb %}
+        		{% endblock %}
+            </div>
+       </div>
+    {% block content %}
+    {% endblock %}
+    </div>
+        {% block footer %}
+          <div id="footer">
+          	<div id="footer-inner">
+            	<div id="footer-message"> Universidad de Ja&eacute;n </div>
+            </div>
+          </div>
+        {% endblock %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

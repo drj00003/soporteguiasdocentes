@@ -1,0 +1,114 @@
+{% extends 'layout.html.twig' %}
+
+        {% block meta %}
+        {{ parent() }}
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+            <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
+        {% endblock %}
+        
+        {% block title %}Panel de Administración {% endblock %}
+    
+        {% block stylesheets %}
+            <!-- fav and touch icons -->
+            <link rel="apple-touch-icon-precomposed" sizes="144x144" href=" {{ asset('Resources/bootstrap/assets/app/ico/apple-touch-icon-144-precomposed.png') }}">
+            <link rel="apple-touch-icon-precomposed" sizes="114x114" href=" {{ asset('Resources/bootstrap/assets/app/ico/apple-touch-icon-114-precomposed.png') }}">
+            <link rel="apple-touch-icon-precomposed" sizes="72x72" href=" {{ asset('Resources/bootstrap/assets/app/ico/apple-touch-icon-72-precomposed.png') }}">
+            <link rel="apple-touch-icon-precomposed" href=" {{ asset('Resources/bootstrap/assets/app/ico/apple-touch-icon-57-precomposed.png') }}">
+            <link rel="shortcut icon" href=" {{ asset('Resources/bootstrap/assets/app/ico/favico.png') }}">
+            <link rel="shortcut icon" href=" {{ asset('Resources/bootstrap/assets/app/ico/favico.ico') }}">
+        
+            <!-- theme fonts -->
+            {#<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>#}
+        
+            <!-- theme Resources/bootstrap stylesheets -->
+            <link href=" {{ asset('Resources/bootstrap/assets/bootstrap/css/bootstrap.css') }}" rel="stylesheet" />
+        
+            {#<!-- theme dependencies stylesheets -->#}
+            {#<link href=" {{ asset('Resources/bootstrap/assets/app/css/dependencies.css') }}" rel="stylesheet'" />#}
+        
+            <!-- theme app main.css (this import of all custom css, you can use requirejs for optimizeCss or grunt to optimize them all) -->
+            <link href=" {{ asset('Resources/bootstrap/assets/app/css/syrena-admin.css') }}" rel="stylesheet" />
+            
+            
+             {#Estilos extraidos de dependencies.css no funcionan los import #}
+             <link href=" {{ asset('Resources/bootstrap/assets/ionicons/css/ionicons.min.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/all.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/select2/select2.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/mjaalnir-bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/bootstrap3-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/multiselect/css/multi-select.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/bootstrap-wysihtml5/bootstrap3-wysihtml5.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/bootstrap-markdown/css/bootstrap-markdown.min.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/dropzone/css/dropzone.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/messenger/css/messenger.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/datatables/css/datatables.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/messenger/css/messenger-theme-flat.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/messenger/css/messenger-theme-air.css') }}" rel="stylesheet" />
+             <link href=" {{ asset('Resources/bootstrap/assets/messenger/css/messenger-theme-future.css') }}" rel="stylesheet" />
+
+             {#Estilos extraidos de jquery-icheck/skins/all.css no funcionan los import #}
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/minimal/_all.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/minimal/minimal.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/minimal/green.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/minimal/aero.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/minimal/orange.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/minimal/pink.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/square/_all.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/square/square.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/square/green.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/square/aero.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/square/orange.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/square/pink.css') }}" rel="stylesheet" />             
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/flat/_all.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/flat/flat.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/flat/orange.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/flat/green.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/flat/aero.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/flat/pink.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/line/_all.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/line/line.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/line/orange.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/line/green.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/line/aero.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/line/pink.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/polaris/polaris.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/futurico/futurico.css') }}" rel="stylesheet" /> 
+             
+             {#Estilos extraidos de app/css/syrena-admin.css no funcionan los import #}
+            <link href=" {{ asset('Resources/bootstrap/assets/app/css/main.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/app/css/main-desktop.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/app/css/main-phone.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/app/css/helper.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/app/css/typography.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/app/css/components.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/bootstrap/assets/app/css/syrena-admin-theme-default.css') }}" rel="stylesheet" />
+            
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+              {#<script src=" {{ asset('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}"></script>#}
+              {#<script src=" {{ asset('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') }}"></script>#}
+            <![endif]-->
+        {% endblock %}
+
+    {% block javascripts %}
+    
+        <!-- jQuery, theme required for theme -->
+        <script src=" {{ asset('Resources/bootstrap/assets/jquery/jquery.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+        
+        <!-- theme dependencies -->
+        <!-- 
+            Contents List
+            1. Raphaël
+            2. Isotope
+            3. verge
+            4. Moment
+            5. Prettify
+        -->
+        <script src=" {{ asset('Resources/bootstrap/assets/app/js/dependencies.js') }}"></script>
+
+        
+            
+    {% endblock %}
