@@ -11,7 +11,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 body{
-    background:#F1F1F1 url(../img/bg.png) top left repeat-x;
+    background:#F1F1F1 url(../../img/bg.png) top left repeat-x;
     color:#404040;
     font:62.5%/1.5em Helvetica,Arial,sans-serif
 }
@@ -31,7 +31,7 @@ ul{
 }
 
 h1{
-    background:#F1F0EE url(../img/bglogo.png) top left repeat-x;
+    background:#F1F0EE url(../../img/bglogo.png) top left repeat-x;
 }
 
 h2{ 
@@ -48,14 +48,9 @@ h3{
 }
 
 h1 a span{
-    background:url(../img/logo.png) top left no-repeat;
+    background:url(../../img/logo.png) top left no-repeat;
 }
 
-.line-section{
-    width:90%;
-    border:none;
-    background-color: #049fe1;
-}
 
 #content #content-header h1.title, #content #content-header h2.title, #content #content-header h3.title {
     color: #049fe1;
@@ -64,22 +59,22 @@ h1 a span{
 }
 
 #content{
-    background:#FFF url(../img/bgshadow.png) top left repeat-y;
+    background:#FFF url(../../img/bgshadow.png) top left repeat-y;
     overflow:hidden;
     font-family:Verdana,Helvetica,Arial,sans-serif; 
 }
 
 #header{
-    background:url(../img/banner_superior.jpg) -0.3em 8.9em no-repeat;
+    background:url(../../img/banner_superior.jpg) -0.3em 8.9em no-repeat;
 }
 
 #main{
-    background:#FFF url(../img/bgshadow.png) top left repeat-y;
+    background:#FFF url(../../img/bgshadow.png) top left repeat-y;
     overflow:hidden
 }
 
 #footer{
-    background:url(../img/bgfooter.png) top left no-repeat;
+    background:url(../../img/bgfooter.png) top left no-repeat;
 }
 
 #footer-inner{
@@ -102,7 +97,7 @@ h1 a span{
 }
 
 #header .mainNav{
-    background:url(../img/bgmainnav.png) top left repeat-x;
+    background:url(../../img/bgmainnav.png) top left repeat-x;
     overflow:hidden;
 }
 
@@ -119,7 +114,7 @@ h1 a span{
     color:#0061AD
 }
 #header .mainNav a:hover,#header .mainNav a.active{
-    background:#004E9E url(../img/bghovermainnav.png) top left repeat-x;
+    background:#004E9E url(../../img/bghovermainnav.png) top left repeat-x;
     color:#FFF;
     border-right:1px solid #0383C9;
     border-left:1px solid #0383C9
@@ -127,10 +122,10 @@ h1 a span{
 #header .mainNav a #pageHome,#header .mainNav a:active #pageHome,#header .mainNav a:focus #pageHome {
     line-height:2.4em;
     text-align:center;
-    background:url(../img/pageHome.png) 0em .6em no-repeat
+    background:url(../../img/pageHome.png) 0em .6em no-repeat
 }
 #header .mainNav a:hover #pageHome,#header .mainNav .active #pageHome{
-    background:url(../img/pageHomeHover.png) 0em .6em no-repeat
+    background:url(../../img/pageHomeHover.png) 0em .6em no-repeat
 }
 
 .breadcrumb{
