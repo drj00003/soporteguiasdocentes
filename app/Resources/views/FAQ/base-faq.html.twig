@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
-
+{% block meta %}
+		<meta name=viewport content="width=device-width, initial-scale=1"/>
+{% endblock %}
 {% block stylesheets %}
         <!-- Hojas de estilo correspondientes al sabor y layout ujaen -->
         <link href=" {{ asset('Resources/FAQ/css/general/general-sb.css') }}" rel="stylesheet" />
@@ -12,11 +14,12 @@
               <ul class="langNav">
                 <li id="spanish">Espa&ntilde;ol</li>
               </ul>
-              <h1>
+              <h1 class="header-logouniv">
                   <a href="http://www.ujaen.es/" accesskey="h">
                       <span>Universidad de Jaén</span>
                   </a>
               </h1>
+              <img class="banner-calidad" src="{{asset('Resources/FAQ/img/banner_superior2.png')}}" >
               <ul class="mainNav">
 			     <li><a href="http://www.ujaen.es" class="active"><span id="pageHome">&nbsp;</span></a></li>
 		        {% block barraNavegacion %}
@@ -24,19 +27,25 @@
 			</ul>
             </div>
         {% endblock %}
-        <div id="main">
-      		<div id="main-inner">
-        		<div class="breadcrumb">Inicio >> </div>
-        		{% block breadcrumb %}
-        		{% endblock %}
+          <div id="content" role="main">
+            <div id="content-header" >
+                <div id="main">
+              		<div id="main-inner">
+                		<div class="breadcrumb">Inicio >> </div>
+                		{% block breadcrumb %}
+                		{% endblock %}
+                    </div>
+                    {% block content_title %}
+                    {% endblock %}
+               </div>
             </div>
-       </div>
     {% block content %}
     {% endblock %}
     </div>
         {% block footer %}
           <div id="footer">
           	<div id="footer-inner">
+          	    <div id="footer-logo"><img src="{{ asset('Resources/FAQ/img/logofooter.png') }}"></div>
             	<div id="footer-message"> Universidad de Ja&eacute;n </div>
             </div>
           </div>

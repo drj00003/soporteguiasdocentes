@@ -30,7 +30,7 @@ ul{
     list-style:none
 }
 
-h1{
+h1.header-logouniv{
     background:#F1F0EE url(../../img/bglogo.png) top left repeat-x;
 }
 
@@ -47,8 +47,9 @@ h3{
     line-height:120%
 }
 
-h1 a span{
+h1 a {
     background:url(../../img/logo.png) top left no-repeat;
+    background-size: contain;
 }
 
 
@@ -59,22 +60,25 @@ h1 a span{
 }
 
 #content{
-    background:#FFF url(../../img/bgshadow.png) top left repeat-y;
-    overflow:hidden;
+    /*background:#FFF url(../../img/bgshadow.png) top left repeat-y;*/
+    /*overflow:hidden;*/
+    background-color: #FFF;
     font-family:Verdana,Helvetica,Arial,sans-serif; 
 }
 
-#header{
-    background:url(../../img/banner_superior.jpg) -0.3em 8.9em no-repeat;
-}
+/*#header{*/
+/*    background:url(../../img/banner_superior.jpg) -0.3em 8.9em no-repeat;*/
+/*}*/
 
 #main{
-    background:#FFF url(../../img/bgshadow.png) top left repeat-y;
-    overflow:hidden
+    /*background:#FFF url(../../img/bgshadow.png) top left repeat-y;*/
+    /*overflow:hidden*/
+    background-color: #FFF;
+    
 }
 
 #footer{
-    background:url(../../img/bgfooter.png) top left no-repeat;
+    background:url(../../img/bgfooter3.png) top left repeat-x;
 }
 
 #footer-inner{
@@ -135,7 +139,7 @@ h1 a span{
     border-style:solid;
     border-width:1px;
     list-style:none outside none;
-    font-size:1.2em;
+    font-size:0.95vw;
 }
 
 #listas ul, ol{
@@ -164,4 +168,23 @@ h1 a span{
     border:solid 0 #000;
     border-radius:4px;
     color:#fff;
+    font-size:1.7vw;
+}
+
+.cuadro #listas ul li a{
+    font-size:1.3vw;
+}
+
+/*#content, #main{*/
+    /*box-shadow: 12px 0 2px 1px #ebebeb, -12px 0 2px 1px #ebebeb;*/
+/*        border: solid 0 #000;*/
+/*    box-shadow: 5px 1px 0px 1px #ebebeb;*/
+/*}*/
+
+h1.header-logouniv a{
+    background-size: contain;
+}
+
+#content #content-header h2.title{
+    font-size: 1.7vw;
 }

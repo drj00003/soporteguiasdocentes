@@ -14,13 +14,12 @@ html,body,div,span,applet,object,iframe,h4,h5,h6,p,blockquote,pre,a,abbr,acronym
 
 body{
     line-height:1; 
-    margin-left:50px
+    /*margin-left:50px*/
+    margin-left: 2em;
 }
 
 h1{
-    height:6.5em;
-    margin:0em auto 9.3em auto;
-    width:96em
+
 }
 
 h2{
@@ -51,23 +50,42 @@ h1 a span{
     width:36em;
 }
 
-img{
+.cuadro_titulo img, #listas ul li img{
     padding-left:10px; 
     padding-top:3px;
     margin-right: 10px;
 }
 
-/*-----Cabecera----------*/
+/*------Wrapper--------*/
+
+#wrapper{
+    /*width:98em;*/
+    width: 74%;
+    margin:0 auto;
+    max-width: 98em;
+}
+
+
+/*-----Cabecera-------*/
+
+
+h1.header-logouniv{
+    height:6.5em;
+    margin:0em 0em 0em 1em;
+    width:100%;
+    max-width: 96em;
+}
 
 #header{
     position:relative;
-    width:98em;
+    /*width:98em;*/
+    width:100%;
     height:auto;
 }
 
 #header .mainNav{
     height:2.4em;
-    margin:0 0.9em 0 0.9em;
+    margin:0 9px 0 9px;
     padding-left: 0px;
 }
 
@@ -100,20 +118,15 @@ img{
 
 
 #content #content-header h1.title, #content #content-header h2.title, #content #content-header h3.title {
-    margin:0.3em 0 0 1.2em;
+    margin:0 0 0 1.2em;
 }
 
 #content{
     position:relative;
-    width:98em;
+    /*width:98em;*/
+    width: 100%;
     padding-bottom:10px;
 }
-
-#wrapper{
-    width:98em;
-    margin:0 auto;
-}
-
 
 #main{
     position:relative;
@@ -134,21 +147,28 @@ img{
 
 #footer-message{
     position:absolute;
-    top:1.2em;
+    top:1em;
     left:4.5em;
 }
 
+#footer-logo img{
+    height:49px;
+    margin-left:-3px;
+}
 
 .langNav{
-    width:94em;
+    /*width:94em;*/
+    width: 100%;
     margin:0 auto;   
+    max-width: 94em;
     padding:.4em 0 .4em 2em;
 }
 
 .langNav li{
     float:left;
     font-size:1.1em;
-    margin:0 1em 0 0
+    margin:0 1em 0 0;
+    padding-left: 18px;    
 }
 
 
@@ -171,11 +191,12 @@ img{
 
 .cuadro{
     width:80%;
-    height: 140px;
+    min-height: 140px;
     padding:10px;
     margin-top:20px;
     margin-left: 50px;
     margin-bottom: 10px;
+        padding-right: 10px;
 }
 
 .cuadro_titulo{
@@ -189,4 +210,102 @@ h3 img{
 
 .perfiles-content{
     padding-top: 20px;
+}
+
+img.banner-calidad{
+    padding:0;
+    padding-top: 3px;
+    margin:0;
+    width:100%;
+    min-width: 150px;
+}
+
+
+/*Redefinicion responsive */
+#wrapper{
+    width: 74%;
+    margin:0px auto;
+    max-width: 98em;
+}
+#header{
+    margin:0px;
+}
+
+.langNav{
+    -webkit-padding-start: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-before:0px;
+    max-width: none;
+}
+
+h1.header-logouniv{
+    margin-left: 0px;
+    max-width: none;
+}
+
+#header .mainNav{
+    margin: 0px 9px 0px 0px;
+    margin-right: 0px;
+}
+
+
+#content-header h2{
+    margin-top: 0px;
+    padding-top:2px;
+}
+
+.banner-calidad{
+    min-height: 40px; /*Aqui deberemos meter un media para comernos los bordes*/
+}
+/* ---------------------------------------------------- */
+/* Definición de MediaQuery para diseño responsive */
+/* ---------------------------------------------------- */
+
+@media (max-width: 705px){
+.cuadro_titulo{
+    font-size: 2.4vw;
+    
+}
+.cuadro #listas ul li a{
+    font-size: 1.5vw;
+}
+.cuadro{
+    margin-left:30px;
+}
+
+
+}
+
+@media (max-width:500px){
+    h1.header-logouniv a{
+        height:12vw;
+        
+    }
+    #wrapper{
+        width:90%;
+    }
+    h3.cuadro_titulo{
+        font-size: 4vw;
+    }
+    .cuadro #listas ul li a{
+        font-size: 3vw;
+    }
+    #listas ul{
+        -webkit-padding-start: 0px;
+    }
+    #choose-profile, #perfiles-form{
+        margin-left:5px;
+    }
+    .cuadro{
+        margin-left:20px;
+    }
+    h1 a{
+        height:3.5em;
+    }
+    #content #content-header h2.title{
+        font-size: 2.5vw;
+    }
+    .breadcrumb{
+        font-size: 2.0vw;
+    }
 }
