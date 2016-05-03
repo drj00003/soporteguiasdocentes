@@ -6,33 +6,52 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Consulta
+ *
+ * @ORM\Table(name="consulta", indexes={@ORM\Index(name="fk_Consulta_Hilo1_idx", columns={"hiloId"})})
+ * @ORM\Entity
  */
 class Consulta
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="texto", type="text", nullable=true)
      */
     private $texto;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="visto", type="boolean", nullable=true)
      */
     private $visto;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="Fecha", type="datetime", nullable=true)
      */
     private $fecha;
 
     /**
-     * @var \GuiasDocentes\AppBundle\Entity\Hilo
+     * @var \Hilo
+     *
+     * @ORM\ManyToOne(targetEntity="Hilo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="hiloId", referencedColumnName="id")
+     * })
      */
-    private $hilo;
+    private $hiloid;
+
 
 
     /**
@@ -115,25 +134,25 @@ class Consulta
     }
 
     /**
-     * Set hilo
+     * Set hiloid
      *
-     * @param \GuiasDocentes\AppBundle\Entity\Hilo $hilo
+     * @param \GuiasDocentes\AppBundle\Entity\Hilo $hiloid
      * @return Consulta
      */
-    public function setHilo(\GuiasDocentes\AppBundle\Entity\Hilo $hilo = null)
+    public function setHiloid(\GuiasDocentes\AppBundle\Entity\Hilo $hiloid = null)
     {
-        $this->hilo = $hilo;
+        $this->hiloid = $hiloid;
 
         return $this;
     }
 
     /**
-     * Get hilo
+     * Get hiloid
      *
      * @return \GuiasDocentes\AppBundle\Entity\Hilo 
      */
-    public function getHilo()
+    public function getHiloid()
     {
-        return $this->hilo;
+        return $this->hiloid;
     }
 }

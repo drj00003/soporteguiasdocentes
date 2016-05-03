@@ -18,9 +18,6 @@ body{
     margin-left: 2em;
 }
 
-h1{
-
-}
 
 h2{
     margin-left:12px;
@@ -30,6 +27,12 @@ h2{
 h3{
     margin:1em 0 0em 2em; 
 }
+
+
+h3 img{
+    height:20px;
+}
+
 
 .line-section{
     height:2px;  
@@ -50,11 +53,6 @@ h1 a span{
     width:36em;
 }
 
-.cuadro_titulo img, #listas ul li img{
-    padding-left:10px; 
-    padding-top:3px;
-    margin-right: 10px;
-}
 
 /*------Wrapper--------*/
 
@@ -73,20 +71,22 @@ h1.header-logouniv{
     height:6.5em;
     margin:0em 0em 0em 1em;
     width:100%;
-    max-width: 96em;
+    max-width: 98em;
+    margin-left: 0px;
 }
 
 #header{
     position:relative;
-    /*width:98em;*/
+    max-width:98em;
     width:100%;
     height:auto;
+    margin:0px;
 }
 
 #header .mainNav{
     height:2.4em;
-    margin:0 9px 0 9px;
     padding-left: 0px;
+    margin: 0;
 }
 
 #header .mainNav li{
@@ -105,6 +105,42 @@ h1.header-logouniv{
     margin-right: 0px;
 }
 
+.langNav{
+    width: 100%;
+    margin:0 auto;   
+    max-width: 98em;
+    padding:.4em 0 .4em 2em;
+    -webkit-padding-start: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-before:0px;
+}
+
+.langNav li{
+    float:left;
+    font-size:1.1em;
+    margin:0 1em 0 0;
+    padding-left: 18px;    
+}
+
+
+.banner-calidad{
+    padding:0;
+    padding-top: 3px;
+    margin:0;
+    width:100%;
+    min-width: 150px;
+    min-height: 40px;
+}
+
+
+#content-header h2{
+    margin-top: 0px;
+    padding-top:2px;
+}
+
+
+/* ---- Migas de pan ------ */
+
 .breadcrumb{
     display:inline-block;
     margin:.7em 0 .4em 2em;
@@ -116,6 +152,8 @@ h1.header-logouniv{
     margin:0 0 0 .5em;
 }
 
+
+/*----- Contenedor ------ */
 
 #content #content-header h1.title, #content #content-header h2.title, #content #content-header h3.title {
     margin:0 0 0 1.2em;
@@ -133,6 +171,31 @@ h1.header-logouniv{
     min-height:0em; 
 }
 
+
+.cuadro{
+    width:80%;
+    min-height: 140px;
+    padding:10px;
+    margin-top:20px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.cuadro_titulo{
+    width:100%;
+    padding:3px;
+    margin:0 0 10px;
+}
+
+
+.cuadro_titulo img{
+    padding-left:10px; 
+    padding-top:3px;
+    margin-right: 10px;
+}
+
+
+/* ----- Pie ------ */
 
 #footer{
     position:relative;
@@ -156,123 +219,16 @@ h1.header-logouniv{
     margin-left:-3px;
 }
 
-.langNav{
-    /*width:94em;*/
-    width: 100%;
-    margin:0 auto;   
-    max-width: 94em;
-    padding:.4em 0 .4em 2em;
-}
 
-.langNav li{
-    float:left;
-    font-size:1.1em;
-    margin:0 1em 0 0;
-    padding-left: 18px;    
-}
-
-
-#manuales #listas ul, ol{
-    margin:0.5em 0 0.5em 0em; 
-}
-
-#manuales #listas ul li img{
-    width: 19px;
-    height: 19px;
-}
-
-#choose-profile{
-    margin-left:50px; 
-}
-
-#perfiles-form{
-    margin:8px 4px 4px 50px;  
-}
-
-.cuadro{
-    width:80%;
-    min-height: 140px;
-    padding:10px;
-    margin-top:20px;
-    margin-left: 50px;
-    margin-bottom: 10px;
-        padding-right: 10px;
-}
-
-.cuadro_titulo{
-    width:100%;
-    padding:3px;
-    margin:0 0 10px;
-}
-h3 img{
-    height:20px;
-}
-
-.perfiles-content{
-    padding-top: 20px;
-}
-
-img.banner-calidad{
-    padding:0;
-    padding-top: 3px;
-    margin:0;
-    width:100%;
-    min-width: 150px;
-}
-
-
-/*Redefinicion responsive */
-#wrapper{
-    width: 74%;
-    margin:0px auto;
-    max-width: 98em;
-}
-#header{
-    margin:0px;
-}
-
-.langNav{
-    -webkit-padding-start: 0px;
-    -webkit-margin-after: 0px;
-    -webkit-margin-before:0px;
-    max-width: none;
-}
-
-h1.header-logouniv{
-    margin-left: 0px;
-    max-width: none;
-}
-
-#header .mainNav{
-    margin: 0px 9px 0px 0px;
-    margin-right: 0px;
-}
-
-
-#content-header h2{
-    margin-top: 0px;
-    padding-top:2px;
-}
-
-.banner-calidad{
-    min-height: 40px; /*Aqui deberemos meter un media para comernos los bordes*/
-}
 /* ---------------------------------------------------- */
 /* Definición de MediaQuery para diseño responsive */
 /* ---------------------------------------------------- */
 
 @media (max-width: 705px){
-.cuadro_titulo{
-    font-size: 2.4vw;
+    .cuadro{
+        margin-left:30px;
+    }
     
-}
-.cuadro #listas ul li a{
-    font-size: 1.5vw;
-}
-.cuadro{
-    margin-left:30px;
-}
-
 
 }
 
@@ -281,31 +237,24 @@ h1.header-logouniv{
         height:12vw;
         
     }
+    
     #wrapper{
         width:90%;
     }
-    h3.cuadro_titulo{
-        font-size: 4vw;
-    }
-    .cuadro #listas ul li a{
-        font-size: 3vw;
-    }
+    
     #listas ul{
         -webkit-padding-start: 0px;
     }
+    
     #choose-profile, #perfiles-form{
         margin-left:5px;
     }
+    
     .cuadro{
         margin-left:20px;
     }
+    
     h1 a{
         height:3.5em;
-    }
-    #content #content-header h2.title{
-        font-size: 2.5vw;
-    }
-    .breadcrumb{
-        font-size: 2.0vw;
     }
 }

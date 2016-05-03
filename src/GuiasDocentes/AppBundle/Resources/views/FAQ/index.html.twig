@@ -1,5 +1,14 @@
 {% extends 'FAQ/base-faq.html.twig' %}
 {% block title %}APLICACIÓN DE GUÍAS DOCENTES UJA - Dudas e Incidencias{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+        <!-- Estilos generales FAQ (sabor y layout) -->
+        <link href=" {{ asset('Resources/FAQ/css/index/index-sb.css') }}" rel="stylesheet" />
+        <link href=" {{ asset('Resources/FAQ/css/index/index-ly.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block breadcrumb %}
+    Inicio >>
+{% endblock %}
 {% block content_title %}
 	<h2 class="title" title="Aplicación de guías docentes UJA">APLICACIÓN DE GUÍAS DOCENTES UJA - Dudas e Incidencias</h2>
 {% endblock %}
@@ -20,7 +29,7 @@
       {#<hr class="line-section" />#}
             <div class="perfiles-content">
                 <p id="choose-profile">Elija su perfil:</p>
-                <form id="perfiles-form" method="POST" action="gfaq.php">
+                <form id="perfiles-form" method="POST" action="{{ path('guias_docentes_app_gfaq') }}">
     
                     <select id="perfiles" name="perfil" class="down">
                         {% for perfil in perfiles %} 
@@ -32,9 +41,4 @@
                 </form>
             </div>
       </div>
-{% endblock %}
-{% block javascripts %}
-    {{ parent () }}
-    {#Custom index.js#}
-    <script src=" {{ asset('Resources/FAQ/js/index.js') }}"></script>
 {% endblock %}

@@ -6,23 +6,41 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Hilo
+ *
+ * @ORM\Table(name="hilo", indexes={@ORM\Index(name="fk_Hilo_Personal1_idx", columns={"personalEmail"}), @ORM\Index(name="fk_Hilo_Consultante1_idx", columns={"consultanteEmail"})})
+ * @ORM\Entity
  */
 class Hilo
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var \GuiasDocentes\AppBundle\Entity\Consultante
+     * @var \Personal
+     *
+     * @ORM\ManyToOne(targetEntity="Personal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="personalEmail", referencedColumnName="email")
+     * })
      */
-    private $consultanteEmail;
+    private $personalemail;
 
     /**
-     * @var \GuiasDocentes\AppBundle\Entity\Personal
+     * @var \Consultante
+     *
+     * @ORM\ManyToOne(targetEntity="Consultante")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="consultanteEmail", referencedColumnName="email")
+     * })
      */
-    private $personalEmail;
+    private $consultanteemail;
+
 
 
     /**
@@ -36,48 +54,48 @@ class Hilo
     }
 
     /**
-     * Set consultanteEmail
+     * Set personalemail
      *
-     * @param \GuiasDocentes\AppBundle\Entity\Consultante $consultanteEmail
+     * @param \GuiasDocentes\AppBundle\Entity\Personal $personalemail
      * @return Hilo
      */
-    public function setConsultanteEmail(\GuiasDocentes\AppBundle\Entity\Consultante $consultanteEmail = null)
+    public function setPersonalemail(\GuiasDocentes\AppBundle\Entity\Personal $personalemail = null)
     {
-        $this->consultanteEmail = $consultanteEmail;
+        $this->personalemail = $personalemail;
 
         return $this;
     }
 
     /**
-     * Get consultanteEmail
-     *
-     * @return \GuiasDocentes\AppBundle\Entity\Consultante 
-     */
-    public function getConsultanteEmail()
-    {
-        return $this->consultanteEmail;
-    }
-
-    /**
-     * Set personalEmail
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Personal $personalEmail
-     * @return Hilo
-     */
-    public function setPersonalEmail(\GuiasDocentes\AppBundle\Entity\Personal $personalEmail = null)
-    {
-        $this->personalEmail = $personalEmail;
-
-        return $this;
-    }
-
-    /**
-     * Get personalEmail
+     * Get personalemail
      *
      * @return \GuiasDocentes\AppBundle\Entity\Personal 
      */
-    public function getPersonalEmail()
+    public function getPersonalemail()
     {
-        return $this->personalEmail;
+        return $this->personalemail;
+    }
+
+    /**
+     * Set consultanteemail
+     *
+     * @param \GuiasDocentes\AppBundle\Entity\Consultante $consultanteemail
+     * @return Hilo
+     */
+    public function setConsultanteemail(\GuiasDocentes\AppBundle\Entity\Consultante $consultanteemail = null)
+    {
+        $this->consultanteemail = $consultanteemail;
+
+        return $this;
+    }
+
+    /**
+     * Get consultanteemail
+     *
+     * @return \GuiasDocentes\AppBundle\Entity\Consultante 
+     */
+    public function getConsultanteemail()
+    {
+        return $this->consultanteemail;
     }
 }

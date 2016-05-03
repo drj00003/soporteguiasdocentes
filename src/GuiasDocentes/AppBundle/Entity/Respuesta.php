@@ -6,28 +6,45 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Respuesta
+ *
+ * @ORM\Table(name="respuesta", indexes={@ORM\Index(name="fk_Respuesta_Consulta1_idx", columns={"Consulta_ID"})})
+ * @ORM\Entity
  */
 class Respuesta
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="texto", type="text", nullable=true)
      */
     private $texto;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="datetime", nullable=true)
      */
     private $fecha;
 
     /**
-     * @var \GuiasDocentes\AppBundle\Entity\Consulta
+     * @var \Consulta
+     *
+     * @ORM\ManyToOne(targetEntity="Consulta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Consulta_ID", referencedColumnName="id")
+     * })
      */
     private $consulta;
+
 
 
     /**

@@ -4,39 +4,32 @@ namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Perfil
+ *
+ * @ORM\Table(name="perfil")
+ * @ORM\Entity(repositoryClass="GuiasDocentes\AppBundle\Entity\PerfilRepository")
  */
 class Perfil
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $nombre;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="orden", type="integer", nullable=true)
      */
     private $orden;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $grupoSoporte;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $grupo;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->grupoSoporte = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->grupo = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get nombre
@@ -69,71 +62,5 @@ class Perfil
     public function getOrden()
     {
         return $this->orden;
-    }
-
-    /**
-     * Add grupoSoporte
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\GrupoSoporte $grupoSoporte
-     * @return Perfil
-     */
-    public function addGrupoSoporte(\GuiasDocentes\AppBundle\Entity\GrupoSoporte $grupoSoporte)
-    {
-        $this->grupoSoporte[] = $grupoSoporte;
-
-        return $this;
-    }
-
-    /**
-     * Remove grupoSoporte
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\GrupoSoporte $grupoSoporte
-     */
-    public function removeGrupoSoporte(\GuiasDocentes\AppBundle\Entity\GrupoSoporte $grupoSoporte)
-    {
-        $this->grupoSoporte->removeElement($grupoSoporte);
-    }
-
-    /**
-     * Get grupoSoporte
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGrupoSoporte()
-    {
-        return $this->grupoSoporte;
-    }
-
-    /**
-     * Add grupo
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Grupo $grupo
-     * @return Perfil
-     */
-    public function addGrupo(\GuiasDocentes\AppBundle\Entity\Grupo $grupo)
-    {
-        $this->grupo[] = $grupo;
-
-        return $this;
-    }
-
-    /**
-     * Remove grupo
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Grupo $grupo
-     */
-    public function removeGrupo(\GuiasDocentes\AppBundle\Entity\Grupo $grupo)
-    {
-        $this->grupo->removeElement($grupo);
-    }
-
-    /**
-     * Get grupo
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGrupo()
-    {
-        return $this->grupo;
     }
 }

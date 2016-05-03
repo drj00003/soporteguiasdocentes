@@ -6,42 +6,39 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * GrupoSoporte
+ *
+ * @ORM\Table(name="grupo_soporte", indexes={@ORM\Index(name="fk_Grupo_Soporte_Administrador1_idx", columns={"administradorId"})})
+ * @ORM\Entity
  */
 class GrupoSoporte
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=20, nullable=true)
      */
     private $nombre;
 
     /**
-     * @var \GuiasDocentes\AppBundle\Entity\Administrador
+     * @var \Administrador
+     *
+     * @ORM\ManyToOne(targetEntity="Administrador")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="administradorId", referencedColumnName="id")
+     * })
      */
-    private $administrador;
+    private $administradorid;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $perfilNombre;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $temática;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->perfilNombre = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->temática = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -77,91 +74,25 @@ class GrupoSoporte
     }
 
     /**
-     * Set administrador
+     * Set administradorid
      *
-     * @param \GuiasDocentes\AppBundle\Entity\Administrador $administrador
+     * @param \GuiasDocentes\AppBundle\Entity\Administrador $administradorid
      * @return GrupoSoporte
      */
-    public function setAdministrador(\GuiasDocentes\AppBundle\Entity\Administrador $administrador = null)
+    public function setAdministradorid(\GuiasDocentes\AppBundle\Entity\Administrador $administradorid = null)
     {
-        $this->administrador = $administrador;
+        $this->administradorid = $administradorid;
 
         return $this;
     }
 
     /**
-     * Get administrador
+     * Get administradorid
      *
      * @return \GuiasDocentes\AppBundle\Entity\Administrador 
      */
-    public function getAdministrador()
+    public function getAdministradorid()
     {
-        return $this->administrador;
-    }
-
-    /**
-     * Add perfilNombre
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Perfil $perfilNombre
-     * @return GrupoSoporte
-     */
-    public function addPerfilNombre(\GuiasDocentes\AppBundle\Entity\Perfil $perfilNombre)
-    {
-        $this->perfilNombre[] = $perfilNombre;
-
-        return $this;
-    }
-
-    /**
-     * Remove perfilNombre
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Perfil $perfilNombre
-     */
-    public function removePerfilNombre(\GuiasDocentes\AppBundle\Entity\Perfil $perfilNombre)
-    {
-        $this->perfilNombre->removeElement($perfilNombre);
-    }
-
-    /**
-     * Get perfilNombre
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPerfilNombre()
-    {
-        return $this->perfilNombre;
-    }
-
-    /**
-     * Add temática
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Temática $temática
-     * @return GrupoSoporte
-     */
-    public function addTemática(\GuiasDocentes\AppBundle\Entity\Temática $temática)
-    {
-        $this->temática[] = $temática;
-
-        return $this;
-    }
-
-    /**
-     * Remove temática
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Temática $temática
-     */
-    public function removeTemática(\GuiasDocentes\AppBundle\Entity\Temática $temática)
-    {
-        $this->temática->removeElement($temática);
-    }
-
-    /**
-     * Get temática
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTemática()
-    {
-        return $this->temática;
+        return $this->administradorid;
     }
 }

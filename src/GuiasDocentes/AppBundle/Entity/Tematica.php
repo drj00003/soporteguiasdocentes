@@ -5,12 +5,12 @@ namespace GuiasDocentes\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Rf
+ * Tematica
  *
- * @ORM\Table(name="rf", indexes={@ORM\Index(name="fk_RF_Personal1_idx", columns={"personalEmail"})})
+ * @ORM\Table(name="tematica", indexes={@ORM\Index(name="fk_Temática_Personal1_idx", columns={"personalEmail"})})
  * @ORM\Entity
  */
-class Rf
+class Tematica
 {
     /**
      * @var integer
@@ -24,16 +24,16 @@ class Rf
     /**
      * @var string
      *
-     * @ORM\Column(name="texto", type="text", nullable=false)
+     * @ORM\Column(name="enunciado", type="string", length=45, nullable=true)
      */
-    private $texto;
+    private $enunciado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="keywords", type="string", length=25, nullable=true)
+     * @ORM\Column(name="tematica", type="string", length=45, nullable=true)
      */
-    private $keywords;
+    private $tematica;
 
     /**
      * @var \Personal
@@ -58,56 +58,56 @@ class Rf
     }
 
     /**
-     * Set texto
+     * Set enunciado
      *
-     * @param string $texto
-     * @return Rf
+     * @param string $enunciado
+     * @return Tematica
      */
-    public function setTexto($texto)
+    public function setEnunciado($enunciado)
     {
-        $this->texto = $texto;
+        $this->enunciado = $enunciado;
 
         return $this;
     }
 
     /**
-     * Get texto
+     * Get enunciado
      *
      * @return string 
      */
-    public function getTexto()
+    public function getEnunciado()
     {
-        return $this->texto;
+        return $this->enunciado;
     }
 
     /**
-     * Set keywords
+     * Set tematica
      *
-     * @param string $keywords
-     * @return Rf
+     * @param string $tematica
+     * @return Tematica
      */
-    public function setKeywords($keywords)
+    public function setTematica($tematica)
     {
-        $this->keywords = $keywords;
+        $this->tematica = $tematica;
 
         return $this;
     }
 
     /**
-     * Get keywords
+     * Get tematica
      *
      * @return string 
      */
-    public function getKeywords()
+    public function getTematica()
     {
-        return $this->keywords;
+        return $this->tematica;
     }
 
     /**
      * Set personalemail
      *
      * @param \GuiasDocentes\AppBundle\Entity\Personal $personalemail
-     * @return Rf
+     * @return Tematica
      */
     public function setPersonalemail(\GuiasDocentes\AppBundle\Entity\Personal $personalemail = null)
     {

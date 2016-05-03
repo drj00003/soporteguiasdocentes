@@ -6,53 +6,83 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Pf
+ *
+ * @ORM\Table(name="pf", indexes={@ORM\Index(name="fk_PF_Administrador1_idx", columns={"ModificadorId"}), @ORM\Index(name="fk_PF_Grupo1_idx", columns={"GrupoId"})})
+ * @ORM\Entity(repositoryClass="GuiasDocentes\AppBundle\Entity\PfRepository")
  */
 class Pf
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="pregunta", type="text", nullable=false)
      */
     private $pregunta;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="respuesta", type="text", nullable=false)
      */
     private $respuesta;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="habilitada", type="boolean", nullable=false)
      */
-    private $habilitada;
+    private $habilitada = '1';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="creador", type="string", length=30, nullable=true)
      */
     private $creador;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="fechaM", type="datetime", nullable=false)
      */
-    private $fechaM;
+    private $fecham = 'CURRENT_TIMESTAMP';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="orden", type="integer", nullable=false)
      */
-    private $orden;
+    private $orden = '0';
 
     /**
-     * @var \GuiasDocentes\AppBundle\Entity\Administrador
+     * @var \Administrador
+     *
+     * @ORM\ManyToOne(targetEntity="Administrador")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ModificadorId", referencedColumnName="id")
+     * })
      */
-    private $modificador;
+    private $modificadorid;
 
     /**
-     * @var \GuiasDocentes\AppBundle\Entity\Grupo
+     * @var \Grupo
+     *
+     * @ORM\ManyToOne(targetEntity="Grupo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GrupoId", referencedColumnName="id")
+     * })
      */
-    private $grupo;
+    private $grupoid;
+
 
 
     /**
@@ -158,26 +188,26 @@ class Pf
     }
 
     /**
-     * Set fechaM
+     * Set fecham
      *
-     * @param \DateTime $fechaM
+     * @param \DateTime $fecham
      * @return Pf
      */
-    public function setFechaM($fechaM)
+    public function setFecham($fecham)
     {
-        $this->fechaM = $fechaM;
+        $this->fecham = $fecham;
 
         return $this;
     }
 
     /**
-     * Get fechaM
+     * Get fecham
      *
      * @return \DateTime 
      */
-    public function getFechaM()
+    public function getFecham()
     {
-        return $this->fechaM;
+        return $this->fecham;
     }
 
     /**
@@ -204,48 +234,48 @@ class Pf
     }
 
     /**
-     * Set modificador
+     * Set modificadorid
      *
-     * @param \GuiasDocentes\AppBundle\Entity\Administrador $modificador
+     * @param \GuiasDocentes\AppBundle\Entity\Administrador $modificadorid
      * @return Pf
      */
-    public function setModificador(\GuiasDocentes\AppBundle\Entity\Administrador $modificador = null)
+    public function setModificadorid(\GuiasDocentes\AppBundle\Entity\Administrador $modificadorid = null)
     {
-        $this->modificador = $modificador;
+        $this->modificadorid = $modificadorid;
 
         return $this;
     }
 
     /**
-     * Get modificador
+     * Get modificadorid
      *
      * @return \GuiasDocentes\AppBundle\Entity\Administrador 
      */
-    public function getModificador()
+    public function getModificadorid()
     {
-        return $this->modificador;
+        return $this->modificadorid;
     }
 
     /**
-     * Set grupo
+     * Set grupoid
      *
-     * @param \GuiasDocentes\AppBundle\Entity\Grupo $grupo
+     * @param \GuiasDocentes\AppBundle\Entity\Grupo $grupoid
      * @return Pf
      */
-    public function setGrupo(\GuiasDocentes\AppBundle\Entity\Grupo $grupo = null)
+    public function setGrupoid(\GuiasDocentes\AppBundle\Entity\Grupo $grupoid = null)
     {
-        $this->grupo = $grupo;
+        $this->grupoid = $grupoid;
 
         return $this;
     }
 
     /**
-     * Get grupo
+     * Get grupoid
      *
      * @return \GuiasDocentes\AppBundle\Entity\Grupo 
      */
-    public function getGrupo()
+    public function getGrupoid()
     {
-        return $this->grupo;
+        return $this->grupoid;
     }
 }

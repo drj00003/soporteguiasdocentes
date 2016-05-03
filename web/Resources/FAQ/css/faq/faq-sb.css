@@ -1,0 +1,81 @@
+/* Identación de las preguntas frecuentes con numeros decimales */
+.listaPfSG {
+	counter-reset: my-badass-counter;
+}
+.listaPfSG dt:before {
+	content: counter(my-badass-counter)".";
+	counter-increment: my-badass-counter;
+}
+
+/* General */
+.cuadro{
+    text-align: center;
+}
+
+/* Preguntas Frecuentes */
+
+.respuesta a {
+  white-space: nowrap;
+  width:100%; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display:inline-block;
+
+}
+
+/* Listado de preguntas frecuentes sin reagrupamiento en grupos*/
+
+.listaPfSG dt{
+    color:#0061AD; 
+    font-size:1.4em;
+    list-style:decimal; 
+    line-height:200%;
+    text-align: justify;
+}
+.listaPfSG dt:hover{
+    text-decoration: underline;
+    color:#049FE1;
+    cursor:pointer;
+}
+.listaPfSG dd{
+    text-indent: 5%;
+    font-size:1.4em;
+    line-height:120%;
+    text-align: justify;
+}
+
+/* Listado de preguntas frecuentes organizadas en grupos */
+
+.listaPfByGroup .grupo{
+    color: #049FE1;
+    font-size: 2.4em;
+    font-weight: normal;
+    line-height: 120%;
+}
+.listaPfByGroup .grupo:hover{
+    text-decoration: underline;
+    color:#049FE1;
+    cursor:pointer; 
+}
+
+.listaPfByGroup{
+    padding-bottom: 20px;
+}
+
+/* Versión responsive */
+@media (max-width:750px){
+    /*.listaPfSG dt{*/
+    /*    font-size: 1.5vw;*/
+    /*}*/
+    /*.listaPfByGroup .grupo{*/
+    /*    font-size: 1.7vw;*/
+    /*}*/
+#content #content-header h2.title{
+        font-size: 2.5vw;
+}
+}
+@media (max-width:600px){
+.listaPfByGroup .grupo{
+    font-size: 2em;
+}
+}

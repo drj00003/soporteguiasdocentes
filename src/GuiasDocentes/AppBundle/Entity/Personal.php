@@ -6,28 +6,42 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Personal
+ *
+ * @ORM\Table(name="personal")
+ * @ORM\Entity
  */
 class Personal
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $email;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=30, nullable=true)
      */
     private $nombre;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=50, nullable=true)
      */
     private $apellidos;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="departamento", type="string", length=20, nullable=true)
      */
     private $departamento;
+
 
 
     /**

@@ -1,0 +1,14 @@
+/* ------ Manuales ------- */
+
+#listas ul, ol{
+    color:#049FE1;
+    font-size:1.8em;
+    line-height:130%
+}
+
+/* ------- Perfiles ------- */
+
+#choose-profile{
+    font-size:12px;
+    text-align :justify;
+}

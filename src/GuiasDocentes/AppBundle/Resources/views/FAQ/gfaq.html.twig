@@ -1,0 +1,68 @@
+{% extends 'FAQ/base-faq.html.twig' %}
+{% block title %}Perfil {{perfil}}{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+        <!-- Estilos generales FAQ (sabor y layout) -->
+        <link href=" {{ asset('Resources/FAQ/css/faq/faq-sb.css') }}" rel="stylesheet" />
+        <link href=" {{ asset('Resources/FAQ/css/faq/faq-ly.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block breadcrumb %}
+    <a href="{{ path('guias_docentes_app_homepage') }}"> Inicio </a>>>
+    Perfil {{perfil}}
+{% endblock %}
+{% block content_title %}
+	<h2 class="title cuadro" title="Aplicación de guías docentes UJA">Perfil {{perfil}}</h2>
+{% endblock %}
+{% block content %}
+{# Dos o menos grupos implica que al menos uno de estos sera el grupo especial de soporte, por lo #}
+{# que realmente al no existir más de un grupo de pf este aparecerá desplegado sin agruparlo en el grupo correspondiente#}
+    {% if grupos |length > 2 %} 
+        <dl class="listaPfByGroup">
+            {% for grupo in grupos %}
+                <dt class="grupo">
+                    {{grupo.getNombre() | raw }}
+                </dt>
+                {% for key in PF|keys %}
+                    {% if key == grupo.getId() %}
+                        <dd class="pfgrupo">
+                            <dl class="listaPfSG">
+                                {% for p in PF[key] %}
+                                    <dt class="pregunta">
+                                        {{ p.getPregunta() | raw }}
+                                    </dt>
+                                    <dd class="respuesta">
+                                        {{ p.getRespuesta() | raw }}
+                                    </dd>
+                                {% endfor %}
+                            </dl>
+                        </dd>
+                    {%endif%}
+                {% endfor %}
+            {% endfor %}
+        </dl>
+    {% else %}
+        <dl class="listaPfSG">
+            {% for grupo in grupos %}
+                {% for key in PF|keys %}
+                    {% if key == grupo.getId() %}
+    
+                            {% for p in PF[key] %} 
+                                <dt class="pregunta">
+                                    {{ p.getPregunta() | raw }}
+                                </dt>
+                                <dd class="respuesta">
+                                    {{ p.getRespuesta() | raw }}
+                                </dd>
+                            {% endfor %}
+    
+                    {%endif%}
+                {% endfor %}
+            {% endfor %}
+        </dl>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src=" {{ asset('Resources/FAQ/js/gfaq.js') }}"></script>
+{% endblock %}

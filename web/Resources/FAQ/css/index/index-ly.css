@@ -1,0 +1,30 @@
+/* ---- Manuales ----- */
+
+#manuales #listas ul, ol{
+    margin:0.5em 0 0.5em 0em; 
+}
+
+#manuales #listas ul li img{
+    width: 19px;
+    height: 19px;
+}
+
+#listas ul li img{
+    padding-left:10px; 
+    padding-top:3px;
+    margin-right: 10px;
+}
+
+/* ----- Perfiles ------- */
+
+#choose-profile{
+    margin-left:50px; 
+}
+
+#perfiles-form{
+    margin:8px 4px 4px 50px;  
+}
+
+.perfiles-content{
+    padding-top: 20px;
+}

@@ -6,31 +6,29 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Grupo
+ *
+ * @ORM\Table(name="grupo")
+ * @ORM\Entity(repositoryClass="GuiasDocentes\AppBundle\Entity\GrupoRepository")
  */
 class Grupo
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nombre", type="text", nullable=true)
      */
     private $nombre;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $perfilNombre;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->perfilNombre = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -64,37 +62,5 @@ class Grupo
     {
         return $this->nombre;
     }
-
-    /**
-     * Add perfilNombre
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Perfil $perfilNombre
-     * @return Grupo
-     */
-    public function addPerfilNombre(\GuiasDocentes\AppBundle\Entity\Perfil $perfilNombre)
-    {
-        $this->perfilNombre[] = $perfilNombre;
-
-        return $this;
-    }
-
-    /**
-     * Remove perfilNombre
-     *
-     * @param \GuiasDocentes\AppBundle\Entity\Perfil $perfilNombre
-     */
-    public function removePerfilNombre(\GuiasDocentes\AppBundle\Entity\Perfil $perfilNombre)
-    {
-        $this->perfilNombre->removeElement($perfilNombre);
-    }
-
-    /**
-     * Get perfilNombre
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPerfilNombre()
-    {
-        return $this->perfilNombre;
-    }
+    
 }

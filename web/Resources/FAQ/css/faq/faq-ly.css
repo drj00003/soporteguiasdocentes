@@ -1,0 +1,47 @@
+/* Listado de preguntas frecuentes sin reagrupamiento en grupos*/
+
+.listaPfSG{
+    margin-left:50px;
+}
+.listaPfSG dt{
+    margin:1em 1em 1em 0em;
+}
+.listaPfSG dd{
+    margin:1em 1em 1em 0em;
+}
+
+/* Listado de preguntas frecuentes organizadas en grupos */
+
+.listaPfByGroup .grupo{
+    margin: 1em 1em 0em 2em;
+}
+
+.pfgrupo .listaPfSG{
+    margin-left:20px;
+}
+.listaPfByGroup .pfgrupo .listaPfSG{
+    margin-right:1em;
+}
+
+/* General */
+.cuadro{
+    width: inherit;
+    min-height: inherit;
+    margin-top: 10px !important;
+    margin-right:20px !important;
+    padding: 10px !important;
+}
+
+/* Versión responsive */
+@media (max-width:750px){
+.listaPfSG{
+    margin-left:3em;
+    margin-right:3em;
+}
+.listaPfByGroup .grupo{
+    margin-left:20px;
+}
+.pfgrupo .listaPfSG{
+    margin-left:20px;
+}
+}
