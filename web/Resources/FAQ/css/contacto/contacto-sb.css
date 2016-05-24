@@ -1,0 +1,72 @@
+/* 
+* Layout para los estilos de formulario de contacto e historico de soporte 
+*/
+
+body{
+    background: #F1F1F1 url(../../img/bg.png) top left repeat-x;
+}
+
+.langNav li{
+    font-size:11px;
+}
+
+#header .mainNav a:hover #pageHome, #header .mainNav .active #pageHome{
+    background:url(../../img/pageHomeHover.png) 0em 4px no-repeat;
+}
+
+#pageHome{
+    line-height: 0px;
+}
+
+.help-block{
+    font-size:12px;
+}
+
+.form-group .control-label:after {
+  content:"*";
+  color:black;
+}
+
+/* Historico */
+visto-1 {
+    font-weight: normal;
+    font-weight: 300;
+}
+
+
+.visto-0{
+    font-weight: bold;
+}
+
+#nueva-consulta, #nueva-respuesta, .fecha-respuesta{
+    font-weight:bold;
+}
+
+.glyphicon:hover{
+    text-decoration: underline;
+}
+
+.grupo-consulta dt {
+    margin: 1em 1em 1em 0em;
+}
+.grupo-consulta dt {
+    color: #0061AD;
+    font-size: 1.0em;
+    list-style: decimal;
+    text-align: justify;
+}
+
+dd.respuesta{
+    display: list-item;
+    list-style-type: disc;
+}
+
+/*Layouts Email*/
+
+.alert{
+    color:red;
+}
+
+.title, rotulo{
+    font-weight: bold;
+}

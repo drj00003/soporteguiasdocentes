@@ -1,0 +1,102 @@
+/* 
+* Layout para los estilos de formulario de contacto e historico de soporte 
+*/
+
+h1.header-logouniv{
+    height: 1.85em ;
+}
+
+h1 a, h1 a span{
+    height: 1.7em;
+}
+
+.form-contacto{
+    margin: 2em;
+    width:55%;
+}
+
+.langNav{
+    padding: 1px;
+}
+
+#header .mainNav{
+    height: 1.7em;
+}
+
+#header .mainNav a, #header .mainNav a:active, #header .mainNav a:focus{
+    width: 32px;
+    height: 24px;
+    display: inline-block;
+    padding: 2px;
+    padding-left: 7px;
+}
+
+#header .mainNav li{
+    height: 1.3em;
+}
+
+#header .mainNav a #pageHome, #header .mainNav a:active #pageHome, #header .mainNav a:focus #pageHome{
+    height: 1.7em;
+    
+}
+
+#footer-message{
+    font-size: 1.2em;
+}
+
+
+textarea.form-control{
+    min-height: 100px;
+}
+
+
+/* Historico */
+
+/*.historico-content{*/
+/*    margin-left: 50px;*/
+/*    margin-right: 20px;*/
+/*}*/
+
+/*.historico-content h3{*/
+/*    margin-left:0;*/
+/*}*/
+
+.setVisibility{
+    float: left;
+    margin-right: 10px;
+}
+
+dd.respuesta, form.consulta, form.respuesta, #nueva-consulta, #nueva-respuesta{
+    margin-left:3em;
+}
+
+.btn-success{
+    margin-top:10px;
+}
+
+#nueva-consulta, #nueva-respuesta{
+    padding-top: 8px;
+    padding-bottom: 4px;
+    display:block;
+}
+
+.visto-0{
+    font-weight: bold;
+}
+
+textarea.form-control{
+    max-width: 400px;
+}
+/* Versión responsive */
+@media (max-width:750px){
+    .listaPfSG{
+        margin-left:3em;
+        margin-right:3em;
+    }
+}
+
+@media (max-width: 700px){
+    .form-contacto{
+        width:90%;
+    }
+}

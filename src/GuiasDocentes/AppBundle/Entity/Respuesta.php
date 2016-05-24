@@ -3,11 +3,13 @@
 namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use GuiasDocentes\AppBundle\Entity\ConsultaHasAsignatura;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Respuesta
  *
- * @ORM\Table(name="respuesta", indexes={@ORM\Index(name="fk_Respuesta_Consulta1_idx", columns={"Consulta_ID"})})
+ * @ORM\Table(name="respuesta", indexes={@ORM\Index(name="fk_Respuesta_Consulta1_idx", columns={"ConsultaId"})})
  * @ORM\Entity
  */
 class Respuesta
@@ -38,13 +40,22 @@ class Respuesta
     /**
      * @var \Consulta
      *
-     * @ORM\ManyToOne(targetEntity="Consulta")
+     * @ORM\ManyToOne(targetEntity="Consulta", inversedBy="respuestas", cascade={"ALL"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Consulta_ID", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="ConsultaId", referencedColumnName="id")
      * })
      */
     private $consulta;
 
+
+    /* Customized code */
+    
+    public function __constructor(){
+        $this->setFecha(new \Datetime());
+    }
+    
+    
+    /* End customized code */
 
 
     /**

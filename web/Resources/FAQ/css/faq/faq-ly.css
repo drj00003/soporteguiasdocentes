@@ -2,25 +2,30 @@
 
 .listaPfSG{
     margin-left:50px;
+    margin-right:20px;
 }
 .listaPfSG dt{
     margin:1em 1em 1em 0em;
 }
 .listaPfSG dd{
-    margin:1em 1em 1em 0em;
+    margin:1em 0em 1em 0em;
+}
+
+.respuesta{
+    width:100%;
 }
 
 /* Listado de preguntas frecuentes organizadas en grupos */
 
 .listaPfByGroup .grupo{
-    margin: 1em 1em 0em 2em;
+    margin: 1em 2em 0em 2em;
 }
 
 .pfgrupo .listaPfSG{
-    margin-left:20px;
+    margin-left:70px;
 }
 .listaPfByGroup .pfgrupo .listaPfSG{
-    margin-right:1em;
+    margin-right:2em;
 }
 
 /* General */
@@ -32,16 +37,19 @@
     padding: 10px !important;
 }
 
+
 /* Versión responsive */
 @media (max-width:750px){
-.listaPfSG{
-    margin-left:3em;
-    margin-right:3em;
-}
-.listaPfByGroup .grupo{
-    margin-left:20px;
-}
-.pfgrupo .listaPfSG{
-    margin-left:20px;
-}
+    .listaPfSG{
+        margin-left:3em;
+        margin-right:3em;
+    }
+    
+    .listaPfByGroup .grupo{
+        margin-left:20px;
+    }
+    
+    .pfgrupo .listaPfSG{
+        margin-left:20px;
+    }
 }

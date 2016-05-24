@@ -3,6 +3,8 @@
 namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Administrador
@@ -35,6 +37,27 @@ class Administrador
      */
     private $pass;
 
+
+    /* Customized code */
+    
+    /**
+     * @ORM\OneToMany(targetEntity="GuiasDocentes\AppBundle\Entity\Pf", mappedBy="modificadorid")
+     * @Assert\Valid()
+     */
+    private $pfs;
+    
+    public function __construct(){
+        $this->pfs = new ArrayCollection();
+    }
+    
+    public function setPfs (\GuiasDocentes\AppBundle\Entity\Pf $pfs){
+        $this->pfs = $pfs;
+        foreach ($pfs as $pf){
+            $pf->setCreador($this);
+        }
+    }
+    
+    /* End customize code */
 
 
     /**

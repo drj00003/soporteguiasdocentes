@@ -24,9 +24,23 @@ class GrupoSoporte
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=20, nullable=true)
+     * @ORM\Column(name="nombre", type="text", nullable=true)
      */
     private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pregunta", type="text", nullable=true)
+     */
+    private $pregunta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="respuesta", type="text", nullable=true)
+     */
+    private $respuesta;
 
     /**
      * @var \Administrador
@@ -71,6 +85,52 @@ class GrupoSoporte
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Set pregunta
+     *
+     * @param string $pregunta
+     * @return GrupoSoporte
+     */
+    public function setPregunta($pregunta)
+    {
+        $this->pregunta = $pregunta;
+
+        return $this;
+    }
+
+    /**
+     * Get pregunta
+     *
+     * @return string 
+     */
+    public function getPregunta()
+    {
+        return $this->pregunta;
+    }
+
+    /**
+     * Set respuesta
+     *
+     * @param string $respuesta
+     * @return GrupoSoporte
+     */
+    public function setRespuesta($respuesta)
+    {
+        $this->respuesta = $respuesta;
+
+        return $this;
+    }
+
+    /**
+     * Get respuesta
+     *
+     * @return string 
+     */
+    public function getRespuesta()
+    {
+        return $this->respuesta;
     }
 
     /**

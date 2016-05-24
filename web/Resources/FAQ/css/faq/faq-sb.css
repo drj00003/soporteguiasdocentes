@@ -16,10 +16,10 @@
 
 .respuesta a {
   white-space: nowrap;
-  width:100%; 
+  text-indent: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  display:inline-block;
+  /*display:inline-block;*/
 
 }
 

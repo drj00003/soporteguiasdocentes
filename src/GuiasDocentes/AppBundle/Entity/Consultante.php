@@ -3,6 +3,9 @@
 namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use GuiasDocentes\AppBundle\Entity\Hilo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Consultante
@@ -17,7 +20,6 @@ class Consultante
      *
      * @ORM\Column(name="email", type="string", length=50, nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $email;
 
@@ -35,7 +37,39 @@ class Consultante
      */
     private $apellidos;
 
+    /* Customized code */
+    
+    /**
+     * @ORM\OneToMany(targetEntity="GuiasDocentes\AppBundle\Entity\Hilo", mappedBy="consultanteemail")
+     * @Assert\Valid()
+     */
+    private $hilos;
+    
+    public function __construct(){
+        $this->hilos = new ArrayCollection();
+    }
+    
+    public function setConsultante($email, $nombre, $apellidos){
+        $this->setNombre($nombre);
+        $this->setApellidos($apellidos);
+        $this->setEmail($email);
+    }
+    
+    public function setHilos (Hilo $hilo){
+        $this->hilos[]=$hilo;
+    }
+    
+    public function addHilo (\GuiasDocentes\AppBundle\Entity\Hilo $hilo){
+        $this->hilos[] = $hilo;
+    }
 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+    
+    /* End customize code */
 
     /**
      * Get email

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * GrupoSoporteHasPerfil
  *
- * @ORM\Table(name="grupo_soporte_has_perfil", indexes={@ORM\Index(name="fk_Grupo_Soporte_has_Perfil_Perfil1_idx", columns={"perfilNombre"}), @ORM\Index(name="fk_Grupo_Soporte_has_Perfil_Grupo_Soporte1_idx", columns={"grupoSoporteId"})})
+ * @ORM\Table(name="grupo_soporte_has_perfil", indexes={@ORM\Index(name="fk_grupo_soporte_has_perfil_perfil1_idx", columns={"perfilNombre"}), @ORM\Index(name="fk_grupo_soporte_has_perfil_grupo_soporte1_idx", columns={"grupoSoporteId"})})
  * @ORM\Entity
  */
 class GrupoSoporteHasPerfil
@@ -20,6 +20,13 @@ class GrupoSoporteHasPerfil
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="habilitada", type="boolean", nullable=false)
+     */
+    private $habilitada;
 
     /**
      * @var \GrupoSoporte
@@ -51,6 +58,29 @@ class GrupoSoporteHasPerfil
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set habilitada
+     *
+     * @param boolean $habilitada
+     * @return GrupoSoporteHasPerfil
+     */
+    public function setHabilitada($habilitada)
+    {
+        $this->habilitada = $habilitada;
+
+        return $this;
+    }
+
+    /**
+     * Get habilitada
+     *
+     * @return boolean 
+     */
+    public function getHabilitada()
+    {
+        return $this->habilitada;
     }
 
     /**

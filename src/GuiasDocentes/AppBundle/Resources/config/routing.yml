@@ -5,3 +5,27 @@ guias_docentes_app_homepage:
 guias_docentes_app_gfaq:
     path: /gfaq
     defaults: { _controller: GuiasDocentesAppBundle:FAQ:gfaq }
+
+guias_docentes_app_contacto:
+    path: /gfaq/contacto
+    defaults: { _controller: GuiasDocentesAppBundle:FAQ:contacto }
+    
+guias_docentes_app_contacto_resume:
+    path: gfaq/contacto/resume
+    defaults: { _controller: GuiasDocentesAppBundle:FAQ:resumeConsultante }
+    
+guias_docentes_app_historico_soporte:
+    path: gfaq/historico_sop/idhilo={slug}idCon={token}
+    defaults: { _controller: GuiasDocentesAppBundle:FAQ:historico }
+
+guias_docentes_app_historico_soporte_set_visto:
+    path: gfaq/historico_sop/idhilo={slug}idCon={token}/setVisto/{consulta_id}
+    defaults: { _controller: GuiasDocentesAppBundle:FAQ:setVisto }
+    
+guias_docentes_app_historico_soporte_add_respuesta:
+    path: gfaq/historico_sop/idhilo={slug}idCon={token}/addRespuesta
+    defaults: { _controller: GuiasDocentesAppBundle:FAQ:addRespuestaHilo }
+    
+guias_docentes_app_historico_soporte_add_consulta:
+    path: gfaq/historico_sop/idhilo={slug}idCon={token}/addConsulta
+    defaults: { _controller: GuiasDocentesAppBundle:FAQ:addConsultaHilo }

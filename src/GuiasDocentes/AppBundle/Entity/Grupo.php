@@ -62,5 +62,4 @@ class Grupo
     {
         return $this->nombre;
     }
-    
 }

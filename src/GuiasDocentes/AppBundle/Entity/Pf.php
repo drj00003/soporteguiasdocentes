@@ -66,7 +66,7 @@ class Pf
     /**
      * @var \Administrador
      *
-     * @ORM\ManyToOne(targetEntity="Administrador")
+     * @ORM\ManyToOne(targetEntity="Administrador", inversedBy="pfs")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ModificadorId", referencedColumnName="id")
      * })

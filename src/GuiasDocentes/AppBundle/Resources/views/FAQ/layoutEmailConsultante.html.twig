@@ -1,0 +1,18 @@
+<h1>Aplicación consultas/incidencias sobre las Guias Docentes</h1>
+<span class="alert">Este mensaje ha sido generado automáticamente, por favor no conteste a este correo.</span>
+<h3>En respuesta a la consulta realizada el día {{email_values["consulta"].getFecha|date("d/m/Y")}} por {{email_values["hilo"].getConsultanteEmail.getNombre}} {{email_values["hilo"].getConsultanteEmail.getApellidos}}: </h3>
+<div class="block-consulta cuadro">
+    <div class="contenido-consulta">
+        {{email_values["consulta"].getTexto}}
+    </div>
+</div>
+<h3>Con fecha {{email_values["respuesta"].getFecha|date("d/m/Y")}} ha recibido el siguiente comentario:</h3>
+<div class="block-respuesta cuadro">
+    <div class="contenido-respuesta">
+        {{email_values["respuesta"].getTexto}}
+    </div>
+</div>
+<div class="resumen">
+    Para realizar otra cuestion sobre la respuesta recibida pulse sobre el siguiente link:
+    <a href="{{app.request.getSchemeAndHttpHost()}}{{ path('guias_docentes_app_historico_soporte' , { 'slug': slug, 'token': token} )}}">Nueva consulta relacionada</a>
+</div>

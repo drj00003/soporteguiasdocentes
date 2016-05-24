@@ -138,7 +138,6 @@ h1.header-logouniv{
     padding-top:2px;
 }
 
-
 /* ---- Migas de pan ------ */
 
 .breadcrumb{
@@ -156,7 +155,7 @@ h1.header-logouniv{
 /*----- Contenedor ------ */
 
 #content #content-header h1.title, #content #content-header h2.title, #content #content-header h3.title {
-    margin:0 0 0 1.2em;
+    margin: 0.5em 1em 0 1.2em;
 }
 
 #content{
@@ -228,8 +227,6 @@ h1.header-logouniv{
     .cuadro{
         margin-left:30px;
     }
-    
-
 }
 
 @media (max-width:500px){
@@ -238,16 +235,21 @@ h1.header-logouniv{
         
     }
     
+    body{
+        margin-left: 0px;
+    }
+    
     #wrapper{
-        width:90%;
+        width:85%;
+        min-width: 280px;
     }
     
     #listas ul{
         -webkit-padding-start: 0px;
     }
     
-    #choose-profile, #perfiles-form{
-        margin-left:5px;
+   .perfiles-content #perfiles-form, .perfiles-content #choose-profile{
+        margin-left:10px;
     }
     
     .cuadro{
@@ -257,4 +259,6 @@ h1.header-logouniv{
     h1 a{
         height:3.5em;
     }
+
 }
+

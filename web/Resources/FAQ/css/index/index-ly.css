@@ -28,3 +28,11 @@
 .perfiles-content{
     padding-top: 20px;
 }
+
+/*Responsive desing */
+@media (max-width:360px){
+    .perfiles-content #perfiles-form input[type="submit"]{
+        display:block;
+        margin-top: 5px;
+    }
+}

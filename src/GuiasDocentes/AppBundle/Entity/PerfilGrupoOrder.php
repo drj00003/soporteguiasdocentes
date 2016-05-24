@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PerfilGrupoOrder
  *
- * @ORM\Table(name="perfil_grupo_order", indexes={@ORM\Index(name="fk_Perfil_Grupo_Order_Perfil1_idx", columns={"perfilNombre"}), @ORM\Index(name="fk_Perfil_Grupo_Order_Grupo1", columns={"grupoID"})})
+ * @ORM\Table(name="perfil_grupo_order", indexes={@ORM\Index(name="fk_Perfil_Grupo_Order_Perfil1_idx", columns={"perfilNombre"}), @ORM\Index(name="fk_Perfil_Grupo_Order_Grupo1", columns={"grupoId"})})
  * @ORM\Entity(repositoryClass="GuiasDocentes\AppBundle\Entity\PerfilGrupoOrderRepository")
  */
 class PerfilGrupoOrder
@@ -33,7 +33,7 @@ class PerfilGrupoOrder
      *
      * @ORM\ManyToOne(targetEntity="Grupo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="grupoID", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="grupoId", referencedColumnName="id")
      * })
      */
     private $grupoid;

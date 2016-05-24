@@ -3,6 +3,11 @@
 namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use GuiasDocentes\AppBundle\Entity\Consultante;
+use GuiasDocentes\AppBundle\Entity\Personal;
+
 
 /**
  * Hilo
@@ -22,9 +27,9 @@ class Hilo
     private $id;
 
     /**
-     * @var \Personal
+     * @var \GuiasDocentes\AppBundle\Entity\Personal
      *
-     * @ORM\ManyToOne(targetEntity="Personal")
+     * @ORM\ManyToOne(targetEntity="Personal", inversedBy="hilos", cascade ={"ALL"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="personalEmail", referencedColumnName="email")
      * })
@@ -32,16 +37,43 @@ class Hilo
     private $personalemail;
 
     /**
-     * @var \Consultante
+     * @var \GuiasDocentes\AppBundle\Entity\Consultante
      *
-     * @ORM\ManyToOne(targetEntity="Consultante")
+     * @ORM\ManyToOne(targetEntity="Consultante", inversedBy="hilos", cascade ={"ALL"} )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="consultanteEmail", referencedColumnName="email")
      * })
      */
     private $consultanteemail;
-
-
+    
+    
+    /* Customized code */
+    
+    /**
+     * @ORM\OneToMany(targetEntity="GuiasDocentes\AppBundle\Entity\Consulta", mappedBy="hiloid")
+     * @Assert\Valid()
+     */
+    private $consultas;
+    
+    public function __construct(){
+        
+        $this->consultas = new ArrayCollection();
+    }
+    
+    public function setConsultas (Consulta $consulta){
+        $this->hilos[]=$consulta;
+    }
+    
+    public function addConsulta (\GuiasDocentes\AppBundle\Entity\Consulta $consulta){
+        $this->hilos[] = $consulta;
+    }
+    
+    public function getConsultas(){
+        return $this->consultas;
+    }
+    
+    /* End customized code */
+    
 
     /**
      * Get id
@@ -61,6 +93,7 @@ class Hilo
      */
     public function setPersonalemail(\GuiasDocentes\AppBundle\Entity\Personal $personalemail = null)
     {
+
         $this->personalemail = $personalemail;
 
         return $this;

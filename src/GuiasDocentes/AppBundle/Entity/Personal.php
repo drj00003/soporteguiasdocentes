@@ -3,12 +3,15 @@
 namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use GuiasDocentes\AppBundle\Entity\TematicaSoporte;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Personal
  *
  * @ORM\Table(name="personal")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GuiasDocentes\AppBundle\Entity\PersonalRepository")
  */
 class Personal
 {
@@ -42,8 +45,63 @@ class Personal
      */
     private $departamento;
 
-
-
+    /* Customized code */
+    /**
+     * @ORM\OneToMany(targetEntity="GuiasDocentes\AppBundle\Entity\TematicaSoporte", mappedBy="personalEmail")
+     * @Assert\Valid()
+     */    
+    private $tematicasSoporte;
+    
+    public function __constructor(){
+        $this->tematicasSoporte = new ArrayCollection();
+        $this->hilos = new ArrayCollection();
+    }
+    
+    public function addTematicasSoporte(\GuiasDocentes\AppBundle\Entity\TematicaSoporte $tematicaSoporte){
+        $this->tematicasSoporte[] = $tematicaSoporte;
+        return $this;
+    }    
+    
+    public function setTematicasSoporte(\GuiasDocentes\AppBundle\Entity\TematicaSoporte $tematicaSoporte){
+        $this->tematicasSoporte[] = $tematicaSoporte;
+        return $this;
+    }
+    
+    public function getTematicasSoporte(){
+        return $this->tematicasSoporte;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="GuiasDocentes\AppBundle\Entity\Hilo", mappedBy="personalemail")
+     * @Assert\Valid()
+     */    
+    private $hilos;
+    
+    public function setHilos(Hilo $hilo){
+        $this->hilos[] = $hilo;
+        return $this;
+    }
+    
+        public function addHilos(Hilo $hilo){
+        $this->hilos[] = $hilo;
+        return $this;
+    }
+    
+    public function getHilos(){
+        return $this->hilos;
+    }
+    
+    /* Esta funcion tiene problemas, sino tiene asociado un personal una tematica Evidentemente no puede coger su enunciado
+    sobre todo el problema es que no te los da ordenados*/
+    
+    public function getEnunciado(){
+        return $this->getTematicasSoporte()[0]->getEnunciado();
+    }
+    
+    
+    /* End customized code */
+    
+    
     /**
      * Get email
      *
@@ -122,4 +180,6 @@ class Personal
     {
         return $this->departamento;
     }
+
+
 }

@@ -1,0 +1,35 @@
+{% extends 'FAQ/base-faq.html.twig' %}
+{% block title %}Resumen Consultas/Incidencias{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+        <!-- Estilos concretos para el formulario de contacto (sabor y layout) -->
+        <link href=" {{ asset('Resources/FAQ/css/contacto/contacto-sb.css') }}" rel="stylesheet" />
+        <link href=" {{ asset('Resources/FAQ/css/contacto/contacto-ly.css') }}" rel="stylesheet" />
+        {#<link href=" {{ asset('Resources/bootstrap/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />#}
+{% endblock %}
+{% block breadcrumb %}
+    <a href="{{ path('guias_docentes_app_homepage') }}"> Inicio </a>>>
+    <a href="{{ path('guias_docentes_app_gfaq') }}"> Perfil {{perfil}} </a>>>
+    <a href="{{ path('guias_docentes_app_contacto') }}"> Contacto </a>>>
+    Resumen
+{% endblock %}
+{% block content_title %}
+	<h2 class="title" title="Aplicación de guías docentes UJA">Formulario Consultas/Incidencias</h2>
+{% endblock %}
+{% block content %}
+<div class="cuadro">
+    <div class="cuadro_titulo">Consulta enviada</div>
+    <div class="cuadro_content">
+        <span>
+            Su consulta ha sido enviada correctamente. En breve recibirá respuesta en el correo indicado ({{correoConsultante}})
+        </span>
+        <span id="homeRedirect">
+        </span>
+        <a href="{{ path('guias_docentes_app_homepage') }}"> Volver al incio </a>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src=" {{ asset('Resources/FAQ/js/cuentaAtras.js') }}"></script>
+{% endblock %}

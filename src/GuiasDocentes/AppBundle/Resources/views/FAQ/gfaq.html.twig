@@ -2,7 +2,7 @@
 {% block title %}Perfil {{perfil}}{% endblock %}
 {% block stylesheets %}
 {{ parent() }}
-        <!-- Estilos generales FAQ (sabor y layout) -->
+        <!-- Estilos concretos para los grupos de preguntas frecuentes (sabor y layout) -->
         <link href=" {{ asset('Resources/FAQ/css/faq/faq-sb.css') }}" rel="stylesheet" />
         <link href=" {{ asset('Resources/FAQ/css/faq/faq-ly.css') }}" rel="stylesheet" />
 {% endblock %}
@@ -16,8 +16,10 @@
 {% block content %}
 {# Dos o menos grupos implica que al menos uno de estos sera el grupo especial de soporte, por lo #}
 {# que realmente al no existir más de un grupo de pf este aparecerá desplegado sin agruparlo en el grupo correspondiente#}
-    {% if grupos |length > 2 %} 
+    {% if grupos |length >= 2 %} 
         <dl class="listaPfByGroup">
+            {#Grupos#}
+            
             {% for grupo in grupos %}
                 <dt class="grupo">
                     {{grupo.getNombre() | raw }}
@@ -39,9 +41,27 @@
                     {%endif%}
                 {% endfor %}
             {% endfor %}
+            
+            {#Grupos Soporte#}
+            {% for gs in grupos_soporte %}
+                <dt class="grupo">
+                    {{gs.getNombre() | raw }}
+                </dt>
+                <dd class="pfgrupo">
+                    <dl class="listaPfSG">
+                            <dt class="pregunta">
+                                {{ gs.getPregunta() | raw }}
+                            </dt>
+                            <dd class="respuesta">
+                                {{ gs.getRespuesta() | raw }}
+                            </dd>
+                    </dl>
+                </dd>
+            {% endfor %}
         </dl>
     {% else %}
         <dl class="listaPfSG">
+            {#Grupos#}
             {% for grupo in grupos %}
                 {% for key in PF|keys %}
                     {% if key == grupo.getId() %}
@@ -57,6 +77,15 @@
     
                     {%endif%}
                 {% endfor %}
+            {% endfor %}
+            {#Grupo soporte#}
+            {% for gs in grupos_soporte %}
+                <dt class="pregunta">
+                    {{ gs.getPregunta() | raw }}
+                </dt>
+                <dd class="respuesta">
+                    {{ gs.getRespuesta() | raw }}
+                </dd>
             {% endfor %}
         </dl>
     {% endif %}

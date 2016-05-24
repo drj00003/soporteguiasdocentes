@@ -1,0 +1,62 @@
+{% extends 'FAQ/base-faq.html.twig' %}
+{% block title %}Formulario Consultas/Incidencias{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+        <!-- Estilos concretos para el formulario de contacto (sabor y layout) -->
+        <link href=" {{ asset('Resources/bootstrap/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href=" {{ asset('Resources/FAQ/css/contacto/contacto-sb.css') }}" rel="stylesheet" />
+        <link href=" {{ asset('Resources/FAQ/css/contacto/contacto-ly.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block breadcrumb %}
+    <a href="{{ path('guias_docentes_app_homepage') }}"> Inicio </a>>>
+    <a href="{{ path('guias_docentes_app_gfaq') }}"> Perfil {{perfil}} </a>>>
+    Contacto
+{% endblock %}
+{% block content_title %}
+	<h2 class="title" title="Aplicación de guías docentes UJA">Formulario Consultas/Incidencias</h2>
+{% endblock %}
+{% block content %}
+{#{{ form_start(form, { attr: { 'role' : 'form'} ) }}#}
+<div class="form-contacto cuadro">
+    {{ form_start (form) }}
+            {#Email#}
+            <div class="form-group" id="email">
+                {{ form_label(form.consulta.hiloid.consultanteemail.email , 'Email',{ 'label_attr': { 'class': 'control-label'} }) }}
+                {{ form_widget(form.consulta.hiloid.consultanteemail.email, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca su email', 'name' : 'email' } }) }}
+                <span class="text-danger"> {{form_errors (form.consulta.hiloid.consultanteemail.email)}} </span>
+                <p class="help-block">A esta dirección le será enviada la respuesta a su consulta/incidencia.</p>
+            </div>
+            {#Nombre#}
+            <div class="form-group" id="nombre">
+                {{ form_label(form.consulta.hiloid.consultanteemail.nombre , 'Nombre',{ 'label_attr': { 'class': 'control-label'} }) }}
+                {{ form_widget(form.consulta.hiloid.consultanteemail.nombre, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca su nombre', 'name' : 'nombre' } }) }}
+                <span class="text-danger"> {{form_errors (form.consulta.hiloid.consultanteemail.nombre)}} </span>
+            </div>
+            {#Apellidos#}
+            <div class="form-group" id="apellidos">
+                {{ form_label(form.consulta.hiloid.consultanteemail.apellidos, 'Apellidos',{ 'label_attr': { 'class': 'control-label'} }) }}
+                {{ form_widget(form.consulta.hiloid.consultanteemail.apellidos, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca sus apellidos', 'name' : 'apellidos' } }) }}
+                <span class="text-danger"> {{form_errors (form.consulta.hiloid.consultanteemail.apellidos)}} </span>
+            </div>
+            {#Tematica#}
+            <div class="form-group" id="tematica">
+                {{ form_label(form.consulta.hiloid.personalemail, 'Temática soporte',{ 'label_attr': { 'class': 'control-label'} }) }}
+                {{ form_widget(form.consulta.hiloid.personalemail, { 'attr': { 'class': 'form-control' } }) }}
+                <span class="text-danger"> {{form_errors (form.consulta.hiloid.personalemail)}} </span>
+            </div>
+            {#Asignaturas#}
+            <div class="form-group" id="asignatura">
+                {{ form_label(form.asignaturaCodigo.codigo) }}
+                {{ form_widget(form.asignaturaCodigo.codigo, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca el código de la/s asignatura/s', 'name' : 'asignatura' } }) }}
+                <span class="text-danger"> {{form_errors (form.asignaturaCodigo.codigo)}} </span>
+                <p class="help-block">Use punto y coma para separar las asignaturas (1091;368;453)</p>
+            </div>
+            {#Consulta#}
+            <div class="form-group" id="consulta">
+                {{ form_label(form.consulta.texto, 'Consulta',{ 'label_attr': { 'class': 'control-label'} }) }}
+                {{ form_widget(form.consulta.texto, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca aquí el texto correspondiente a su consulta.', 'name' : 'consulta' } }) }}
+                <span class="text-danger"> {{form_errors (form.consulta.texto)}} </span>
+            </div>
+    {{ form_end (form) }}
+</div>
+{% endblock %}

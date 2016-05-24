@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PerfilType extends AbstractType
+class AsignaturaType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,7 +15,7 @@ class PerfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('perfil', 'choice', array('choices' => array ()))
+            ->add('codigo', 'text', array ('label' => 'Asignaturas'))
         ;
     }
     
@@ -25,7 +25,8 @@ class PerfilType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'GuiasDocentes\AppBundle\Entity\Perfil'
+            'data_class' => 'GuiasDocentes\AppBundle\Entity\Asignatura',
+            'cascade_validation' => true
         ));
     }
 
@@ -34,6 +35,6 @@ class PerfilType extends AbstractType
      */
     public function getName()
     {
-        return 'guiasdocentes_appbundle_perfil';
+        return 'asignatura';
     }
 }

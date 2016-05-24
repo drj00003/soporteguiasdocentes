@@ -1,0 +1,28 @@
+<h1>Aplicación consultas/incidencias sobre las Guias Docentes</h1>
+<span class="alert">Este mensaje ha sido generado automáticamente, por favor no responda a este correo.</span>
+<h2>Ha recibido una consulta con los siguientes datos:</h2>
+<div class="datos-consulta cuadro">
+    <div class="consulta-nombre">
+        Nombre: {{email_values["hilo"].getConsultanteEmail.getNombre}}
+    </div>
+    <div class="consulta-apellidos">
+        <span class="rotulo">Apellidos:</span> {{email_values["hilo"].getConsultanteEmail.getApellidos}}
+    </div>
+    <div class="consulta-email">
+        <span class="rotulo">Email:</span> {{email_values["hilo"].getConsultanteEmail.getEmail}}
+    </div>
+    {% if email_values["asignaturas"] is not empty %}
+    <div class="consulta-asignaturas">
+        <span class="rotulo">Asigtura/s:</span>
+        {% set asignaturas = email_values.asignaturas %}
+        {% for asignatura in asignaturas %}
+            {{asignatura}},
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="consulta-consulta">
+        <span class="rotulo">Consulta:</span> <span class="texto-consulta">{{email_values["consulta"]}}</span>
+    </div>
+</div>
+Para responder a la anterior cuestión pulse sobre el siguiente link:
+<a href="{{app.request.getSchemeAndHttpHost()}}{{ path('guias_docentes_app_historico_soporte' , { 'slug': slug, 'token': token } )}}">Responder a la consulta</a>

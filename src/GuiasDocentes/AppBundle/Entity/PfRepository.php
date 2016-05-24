@@ -12,18 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class PfRepository extends EntityRepository
 {
-    /* funcion que devuelve un array de pf para un grupo dado por su idetificador en orden creciente a su peso*/
-    public function getCollectionPFByGroupOrdered($idGrupo){
-        // $p=$this->findBy(array('grupoid' => '1'), array('orden' => 'ASC'));
-        // var_dump($p[0]->getPregunta());die;
-        return $this->findBy(array('grupoid' => $idGrupo), array('orden' => 'ASC'));
-    }
+    /* funcion que devuelve un array de pf activas para un grupo dado por su idetificador en orden creciente a su peso*/
     
-    // public function findAllOrderedByName()
-    // {
-    //     return $this->getEntityManager()
-    //                 ->createQuery('SELECT u FROM Acme\HelloBundle\Entity\User u
-    //                                 ORDER BY u.name ASC')
-    //                 ->getResult();
-    // }
+    public function getCollectionPFByGroupOrdered($idGrupo){
+        return $this->findBy(array('grupoid' => $idGrupo, 'habilitada' => '1'), array('orden' => 'ASC'));
+    }
 }

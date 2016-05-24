@@ -4,7 +4,6 @@ namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * Perfil
  *
