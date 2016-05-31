@@ -1,0 +1,101 @@
+{% extends 'AdminPanel/base-admin-panel.html.twig' %}
+{% block title %}Login{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+    <link href=" {{ asset('Resources/bootstrap/assets/jquery-icheck/skins/flat/_all.css') }}" rel="stylesheet" />
+    <link href=" {{ asset('Resources/AdminPanel/css/Login/login-ly.css') }}" rel="stylesheet" />
+    <link href=" {{ asset('Resources/AdminPanel/css/Login/login-sb.css') }}" rel="stylesheet" />
+    <style>
+    body{
+        overflow: hidden; /* just for Sign page */
+        background-color: #000;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+    <!-- content wrapper to define fullpage or container -->
+    <!-- (recomended: dont change the id value) -->
+    <section id="wrapper" class="container">
+        <section id="signin" class="sign-wrapper signin transition-layout">
+            <div class="row">
+                <div class="col-md-offset-4 col-sm-offset-0 col-xs-offset-0 col-md-4 col-sm-12 col-xs-12">
+                    <div class="sign-brand">
+                        <div class="sign-brand-logo">
+                            <img src="{{ asset('Resources/AdminPanel/img/index_logo.gif') }}" alt="Ujaen"/>
+                        </div>
+                        <h1 class="sign-brand-name">Panel de Administración - Soporte Guías Docentes</h1>
+                    </div><!-- /sign-brand -->
+                    <div class="sign-container">
+                        <form role="form" method ="post" action="{{ path('guias_docentes_app_admin_panel_index') }}">
+                            <div class="form-group">
+                                <input type="text" class="form-control" type="email" required ="required" name="signin-username" placeholder="Email" >
+                            </div><!-- /form-group -->
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="signin-password" required ="required" placeholder="Contraseña" >
+                            </div><!-- /form-group -->
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar" >
+                            </div><!-- /form-group -->
+                            <div class="form-group">
+                                <input class="iCheck" id="rememberme" name="rememberme" type="checkbox" checked>
+                                <label class="icheck-label" for="rememberme">Recuerdame</label>
+                            </div><!-- /form-group -->
+                        </form>
+                    </div><!-- /sign-container -->
+                </div><!-- /col -->
+            </div><!-- /row -->
+
+            <div class="sign-footer">
+                <a href="#recover" data-toggle="transition-layout" class="btn btn-link text-inverse">Recuperar contraseña</a>
+            </div><!-- /sign-footer -->
+        </section><!-- /signin -->
+
+        <section id="recover" class="sign-wrapper recover transition-layout">
+            <div class="row">
+                <div class="col-md-offset-4 col-sm-offset-0 col-xs-offset-0 col-md-4 col-sm-12 col-xs-12">
+                    <div class="sign-brand">
+                        <div class="sign-brand-logo">
+                            <img src="{{ asset('Resources/AdminPanel/img/index_logo.gif') }}" alt="Ujaen"/>
+                        </div>
+                        <h1 class="sign-brand-name">Panel de Administración - Soporte Guías Docentes</h1>
+                    </div><!-- /sign-brand -->
+                    <div class="sign-container">
+                        <form role="form" action="index.html">
+                            <div class="form-group">
+                                <input type="email" class="form-control input-lg" name="recover-email" placeholder="Email" >
+                                <small class="help-block text-inverse">Introduzca la dirección de email sobre la que desea restablecer la contraseña</small>
+                            </div><!-- /form-group -->
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Enviar" >
+                            </div><!-- /form-group -->
+                        </form>
+                    </div><!-- /sign-container -->
+                </div><!-- /col -->
+            </div><!-- /row -->
+
+            <div class="sign-footer">
+                <a href="#signin" data-toggle="transition-layout" class="btn btn-link text-inverse">Login</a>
+            </div><!-- /sign-footer -->
+        </section><!-- /recover -->
+    </section><!-- /wrapper -->
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <!-- other dependencies -->
+    <script src="{{ asset('Resources/bootstrap/assets/jquery-icheck/jquery.icheck.min.js') }}"></script>
+
+    <!-- theme app main.js -->
+    <script src="{{ asset('Resources/bootstrap/assets/app/js/main.js') }}"></script>
+
+    <script type="text/javascript">
+    $(function() {
+        'use strict';
+
+        $('.iCheck').iCheck({
+            checkboxClass: 'icheckbox_flat',
+            radioClass: 'iradio_flat',
+        });
+    })
+    </script>  
+{% endblock %}

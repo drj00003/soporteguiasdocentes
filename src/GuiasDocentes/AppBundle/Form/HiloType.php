@@ -31,10 +31,15 @@ class HiloType extends AbstractType
                     ;
                     return $query;
                 },
+                // 'query_builder' => function(PersonalRepository $pr) {
+                //     return $pr->getPersonalOrdered3();
+                // },
                 'empty_value' => 'Elija una temática para su consulta:',
                 ))
         ;
     }
+// Consulta SQL
+// SELECT p.* FROM personal p INNER JOIN tematica_soporte ts ON ts.personalEmail = p.email ORDER BY ts.orden
 
 // Necesito modificar la consulta para que haga un join con la tabla tematica_soporte donde email (personal) y email_soporte (personal_soporte)
 // order by orden (personal_soporte)

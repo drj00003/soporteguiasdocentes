@@ -16,7 +16,13 @@
 {% block content %}
 {# Dos o menos grupos implica que al menos uno de estos sera el grupo especial de soporte, por lo #}
 {# que realmente al no existir más de un grupo de pf este aparecerá desplegado sin agruparlo en el grupo correspondiente#}
-    {% if grupos |length >= 2 %} 
+    {%if grupos | length == 0 %}
+        <div class="alert alert-warning alert-icon">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <div class="icon"><i class="icon ion-ios7-information-empty"></i></div>
+            No existen grupos para el perfil indicado.
+        </div>
+    {% elseif grupos |length >= 2 %} 
         <dl class="listaPfByGroup">
             {#Grupos#}
             

@@ -13,7 +13,7 @@ use GuiasDocentes\AppBundle\Entity\Personal;
  * Hilo
  *
  * @ORM\Table(name="hilo", indexes={@ORM\Index(name="fk_Hilo_Personal1_idx", columns={"personalEmail"}), @ORM\Index(name="fk_Hilo_Consultante1_idx", columns={"consultanteEmail"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GuiasDocentes\AppBundle\Entity\PerfilGrupoOrderRepository")
  */
 class Hilo
 {
@@ -72,6 +72,24 @@ class Hilo
         return $this->consultas;
     }
     
+    public function getConsultasOrderedByDate(){
+        $consultas = $this->getConsultas()->getValues();
+        usort($consultas,  array($this, 'ordenar'));
+        return $consultas;
+    }
+    
+    /**
+     * Funcion de ordenación de elementos en funcion de la fecha
+     * @param a 
+     * */
+     
+    private function  ordenar( $a,  $b ) {
+        if ($a->getFecha() == $b->getFecha()) {
+            return 0;
+        }
+
+        return $a->getFecha() > $b->getFecha() ? -1 : 1;
+    }
     /* End customized code */
     
 

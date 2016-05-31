@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author David Rubio Jiménez en Universidad de Jaén
+ * */
+
 
 namespace GuiasDocentes\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,15 +20,17 @@ use GuiasDocentes\AppBundle\Form\HiloType;
 use GuiasDocentes\AppBundle\Form\ConsultaType;
 use GuiasDocentes\AppBundle\Form\RespuestaType;
 use GuiasDocentes\AppBundle\Form\ConsultaHasAsignaturaType;
-
-
-
+use GuiasDocentes\AppBundle\Controller\MailerManagementController;
 
 
 class FAQController extends Controller
 {
   
-
+  	/**
+	 * Regex index 
+	 * @return html Plantilla renderizada para la pagina de index.
+	 * */
+	 
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -83,72 +89,80 @@ class FAQController extends Controller
     public function contactoAction (Request $request){
         $session = $request->getSession();
         $perfil = $session->get('perfil');
+        if (is_null($perfil)){
+            return $this->indexAction();
+        }
         $role = 'consultante';
         $consultaHasAsignatura = new ConsultaHasAsignatura();
         $form = $this->createForm(new ConsultaHasAsignaturaType(), $consultaHasAsignatura);
         
         if ($request->isMethod('POST')){
-                $params = $this->getRequest()->request->all();
-                $em = $this->getDoctrine()->getManager();
-                $em->getConnection()->beginTransaction();
-                try{
-                    $form_request = $request->request->get('guiasdocentes_appbundle_consultahasasignatura');
-                    $correoConsultante = $form_request["consulta"]["hiloid"]["consultanteemail"]["email"];
-                    $consultante = $em->getRepository('GuiasDocentesAppBundle:Consultante')
-                    ->findOneByEmail($correoConsultante);
-                    $asignaturas = $this->subtr_asigna($form_request["asignaturaCodigo"]["codigo"]);
-                    $num_asig= count($asignaturas);
-                    $personal =  $em->getRepository('GuiasDocentesAppBundle:Personal')
-                    ->findOneByEmail($form_request["consulta"]["hiloid"]["personalemail"]);
-                    // Consulta sin asignaturas
-                    if ($num_asig==0){
-                        $consulta = new Consulta();
-                        $hilo = new Hilo();
-                        $hilo->setPersonalemail($personal);
-                        $consulta->setTexto($form_request["consulta"]["texto"]);
-                        $consulta->setHiloid($hilo);
-                        // Nuevo consultante
-                        if (is_null($consultante)){
-                                $consultante = new Consultante();
-                                $consultante->SetConsultante($correoConsultante, $form_request["consulta"]["hiloid"]["consultanteemail"]["nombre"], $form_request["consulta"]["hiloid"]["consultanteemail"]["apellidos"]);
-                        }
-                        $hilo->setConsultanteemail($consultante);
-                        $em->persist($consulta);
-                        $em->persist($hilo);
-                        $em->flush();
-                    // Consulta con una o mas asignaturas para un consultante nuevo o no
-                    }else{
-                        // Asignatura nueva y consultante nuevo
-                        if (is_null($consultante) && ($num_asig==1)){
-                            $asignatura =  $em->getRepository('GuiasDocentesAppBundle:Asignatura')
-                            ->findOneByCodigo($form_request["asignaturaCodigo"]["codigo"]);
-                            if (is_null($asignatura)){
-                                $form->handleRequest($request);
-                                if($form->isValid()){
-                                    $em->persist($consultaHasAsignatura);
-                                    $em->flush();
-                                }
-                            }else{
-                                $hilo = $this->dbCustomPersist($form_request, $correoConsultante, $consultante, $asignaturas, $num_asig, $personal);
+            if ($this->captchaIsValid($request)){
+            $params = $this->getRequest()->request->all();
+            $em = $this->getDoctrine()->getManager();
+            $em->getConnection()->beginTransaction();
+            try{
+                // Cargamos el servicio MailerManagement
+                $mailerService = $this->get('mailer_management');
+                $form_request = $request->request->get('guiasdocentes_appbundle_consultahasasignatura');
+                $correoConsultante = $form_request["consulta"]["hiloid"]["consultanteemail"]["email"];
+                $consultante = $em->getRepository('GuiasDocentesAppBundle:Consultante')
+                ->findOneByEmail($correoConsultante);
+                $asignaturas = $this->subtr_asigna($form_request["asignaturaCodigo"]["codigo"]);
+                $num_asig= count($asignaturas);
+                $personal =  $em->getRepository('GuiasDocentesAppBundle:Personal')
+                ->findOneByEmail($form_request["consulta"]["hiloid"]["personalemail"]);
+                // Consulta sin asignaturas
+                if ($num_asig==0){
+                    $consulta = new Consulta();
+                    $hilo = new Hilo();
+                    $hilo->setPersonalemail($personal);
+                    $consulta->setTexto($form_request["consulta"]["texto"]);
+                    $consulta->setHiloid($hilo);
+                    // Nuevo consultante
+                    if (is_null($consultante)){
+                            $consultante = new Consultante();
+                            $consultante->SetConsultante($correoConsultante, $form_request["consulta"]["hiloid"]["consultanteemail"]["nombre"], $form_request["consulta"]["hiloid"]["consultanteemail"]["apellidos"]);
+                    }
+                    $hilo->setConsultanteemail($consultante);
+                    $em->persist($consulta);
+                    $em->persist($hilo);
+                    $em->flush();
+                // Consulta con una o mas asignaturas para un consultante nuevo o no
+                }else{
+                    // Asignatura nueva y consultante nuevo
+                    if (is_null($consultante) && ($num_asig==1)){
+                        $asignatura =  $em->getRepository('GuiasDocentesAppBundle:Asignatura')
+                        ->findOneByCodigo($form_request["asignaturaCodigo"]["codigo"]);
+                        if (is_null($asignatura)){
+                            $form->handleRequest($request);
+                            if($form->isValid()){
+                                $em->persist($consultaHasAsignatura);
+                                $em->flush();
+                                $hilo = $consultaHasAsignatura->getConsulta()->getHiloid();
                             }
                         }else{
                             $hilo = $this->dbCustomPersist($form_request, $correoConsultante, $consultante, $asignaturas, $num_asig, $personal);
                         }
+                    }else{
+                        $hilo = $this->dbCustomPersist($form_request, $correoConsultante, $consultante, $asignaturas, $num_asig, $personal);
                     }
-                    $email_values= array ('consulta' => $form_request["consulta"]["texto"], 'asignaturas' => $asignaturas, 'personal' => $personal, 'hilo' => $hilo);
-                    try{
-                        $this->sendMessageToSupport($email_values);
-                        $em->getConnection()->commit();
-                        return $this->resumeAction($email_values, $request, $role);
-                    }catch(Exception $e){
-                        $em->getConnection()->rollback();
-                        throw $e;
-                    }
-
-                }catch (Exception $e){
+                }
+                $email_values= array ('consulta' => $form_request["consulta"]["texto"], 'asignaturas' => $asignaturas, 'personal' => $personal, 'hilo' => $hilo);
+                try{
+                    $mailerService->sendMessageToSupport($email_values);
+                    $em->getConnection()->commit();
+                    return $this->resumeAction($email_values, $request, $role);
+                }catch(Exception $e){
                     $em->getConnection()->rollback();
                     throw $e;
                 }
+
+            }catch (Exception $e){
+                $em->getConnection()->rollback();
+                throw $e;
+            }
+            } // If close captcha
         }
         return $this->render('GuiasDocentesAppBundle:FAQ:contacto.html.twig', array('perfil'=>$perfil, 
             'form' => $form->createView()
@@ -159,7 +173,6 @@ class FAQController extends Controller
         $cod_hilo = base64_decode($slug);
         $email_cons = base64_decode($token);
         $em = $this->getDoctrine()->getManager();
-        $em->getConnection()->beginTransaction();
         $is_personal = $em->getRepository('GuiasDocentesAppBundle:Personal')->findOneByEmail($email_cons);
         $hilo = $em->getRepository('GuiasDocentesAppBundle:Hilo')->findOneById($cod_hilo);
         if (isset($is_personal)){
@@ -178,9 +191,9 @@ class FAQController extends Controller
             return $this->redirectToRoute('guias_docentes_app_homepage'); // Más bien deberia redireccionarse a una pagina de error
         }else{
             if ($role == 'consultante'){
-                return $this->render('GuiasDocentesAppBundle:FAQ:resumeConsultante.html.twig', array('correoConsultante' => $email_values["hilo"]->getConsultanteEmail->getEmail(), 'perfil' => $perfil));
+                return $this->render('GuiasDocentesAppBundle:FAQ:resumeConsultante.html.twig', array('correoConsultante' => $email_values["hilo"]->getConsultanteemail()->getEmail(), 'perfil' => $perfil));
             }else{
-                return $this->render('GuiasDocentesAppBundle:FAQ:resumeSoporte.html.twig', array('correoConsultante' => $email_values["hilo"]->getConsultanteEmail->getEmail(), 'perfil' => $perfil));
+                return $this->render('GuiasDocentesAppBundle:FAQ:resumeSoporte.html.twig', array('correoConsultante' => $email_values["hilo"]->getConsultanteemail()->getEmail(), 'perfil' => $perfil));
             }
         }
     }
@@ -220,51 +233,12 @@ class FAQController extends Controller
         return $hilo;
     }
     
-    
-    public function sendMessageToSupport($info_message){
-        $slug = $this->encodeCadena($info_message["hilo"]->getId());
-        $token = $this->encodeCadena($info_message["personal"]->getEmail());
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Aplicación Guias Docentes Consulta')
-            ->setFrom('soporteguiasdocentes@gmail.com')
-            ->setTo($info_message["personal"]->getEmail())
-            ->setBody(
-                $this->renderView(
-                    'GuiasDocentesAppBundle:FAQ:layoutEmailSoporte.html.twig',
-                    array('email_values' => $info_message, 'slug' => $slug, 'token' => $token)
-                ),
-                'text/html'
-            )
-        ;
-        return $this->get('mailer')->send($message);
-    }
-    
-    public function sendReplyToConsultante($info_message){
-        $slug = $this->encodeCadena($info_message["hilo"]->getId());
-        $token = $this->encodeCadena($info_message["hilo"]->getConsultanteemail()->getEmail());
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Aplicación Guias Docentes Consulta')
-            ->setFrom('soporteguiasdocentes@gmail.com')
-            ->setTo($info_message["hilo"]->getConsultanteemail()->getEmail())
-            ->setBody(
-                $this->renderView(
-                    'GuiasDocentesAppBundle:FAQ:layoutEmailConsultante.html.twig',
-                    array('email_values' => $info_message, 'slug' => $slug, 'token' => $token)
-                ),
-                'text/html'
-            )
-        ;
-        return $this->get('mailer')->send($message);
-    }
-    
-
     public function subtr_asigna($asignaturas){
         if (is_null($asignaturas) || ($asignaturas =="")){
             return array();
         }else{
-            //Eliminamos todos los caracteres de la cadena que no sean numericos salvo el separador ";"
-            $asig_cotej = ereg_replace("[^0-9;]", "", $asignaturas);
-            return explode(";", $asig_cotej);
+            preg_match_all("/\d+/",  $asignaturas, $asig_cotej);
+            return $asig_cotej[0];
         }
     }
     
@@ -287,6 +261,8 @@ class FAQController extends Controller
         $cod_hilo = base64_decode($slug);
         try{
             if ($request->isMethod('POST')){
+                // Cargamos el servicio MailerManagement
+                $mailerService = $this->get('mailer_management');
                 $em = $this->getDoctrine()->getManager();
                 $em->getConnection()->beginTransaction();
                 $hilo = $em->getRepository('GuiasDocentesAppBundle:Hilo')->findOneById($cod_hilo);
@@ -298,11 +274,10 @@ class FAQController extends Controller
                 $respuesta->setConsulta($consulta);
                 $respuesta->setTexto($params["respuesta"]);
                 $email_values= array ('consulta' => $consulta, 'consultante' => $hilo->getConsultanteemail(), 'hilo' => $hilo, 'respuesta' => $respuesta);
-                if ($this->sendReplyToConsultante($email_values) == 1) {
+                if ($mailerService->sendReplyToConsultante($email_values) == 1) {
                     $em->persist($respuesta);
                     $em->flush();
                     $em->getConnection()->commit();
-                    // $session->getFlashBag()->add('notice', 'Profile updated');
                     return $this->resumeAction($email_values, $request, $role);
                 }else{
                     return $this->indexAction($request);
@@ -353,4 +328,23 @@ class FAQController extends Controller
                 throw $e;
         }
     }
+    
+    public function captchaIsValid($request){
+        $this->getRequest()->request->all();
+        $captchaReply = $request->request->get('g-recaptcha-response');
+        if(!$captchaReply){
+          return 0;
+        }
+        $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$this->getParameter('captchaSecKey')."&response=".$captchaReply."&remoteip=".$_SERVER['REMOTE_ADDR']), true);
+        if($response['success'] == false)
+        {
+          return 0;
+        }
+        else
+        {
+          return 1;
+        
+        }
+    }
+    
 }

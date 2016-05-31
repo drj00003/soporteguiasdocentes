@@ -49,6 +49,16 @@ textarea.form-control{
     min-height: 100px;
 }
 
+.captcha-container{
+     width: 100% !important;
+}
+
+
+
+/*.g-recaptcha{*/
+/*    width: auto;*/
+/*}*/
+
 
 /* Historico */
 
@@ -60,6 +70,10 @@ textarea.form-control{
 /*.historico-content h3{*/
 /*    margin-left:0;*/
 /*}*/
+
+.datos-consultante, .datos-consulta{
+    margin-left: 2em;
+}
 
 .setVisibility{
     float: left;
@@ -87,16 +101,23 @@ dd.respuesta, form.consulta, form.respuesta, #nueva-consulta, #nueva-respuesta{
 textarea.form-control{
     max-width: 400px;
 }
+
+.resumen{
+    padding-top: 15px;
+}
+
 /* Versión responsive */
-@media (max-width:750px){
-    .listaPfSG{
-        margin-left:3em;
-        margin-right:3em;
+
+@media (max-width:900px){
+    .form-contacto {
+        margin: 4em;
+        width: 80%;
     }
 }
 
 @media (max-width: 700px){
     .form-contacto{
         width:90%;
+        margin: 2em;
     }
 }

@@ -28,9 +28,9 @@ body{
 }
 
 /* Historico */
-visto-1 {
+.visto-1 {
     font-weight: normal;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 
@@ -62,10 +62,6 @@ dd.respuesta{
 }
 
 /*Layouts Email*/
-
-.alert{
-    color:red;
-}
 
 .title, rotulo{
     font-weight: bold;

@@ -29,3 +29,13 @@ guias_docentes_app_historico_soporte_add_respuesta:
 guias_docentes_app_historico_soporte_add_consulta:
     path: gfaq/historico_sop/idhilo={slug}idCon={token}/addConsulta
     defaults: { _controller: GuiasDocentesAppBundle:FAQ:addConsultaHilo }
+    
+# Admin Panel
+guias_docentes_app_admin_panel_index:
+    path: /admin
+    defaults: { _controller: GuiasDocentesAppBundle:AdminPanel:index }
+    methods: POST
+    
+guias_docentes_app_admin_panel_login:
+    path: /admin/login
+    defaults: { _controller: GuiasDocentesAppBundle:AdminPanel:login }
