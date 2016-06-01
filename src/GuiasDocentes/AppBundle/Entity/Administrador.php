@@ -57,6 +57,10 @@ class Administrador
         }
     }
     
+    public function getNick(){
+        return array("username" => $this->nombre, "password" => $this->pass);
+    }
+    
     /* End customize code */
 
 

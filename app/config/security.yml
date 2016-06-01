@@ -1,20 +1,45 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
+    encoders:
+        GuiasDocentes\AppBundle\Entity\Admin:
+            algorithm:        sha512
+            encode_as_base64: true
+            iterations:       1
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        administrador:
+            entity: { class: GuiasDocentes\AppBundle\Entity\Admin, property: username }
+        # in_memory:
+        #     memory:
+        #         users:
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_ADMIN   #             admin: { password: pass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+        # dev:
+        #     pattern: ^/(_(profiler|wdt)|css|images|js)/
+        #     security: false
+            
+        # login_firewall:
+        #     pattern:    ^/login$
+        #     anonymous:  ~
 
-        main:
+        admin_area:
+            pattern: ^/
             anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path:   /logout
+                target: /login
+            remember_me:
+                key: "%secret%"
+                lifetime: 31536000
+                remember_me_parameter: _remember_me
+                path: ^/admin
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -22,3 +47,5 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }

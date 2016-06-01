@@ -25,20 +25,25 @@
                         </div>
                         <h1 class="sign-brand-name">Panel de Administración - Soporte Guías Docentes</h1>
                     </div><!-- /sign-brand -->
+                    {% if error %}
+                        {#<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+                        <div>{{ error.message }}</div>
+                    {% endif %}
                     <div class="sign-container">
-                        <form role="form" method ="post" action="{{ path('guias_docentes_app_admin_panel_index') }}">
+                        <form role="form" method ="post" action="{{ path('login_check') }}">
                             <div class="form-group">
-                                <input type="text" class="form-control" type="email" required ="required" name="signin-username" placeholder="Email" >
+                                <input type="text" class="form-control" id="username" required ="required" name="_username" value="{{ last_username }}"  placeholder="Email" >
                             </div><!-- /form-group -->
                             <div class="form-group">
-                                <input type="password" class="form-control" name="signin-password" required ="required" placeholder="Contraseña" >
+                                <input type="password" class="form-control" type="password" name="_password" id="password" placeholder="Contraseña" >
                             </div><!-- /form-group -->
+                            <input type="hidden" name="_target_path" value="/admin" />
                             <div class="form-group">
                                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar" >
                             </div><!-- /form-group -->
                             <div class="form-group">
-                                <input class="iCheck" id="rememberme" name="rememberme" type="checkbox" checked>
-                                <label class="icheck-label" for="rememberme">Recuerdame</label>
+                                <input class="iCheck" id="remember_me" name="_remember_me" type="checkbox" checked>
+                                <label class="icheck-label" for="remember_me">Recuerdame</label>
                             </div><!-- /form-group -->
                         </form>
                     </div><!-- /sign-container -->

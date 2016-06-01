@@ -26,23 +26,13 @@ class AdminPanelController extends Controller
   
     public function indexAction(Request $request)
     {
-        // if (!$_POST["login"]){
-        //     return $this->loginAction();
-        // }
-        
-        if ($request->isMethod('POST')){
-            $params = $this->getRequest()->request->all();
-            var_dump($params);
-            // $form_request = $request->request->get('guiasdocentes_appbundle_consultahasasignatura');
-        }else{
-            return $this->loginAction();
-        }
+
         return $this->render('GuiasDocentesAppBundle:AdminPanel:index.html.twig');
     }
 
-    public function loginAction()
-    {
-        return $this->render('GuiasDocentesAppBundle:AdminPanel:login.html.twig');
-    }
+    // public function loginAction()
+    // {
+    //     return $this->render('GuiasDocentesAppBundle:AdminPanel:login.html.twig');
+    // }
     
 }
