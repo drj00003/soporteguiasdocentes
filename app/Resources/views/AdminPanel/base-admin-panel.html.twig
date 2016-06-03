@@ -17,7 +17,7 @@
             <link rel="icon" type="image/x-icon" href="{{ asset('Resources/favicon.ico') }}" />
         
             <!-- theme fonts -->
-            {#<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>#}
+            <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
         
             <!-- theme Resources/bootstrap stylesheets -->
             <link href=" {{ asset('Resources/bootstrap/assets/bootstrap/css/bootstrap.css') }}" rel="stylesheet" />
@@ -89,7 +89,56 @@
               {#<script src=" {{ asset('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}"></script>#}
               {#<script src=" {{ asset('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') }}"></script>#}
             <![endif]-->
+            
+                    
+            <!-- Estilos generales  para el panel de administración (sabor y layout) -->
+            <link href=" {{ asset('Resources/AdminPanel/css/AdminPanel/general-sb.css') }}" rel="stylesheet" />
+            <link href=" {{ asset('Resources/AdminPanel/css/AdminPanel/general-ly.css') }}" rel="stylesheet" />
+            
         {% endblock %}
+    {% block body %}
+        <!-- content wrapper to define fullpage or container -->
+        <!-- (recomended: dont change the id value) -->
+        <section id="wrapper" class="container">
+        {% block side_left %}
+                <!-- Revise base-side-left-admin-panel.html.twig -->
+        {% endblock %}
+        {% block content %}
+            <section id="content" class="content">
+            {%block content_header %}
+            
+            {% endblock %}
+
+            <!-- define content row -->
+            <div class="content-spliter">
+                <!-- define your awesome apps here -->
+                <!-- (recomended: dont change the id value) -->
+                <section id="content-main" class="content-main">
+                    
+                    <!-- your app content -->
+                    <div class="content-app fixed-header">
+                        <div class="app-header">
+                            {% block breadcrumb %}
+                                <ol class="breadcrumb bg-none pull-left hide-xs">
+                                    <li class="active">Home</li>
+                                </ol>
+                            {% endblock %}
+                        </div><!-- /app header -->
+                        
+                        <!-- app body -->
+                        <div class="app-body">
+                            {% block content_body %}
+                            
+                            {% endblock %}
+            </div>
+                </section>
+                    </div>
+                        </div>
+
+            </section><!-- /content -->
+        {% endblock %}
+        </section> <!-- Wrapper -->
+    {% endblock %}
 
     {% block javascripts %}
     
@@ -107,6 +156,16 @@
             5. Prettify
         -->
         <script src=" {{ asset('Resources/bootstrap/assets/app/js/dependencies.js') }}"></script>
+        <script src=" {{ asset('Resources/AdminPanel/js/general.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/jquery-icheck/jquery.icheck.min.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/morris/morris.min.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/jquery-tags-input/jquery.tagsinput.min.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/bootbox/bootbox.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/select2/select2.min.js') }}"></script>
+        <script src=" {{ asset('Resources/bootstrap/assets/app/js/main.js') }}"></script>
+        
 
         
             

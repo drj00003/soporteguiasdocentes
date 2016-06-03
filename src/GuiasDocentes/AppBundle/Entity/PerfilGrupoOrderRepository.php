@@ -31,6 +31,15 @@ class PerfilGrupoOrderRepository extends EntityRepository
             )
             ->getResult();
     } 
+    
+    public function getAllGroupOrderedByOrden(){
+        return $this->createQueryBuilder('a')
+        // ->groupBy('a.perfilnombre')
+        ->addOrderBy('a.orden', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
+    
     // public function findAllOrderedByName()
     // {
     //     return $this->getEntityManager()

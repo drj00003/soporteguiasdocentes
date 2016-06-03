@@ -43,6 +43,25 @@ login:
 login_check:    
     pattern:   /login_check
     
+# Admin Panel - Administrador
+    
 guias_docentes_app_admin_panel_create_admin:
     path:   /create
-    defaults: {_controller: GuiasDocentesAppBundle:Security:create }
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:create }
+    
+guias_docentes_app_admin_panel_group_manag:
+    path:   /groups
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:group }
+    
+guias_docentes_app_admin_panel_set_group:
+    path:   groups/set
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GroupSet }
+    
+guias_docentes_app_admin_panel_get_profiles:
+    path:   groups/getProfiles
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GetProfiles }
+    methods: GET
+    
+guias_docentes_app_admin_panel_delete_group:
+    path:   groups/delete
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GroupDelete }

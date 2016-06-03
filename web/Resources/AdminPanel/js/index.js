@@ -1,24 +1,5 @@
 $(function () {
             
-            // date range picker
-            $('#dashboard-range').daterangepicker(
-                {
-                  ranges: {
-                     'Today': [moment(), moment()],
-                     'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
-                     'Last 7 Days': [moment().subtract('days', 6), moment()],
-                     'Last 30 Days': [moment().subtract('days', 29), moment()],
-                     'This Month': [moment().startOf('month'), moment().endOf('month')],
-                     'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
-                  },
-                  startDate: moment().subtract('days', 6),
-                  endDate: moment()
-                },
-                function(start, end) {
-                    $('#dashboard-range .text-date').text(start.format('MMM D, YYYY') + ' - ' + end.format('MMM D, YYYY'));
-                }
-            );
-    
     
             
             // charts
@@ -42,45 +23,11 @@ $(function () {
                 labels: ['Sales'],
                 barRatio: 0.4,
                 hideHover: 'auto'
-            }),
-            salesChart = Morris.Donut({
-                element: 'sales-chart',
-                data: [
-                    {label: 'Download Sales', value: 25 },
-                    {label: 'In-Store Sales', value: 40 },
-                    {label: 'Mail-Order Sales', value: 25 },
-                    {label: 'Respond Sales', value: 10 }
-                ],
-                colors: ['#f39c12', '#3498db', '#2ecc71', '#e74c3c'],
-                gridTextColor: '#3498db',
-                formatter: function (y) { return y + "%" }
-            }),
-            data_items = [
-                {themes: 'Stilearn', purchase: 136},
-                {themes: 'StilMetro', purchase: 137},
-                {themes: 'Syrena', purchase: 675},
-                {themes: 'Biosia', purchase: 380},
-                {themes: 'GlitFlat', purchase: 655},
-                {themes: 'Zahra', purchase: 1571}
-            ],
-            itemsChart = Morris.Bar({
-                element: 'items-chart',
-                data: data_items,
-                barColors: ['#3498db'],
-                gridTextColor: '#34495e',
-                xkey: 'themes',
-                ykeys: ['purchase'],
-                labels: ['Purchase'],
-                barRatio: 0.4,
-                xLabelAngle: 30,
-                hideHover: 'auto'
             });
     
             // update data on content or window resize
             var update = function(){
                 revenueChart.redraw();
-                salesChart.redraw();
-                itemsChart.redraw();
             }
     
             // handle chart responsive on toggle .content
@@ -140,4 +87,4 @@ $(function () {
                 "color": false, //Button to change color of font  
                 "size": 'sm' // use button small ion and primary
             });
-        })
+        });

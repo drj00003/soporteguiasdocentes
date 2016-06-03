@@ -1,0 +1,342 @@
+{% extends 'AdminPanel/base-admin-panel.html.twig' %}
+{% block side_left %}
+{{ parent() }}
+        <aside class="side-left">
+            <!-- side header -->
+            <div class="side-header">
+                <!-- place your brand (recomended: dont change the id value) -->
+                <!-- (recomended: dont change the id value) -->
+                <h1 id="brand" class="brand">
+                    <a href="{{ path('guias_docentes_app_admin_panel_index') }}">
+                        <!-- <i class="icon ion-waterdrop"></i> -->
+                        <img class="logo-sidebar-left" src="{{ asset('Resources/AdminPanel/img/logo_color.gif') }}" alt="Brand">   <!-- 32px image logo -->
+                        Administración
+                    </a>
+                </h1><!-- /brand -->
+
+                <!-- form search, remove class hide if you not place your brand -->
+                <!-- (recomended: dont change the id value) -->
+                <form id="smart-search" class="side-form hide" role="form">
+                    <input type="text" class="form-control" data-target=".side-wrapper" placeholder="Smart Finder">
+                </form><!-- /side wrapper -->
+            </div><!-- /side header -->
+
+            <!-- side body -->
+            <div class="side-body">
+                <!-- this you can place your search result with ajax -->
+                <div class="side-wrapper side-wrapper-large">
+                    <div class="side-wrapper-status lead">No result, please start typing!</div>
+                    <div class="side-wrapper-result">
+                        <!-- just sample result -->
+                        <div class="panel panel-default bordered-none no-radius">
+                            <a href="#" class="panel-body-heading full-line">
+                                <div class="pb-object pb-object-circle pb-object-sm">
+                                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar1.png') }}" alt="">
+                                </div><!-- /pb-object -->
+                                <h3 class="pb-title pb-title-sm">
+                                    Post title <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                </h3><!-- /pb-title -->
+                            </a><!-- /panel-body-heading -->
+                        </div><!-- /panel -->
+
+                        <div class="panel panel-default bordered-none no-radius">
+                            <a href="#" class="panel-body-heading full-line">
+                                <div class="pb-object pb-object-circle pb-object-sm">
+                                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar2.png') }}" alt="">
+                                </div><!-- /pb-object -->
+                                <h3 class="pb-title pb-title-sm">
+                                    Username <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                </h3><!-- /pb-title -->
+                            </a><!-- /panel-body-heading -->
+                        </div><!-- /panel -->
+
+                        <div class="panel panel-default bordered-none no-radius">
+                            <a href="#" class="panel-body-heading full-line">
+                                <div class="pb-object pb-object-circle pb-object-sm">
+                                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar3.png') }}" alt="">
+                                </div><!-- /pb-object -->
+                                <h3 class="pb-title pb-title-sm">
+                                    Item name <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                </h3><!-- /pb-title -->
+                            </a><!-- /panel-body-heading -->
+                        </div><!-- /panel -->
+
+                        <div class="panel panel-default bordered-none no-radius">
+                            <a href="#" class="panel-body-heading full-line">
+                                <div class="pb-object pb-object-circle pb-object-sm">
+                                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar4.png') }}" alt="">
+                                </div><!-- /pb-object -->
+                                <h3 class="pb-title pb-title-sm">
+                                    Other result <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                </h3><!-- /pb-title -->
+                            </a><!-- /panel-body-heading -->
+                        </div><!-- /panel -->
+
+                        <div class="panel panel-default bordered-none no-radius">
+                            <a href="#" class="panel-body-heading full-line">
+                                <div class="pb-object pb-object-circle pb-object-sm">
+                                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar5.png') }}" alt="">
+                                </div><!-- /pb-object -->
+                                <h3 class="pb-title pb-title-sm">
+                                    Something else <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                </h3><!-- /pb-title -->
+                            </a><!-- /panel-body-heading -->
+                        </div><!-- /panel -->
+
+                        <div class="panel panel-default bordered-none no-radius">
+                            <a href="#" class="panel-body-heading full-line">
+                                <div class="pb-object pb-object-circle pb-object-sm">
+                                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar1.png') }}" alt="">
+                                </div><!-- /pb-object -->
+                                <h3 class="pb-title pb-title-sm">
+                                    Post title <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                </h3><!-- /pb-title -->
+                            </a><!-- /panel-body-heading -->
+                        </div><!-- /panel -->
+
+                        <div class="panel panel-default bordered-none no-radius">
+                            <a href="#" class="panel-body-heading full-line">
+                                <div class="pb-object pb-object-circle pb-object-sm">
+                                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar2.png') }}" alt="">
+                                </div><!-- /pb-object -->
+                                <h3 class="pb-title pb-title-sm">
+                                    Username <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                </h3><!-- /pb-title -->
+                            </a><!-- /panel-body-heading -->
+                        </div><!-- /panel -->
+
+                        <div class="panel panel-default bordered-none no-radius">
+                            <a href="#" class="panel-body-heading full-line">
+                                <div class="pb-object pb-object-circle pb-object-sm">
+                                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar3.png') }}" alt="">
+                                </div><!-- /pb-object -->
+                                <h3 class="pb-title pb-title-sm">
+                                    Item name <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                </h3><!-- /pb-title -->
+                            </a><!-- /panel-body-heading -->
+                        </div><!-- /panel -->
+                    </div><!-- /side-wrapper-result -->
+                </div><!-- /side wrapper -->
+
+                <!-- separate nav for ease development -->
+                <nav class="side-nav">
+                    <!-- open nav ul -->
+                    <ul>
+                        <li class="side-nav-item active">
+                            <a href="{{ path ('guias_docentes_app_admin_panel_index') }}">
+                                <i class="nav-item-icon icon ion-home"></i>
+                                Principal
+                            </a>
+                        </li><!-- /coverage -->
+                        <li class="side-nav-item">
+                            <a href="#Administrador">
+                                <i class="nav-item-caret"></i>
+                                <i class="nav-item-icon icon ion-person-stalker"></i>
+                                Administrador
+                            </a>
+                            <ul id="Administrador" class="side-nav-child">
+                                <li class="side-nav-item-heading">
+                                    <a href="#" class="side-nav-back">
+                                        <i class="nav-item-caret"></i>
+                                        Administrador
+                                    </a>
+                                </li><!-- /header administrador child -->
+                                <li class="side-nav-item">
+                                    <a href="{{ path('guias_docentes_app_admin_panel_create_admin') }}">
+                                        <i class="nav-item-icon icon ion-person-add"></i>
+                                        Añadir administrador
+                                    </a>
+                                </li><!-- /Añadir administrador -->
+                                <li class="side-nav-item">
+                                    <a href="layout_static.html">
+                                        <i class="nav-item-icon icon ion-person-stalker"></i>
+                                        Gestionar administradores
+                                    </a>
+                                </li><!-- /Modificar admin -->
+                            </ul><!-- Fin Sub elementos administrador -->
+                        </li><!-- Fin /Administrador -->
+                        
+                        
+                        <!-- Inicio FAQ -->
+                        <li class="side-nav-item">
+                            <a href="#FAQ">
+                                <i class="nav-item-caret"></i>
+                                <i class="nav-item-icon icon ion-help"></i>
+                                FAQ
+                            </a>
+                            <!-- /Sub menu FAQ -->
+                            <ul id="FAQ" class="side-nav-child">
+                                <li class="side-nav-item-heading">
+                                    <a href="#" class="side-nav-back">
+                                        <i class="nav-item-caret"></i>
+                                        FAQ
+                                    </a>
+                                </li><!-- /header level menu child -->
+                                <li class="side-nav-item">
+                                    <a href="#Perfiles">
+                                        <i class="nav-item-caret"></i>
+                                        <i class="nav-item-icon icon ion-person-stalker"></i>
+                                        Perfiles
+                                    </a>
+                                    <ul id="Perfiles" class="side-nav-child">
+                                        <li class="side-nav-item-heading">
+                                            <a href="#" class="side-nav-back">
+                                                <i class="nav-item-caret"></i>
+                                                Perfiles
+                                            </a>
+                                        </li><!-- /header level2 child -->
+                                        <li class="side-nav-item">
+                                            <a href="#">
+                                                <i class="nav-item-icon icon ion-person-add"></i>
+                                                Añadir Perfil
+                                            </a>
+                                        </li><!-- /Añadir perfil -->
+                                        <li class="side-nav-item">
+                                            <a href="#">
+                                                <i class="nav-item-icon icon ion-person-stalker"></i>
+                                                Gestionar Perfiles
+                                            </a>
+                                        </li><!-- /Gestionar perfiles -->
+                                    </ul><!-- /level2 child -->
+                                </li>
+
+
+                                <!-- Inicio Grupos Preguntas Frecuentes -->
+                                <li class="side-nav-item">
+                                    <a href="#GruposPF">
+                                        <i class="nav-item-caret"></i>
+                                        <i class="nav-item-icon icon ion-filing"></i>
+                                        Grupos Preguntas Frecuentes
+                                    </a>
+                                    <ul id="GruposPF" class="side-nav-child">
+                                        <li class="side-nav-item-heading">
+                                            <a href="#" class="side-nav-back">
+                                                <i class="nav-item-caret"></i>
+                                                Grupos Preguntas Frecuentes
+                                            </a>
+                                        </li><!-- /header level2 child -->
+                                        <li class="side-nav-item">
+                                            <a href="#">
+                                                <i class="nav-item-icon icon ion-archive"></i>
+                                                Añadir Grupo
+                                            </a>
+                                        </li><!-- /Añadir Grupo PF -->
+                                        <li class="side-nav-item">
+                                            <a href="{{ path ('guias_docentes_app_admin_panel_group_manag') }}">
+                                                <i class="nav-item-icon icon ion-filing"></i>
+                                                Gestionar Grupos
+                                            </a>
+                                        </li><!-- /Gestionar grupos PF -->
+                                    </ul><!-- /level2 child -->
+                                </li><!--Fin Grupos Preguntas Frecuentes -->
+
+
+
+                                <!-- Inicio Preguntas Frecuentes -->
+                                <li class="side-nav-item">
+                                    <a href="#PreguntasFrecuentes">
+                                        <i class="nav-item-caret"></i>
+                                        <i class="nav-item-icon icon ion-document"></i>
+                                        Preguntas Frecuentes
+                                    </a>
+                                    <ul id="PreguntasFrecuentes" class="side-nav-child">
+                                        <li class="side-nav-item-heading">
+                                            <a href="#" class="side-nav-back">
+                                                <i class="nav-item-caret"></i>
+                                                Preguntas Frecuentes
+                                            </a>
+                                        </li><!-- /header level2 child -->
+                                        <li class="side-nav-item">
+                                            <a href="#">
+                                                <i class="nav-item-icon icon ion-compose"></i>
+                                                Añadir Pregunta Frecuente
+                                            </a>
+                                        </li><!-- /Añadir pregunta frecuente -->
+                                        <li class="side-nav-item">
+                                            <a href="#">
+                                                <i class="nav-item-icon icon ion-compose"></i>
+                                                Gestionar Preguntas Frecuentes
+                                            </a>
+                                        </li><!-- /Gestionar preguntas frecuentes -->
+                                    </ul><!-- /level2 child -->
+                                </li><!--Fin Preguntas Frecuentes -->
+                            </ul><!-- /level menu child -->
+                        </li><!-- Fin FAQ -->
+                        
+                        
+                                                <!-- Inicio /Soporte -->
+                        <li class="side-nav-item">
+                            <a href="#Soporte">
+                                <i class="nav-item-caret"></i>
+                                <i class="nav-item-icon icon ion-ios7-monitor-outline"></i>
+                                Soporte
+                            </a>
+                            <ul id="Soporte" class="side-nav-child">
+                                <li class="side-nav-item-heading">
+                                    <a href="#" class="side-nav-back">
+                                        <i class="nav-item-caret"></i>
+                                        Soporte
+                                    </a>
+                                </li><!-- /header soporte child -->
+                                <li class="side-nav-item">
+                                    <a href="layout_blank.html">
+                                        <i class="nav-item-icon icon ion-clipboard"></i>
+                                        Temática de soporte
+                                    </a>
+                                </li><!-- /Gestionar Temática de soporte -->
+                                <li class="side-nav-item">
+                                    <a href="layout_static.html">
+                                        <i class="nav-item-icon icon ion-person-stalker"></i>
+                                        Miembros de soporte
+                                    </a>
+                                </li><!-- /Gestionar miembros de soporte -->
+                            </ul><!-- Fin Sub elementos administrador -->
+                        </li><!-- Fin /Soporte -->
+                        
+                        
+                        <!-- Inicio estadisticas -->
+                        <li class="side-nav-item">
+                            <a href="{{ path ('guias_docentes_app_admin_panel_index') }}">
+                            <i class="nav-item-icon icon ion-stats-bars"></i>
+                            Estadisticas
+                            </a>
+                        </li><!-- /Estadisticas -->
+                        <!-- Inicio Informes -->
+                        <li class="side-nav-item">
+                            <a href="{{ path ('guias_docentes_app_admin_panel_index') }}">
+                            <i class="nav-item-icon icon ion-clipboard"></i>
+                            Informes
+                            </a>
+                        </li><!-- /Informes -->
+                       
+                       <!-- Mantenimiento -->
+                        <li class="side-nav-item">
+                            <a href="#Mantenimiento">
+                                <i class="nav-item-caret"></i>
+                                <i class="nav-item-icon icon ion-gear-b"></i>
+                                Mantenimiento
+                            </a>
+                            <ul id="Mantenimiento" class="side-nav-child">
+                                <li class="side-nav-item-heading">
+                                    <a href="#" class="side-nav-back">
+                                        <i class="nav-item-caret"></i>
+                                        Mantenimiento
+                                    </a>
+                                </li><!-- /header mantenimiento child -->
+                                <li class="side-nav-item">
+                                    <a href="layout_blank.html">
+                                        <i class="nav-item-icon icon ion-trash-a"></i>
+                                        Limpiar registro consultas
+                                    </a>
+                                </li><!-- /Limpiar registro de consultas -->
+                            </ul><!-- Fin Sub elementos administrador -->
+                        </li><!-- Fin /Administrador -->
+                        
+                        
+                    </ul><!-- /nav ul-->
+                </nav>
+
+            </div><!-- /side body -->
+        </aside><!-- /side left -->
+
+{% endblock %}

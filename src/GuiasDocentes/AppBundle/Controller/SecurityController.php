@@ -52,22 +52,5 @@ class SecurityController extends Controller
             )
         );
     }
-    
-    public function createAction()
-    {
-    $user = new Admin();
-          $user->setUsername('aa');
-          $user->setEmail('admin@umahanov.com');
-
-          $encoder = new MessageDigestPasswordEncoder('sha512',true,1);
-          $password = $encoder->encodePassword('1234', $user->getSalt());
-          $user->setPassword($password);
-          $manager = $this->getDoctrine()->getManager();
-          $manager->persist($user);
-
-          $manager->flush();  
-
-        return $this->render('GuiasDocentesAppBundle:AdminPanel:login.html.twig');
-    }
 
 }

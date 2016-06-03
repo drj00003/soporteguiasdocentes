@@ -1,0 +1,46 @@
+{% extends 'AdminPanel/base-side-left-header-admin-panel.html.twig' %}
+    {% block breadcrumb %}
+        <ol class="breadcrumb bg-none pull-left hide-xs">
+            <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
+            <li class="active">Añadir Administrador</li>
+        </ol>
+    {% endblock %}
+{% block content_body %}
+
+<div class="magic-layout">
+    <div class="box magic-element width-full">
+        <h2 class="box-heading">
+            Nuevo Administrador
+        </h2>
+        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_create_admin')}}">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input">Nombre de usuario</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required="required" id="input" name="username" placeholder="Nombre de usuario" >
+                    </div>
+                </div><!-- /form-group -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" required="required" name="email" id="input" placeholder="Email" >
+                    </div>
+                </div><!-- /form-group -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inputPass">Contraseña</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" required="required" name="password" id="inputPass" placeholder="Contraseña" />
+                    </div>
+                </div><!-- /form-group -->
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="reset" class="btn btn-default">Reiniciar</button>
+                        <button type="submit" class="btn btn-primary">Añadir</button>
+                    </div>
+                </div><!-- /form-group -->
+            </fieldset><!-- /fieldset -->
+        </form><!-- /form -->
+    </div><!-- /box -->
+</div>
+
+{% endblock %}

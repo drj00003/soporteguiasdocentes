@@ -2,3 +2,12 @@
     height: 45px;
     width: 45px;
 }
+
+.edit, .remove{
+    font-size: 24px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.elemento .acciones{
+    padding:0;
+}
