@@ -3,16 +3,17 @@
 namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Administrador
  *
- * @ORM\Table(name="administrador")
+ * @ORM\Table(name="administrador", uniqueConstraints={@ORM\UniqueConstraint(name="username_UNIQUE", columns={"username"}), @ORM\UniqueConstraint(name="email_UNIQUE", columns={"email"})})
  * @ORM\Entity
  */
-class Administrador
+class Administrador implements UserInterface, \Serializable
 {
     /**
      * @var integer
@@ -26,18 +27,39 @@ class Administrador
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=30, nullable=false)
+     * @ORM\Column(name="username", type="string", length=25, nullable=false)
      */
-    private $nombre;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pass", type="string", length=32, nullable=false)
+     * @ORM\Column(name="password", type="string", length=88, nullable=false)
      */
-    private $pass;
+    private $password;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=60, nullable=false)
+     */
+    private $email;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=32, nullable=false)
+     */
+    private $salt;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_active", type="boolean", nullable=false)
+     */
+    private $isActive = '0';
+    
+    
     /* Customized code */
     
     /**
@@ -46,9 +68,6 @@ class Administrador
      */
     private $pfs;
     
-    public function __construct(){
-        $this->pfs = new ArrayCollection();
-    }
     
     public function setPfs (\GuiasDocentes\AppBundle\Entity\Pf $pfs){
         $this->pfs = $pfs;
@@ -56,13 +75,78 @@ class Administrador
             $pf->setCreador($this);
         }
     }
-    
-    public function getNick(){
-        return array("username" => $this->nombre, "password" => $this->pass);
-    }
-    
-    /* End customize code */
 
+    public function __construct()
+    {
+        $this->salt = md5(uniqid(null, true));
+        $this->isActive = true;
+        $this->pfs = new ArrayCollection();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return array('ROLE_ADMIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->salt,
+            $this->password,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->salt,
+            $this->password,
+        ) = unserialize($serialized);
+    }
 
     /**
      * Get id
@@ -75,48 +159,87 @@ class Administrador
     }
 
     /**
-     * Set nombre
+     * Set username
      *
-     * @param string $nombre
-     * @return Administrador
+     * @param string $username
+     * @return User
      */
-    public function setNombre($nombre)
+    public function setUsername($username)
     {
-        $this->nombre = $nombre;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get nombre
+     * Set salt
      *
-     * @return string 
+     * @param string $salt
+     * @return User
      */
-    public function getNombre()
+    public function setSalt($salt)
     {
-        return $this->nombre;
-    }
-
-    /**
-     * Set pass
-     *
-     * @param string $pass
-     * @return Administrador
-     */
-    public function setPass($pass)
-    {
-        $this->pass = $pass;
+        $this->salt = $salt;
 
         return $this;
     }
 
     /**
-     * Get pass
+     * Set password
+     *
+     * @param string $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
      *
      * @return string 
      */
-    public function getPass()
+    public function getEmail()
     {
-        return $this->pass;
+        return $this->email;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return User
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
     }
 }
