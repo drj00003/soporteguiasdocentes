@@ -3,6 +3,7 @@
 namespace GuiasDocentes\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Pf
@@ -83,7 +84,15 @@ class Pf
      */
     private $grupoid;
 
-
+    
+    /* Customized code */
+    
+    public function __construct(){
+        $this->setFecham(new \Datetime());
+    }
+    
+    /* end customized code */
+    
 
     /**
      * Get id

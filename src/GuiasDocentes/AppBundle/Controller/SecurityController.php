@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\SecurityContext;
-use GuiasDocentes\AppBundle\Entity\Admin;
+use GuiasDocentes\AppBundle\Entity\Administrador;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 
@@ -51,6 +51,15 @@ class SecurityController extends Controller
                 'error'         => $error,
             )
         );
+    }
+    
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logoutAction(Request $request)
+    {
+        $session = $request->getSession();
+        $session->clear();
     }
 
 }

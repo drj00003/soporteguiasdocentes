@@ -1,0 +1,79 @@
+{% extends 'AdminPanel/base-side-left-header-admin-panel.html.twig' %}
+    {% block breadcrumb %}
+        <ol class="breadcrumb bg-none pull-left hide-xs">
+            <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
+            <li class="active">Estadísticas</li>
+        </ol>
+    {% endblock %}
+{% block content_body %}
+    <div class="magic-layout">
+        <div class="panel panel-default magic-element">
+            <div class="panel-body-heading">
+                <h3 class="pb-title">
+                    Consultas
+                </h3><!-- /pb-title -->
+            </div><!-- /panel-body-heading -->
+            <div class="kits-chart">
+                <div id="revenue-chart" class="chart"></div>
+            </div><!-- /kits-chart -->
+            <div class="panel-body">
+                <div class="text-center">
+                    <button type="button" class="btn btn-ion btn-sm btn-primary" id="año">2016</button>
+                </div>
+            </div><!-- /panel-body -->
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <i class="icon ion-arrow-up-b text-success"></i> 236 &nbsp;&nbsp;
+                        <span class="text-success">+</span> 11%
+                    </div>
+                    <div>MO <small class="text-muted">OCT W5</small></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <i class="icon ion-arrow-down-b text-danger"></i> 137 &nbsp;&nbsp;
+                        <span class="text-danger">-</span> 32%
+                    </div>
+                    <div>TU <small class="text-muted">OCT W5</small></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <i class="icon ion-arrow-up-b text-success"></i> 275 &nbsp;&nbsp;
+                        <span class="text-success">+</span> 18%
+                    </div>
+                    <div>WE <small class="text-muted">NOV W1</small></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <i class="icon ion-arrow-up-b text-success"></i> 380 &nbsp;&nbsp;
+                        <span class="text-success">+</span> 40%
+                    </div>
+                    <div>TH <small class="text-muted">NOV W1</small></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <i class="icon ion-arrow-up-b text-success"></i> 655 &nbsp;&nbsp;
+                        <span class="text-success">+</span> 88%
+                    </div>
+                    <div>FR <small class="text-muted">NOV W1</small></div>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <i class="icon ion-arrow-down-b text-danger"></i> 571 &nbsp;&nbsp;
+                        <span class="text-danger">-</span> 12%
+                    </div>
+                    <div>SA <small class="text-muted">NOV W1</small></div>
+                </li>
+            </ul><!-- /list-group -->
+        </div><!-- /panel -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+    <script src='{{ asset('Resources/AdminPanel/js/statics.js') }}'></script>
+    
+    <!-- Tables editable -->
+    {#<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
+    {#<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
+    {#<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>#}
+{% endblock %}

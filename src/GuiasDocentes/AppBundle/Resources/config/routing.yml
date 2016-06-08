@@ -43,11 +43,35 @@ login:
 login_check:    
     pattern:   /login_check
     
+logout:
+    pattern:     /logout
+    
 # Admin Panel - Administrador
     
 guias_docentes_app_admin_panel_create_admin:
     path:   /create
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:create }
+
+# Admin Panel - Perfiles
+
+guias_docentes_app_admin_panel_profiles_manage:
+    path:   admin/profiles
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:profiles }
+    
+guias_docentes_app_admin_panel_get_support_group:
+    path:   admin/profiles/getGroupSupport
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GetSupportGroup }
+    methods: GET
+    
+guias_docentes_app_admin_panel_set_profile:
+    path:   admin/profiles/set
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:ProfileSet }
+    
+guias_docentes_app_admin_panel_create_profile:
+    path:   admin/profiles/create
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createProfile }
+    
+# Admin Panel - Grupos PF
     
 guias_docentes_app_admin_panel_group_manag:
     path:   /groups
@@ -65,3 +89,34 @@ guias_docentes_app_admin_panel_get_profiles:
 guias_docentes_app_admin_panel_delete_group:
     path:   groups/delete
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GroupDelete }
+    
+    
+# Admin Panel - Preguntas Frecuentes
+
+guias_docentes_app_admin_panel_pf_manage:
+    path:   admin/pf
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:pf }
+    
+# guias_docentes_app_admin_panel_get_support_group:
+#     path:   admin/profiles/getGroupSupport
+#     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GetSupportGroup }
+#     methods: GET
+    
+guias_docentes_app_admin_panel_set_pf:
+    path:   admin/pf/set
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:PFSet }
+    
+guias_docentes_app_admin_panel_create_pf:
+    path:   admin/pf/create
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createPF }
+
+# Admin Panel - Estadisticas
+    
+guias_docentes_app_admin_panel_get_Num_Consultas_By_Month:
+    path:   admin/getNumConsultasByMonth
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GetNumConsultasByMonth }
+    methods: GET
+    
+guias_docentes_app_admin_panel_statics:
+    path:   admin/statics
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:Statics }

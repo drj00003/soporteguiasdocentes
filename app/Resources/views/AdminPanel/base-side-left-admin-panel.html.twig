@@ -122,13 +122,13 @@
                 <nav class="side-nav">
                     <!-- open nav ul -->
                     <ul>
-                        <li class="side-nav-item active">
+                        <li class="side-nav-item active" id ="Principal-li">
                             <a href="{{ path ('guias_docentes_app_admin_panel_index') }}">
                                 <i class="nav-item-icon icon ion-home"></i>
                                 Principal
                             </a>
                         </li><!-- /coverage -->
-                        <li class="side-nav-item">
+                        <li class="side-nav-item" id ="Administrador-li">
                             <a href="#Administrador">
                                 <i class="nav-item-caret"></i>
                                 <i class="nav-item-icon icon ion-person-stalker"></i>
@@ -141,13 +141,13 @@
                                         Administrador
                                     </a>
                                 </li><!-- /header administrador child -->
-                                <li class="side-nav-item">
+                                <li class="side-nav-item" id ="añadir_administrador">
                                     <a href="{{ path('guias_docentes_app_admin_panel_create_admin') }}">
                                         <i class="nav-item-icon icon ion-person-add"></i>
                                         Añadir administrador
                                     </a>
                                 </li><!-- /Añadir administrador -->
-                                <li class="side-nav-item">
+                                <li class="side-nav-item" id="gestionar_administradores">
                                     <a href="layout_static.html">
                                         <i class="nav-item-icon icon ion-person-stalker"></i>
                                         Gestionar administradores
@@ -158,7 +158,7 @@
                         
                         
                         <!-- Inicio FAQ -->
-                        <li class="side-nav-item">
+                        <li class="side-nav-item" id="FAQ-li">
                             <a href="#FAQ">
                                 <i class="nav-item-caret"></i>
                                 <i class="nav-item-icon icon ion-help"></i>
@@ -172,7 +172,7 @@
                                         FAQ
                                     </a>
                                 </li><!-- /header level menu child -->
-                                <li class="side-nav-item">
+                                <li class="side-nav-item" id="Perfiles-li">
                                     <a href="#Perfiles">
                                         <i class="nav-item-caret"></i>
                                         <i class="nav-item-icon icon ion-person-stalker"></i>
@@ -185,14 +185,14 @@
                                                 Perfiles
                                             </a>
                                         </li><!-- /header level2 child -->
-                                        <li class="side-nav-item">
-                                            <a href="#">
+                                        <li class="side-nav-item" id="añadir_perfil">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_create_profile')}}">
                                                 <i class="nav-item-icon icon ion-person-add"></i>
                                                 Añadir Perfil
                                             </a>
                                         </li><!-- /Añadir perfil -->
-                                        <li class="side-nav-item">
-                                            <a href="#">
+                                        <li class="side-nav-item" id="gestionar_perfiles">
+                                            <a href="{{path('guias_docentes_app_admin_panel_profiles_manage')}}">
                                                 <i class="nav-item-icon icon ion-person-stalker"></i>
                                                 Gestionar Perfiles
                                             </a>
@@ -202,7 +202,7 @@
 
 
                                 <!-- Inicio Grupos Preguntas Frecuentes -->
-                                <li class="side-nav-item">
+                                <li class="side-nav-item" id="gruposPF-li">
                                     <a href="#GruposPF">
                                         <i class="nav-item-caret"></i>
                                         <i class="nav-item-icon icon ion-filing"></i>
@@ -215,13 +215,13 @@
                                                 Grupos Preguntas Frecuentes
                                             </a>
                                         </li><!-- /header level2 child -->
-                                        <li class="side-nav-item">
+                                        <li class="side-nav-item" id="añadir_grupo">
                                             <a href="#">
                                                 <i class="nav-item-icon icon ion-archive"></i>
                                                 Añadir Grupo
                                             </a>
                                         </li><!-- /Añadir Grupo PF -->
-                                        <li class="side-nav-item">
+                                        <li class="side-nav-item" id="gestionar_grupos">
                                             <a href="{{ path ('guias_docentes_app_admin_panel_group_manag') }}">
                                                 <i class="nav-item-icon icon ion-filing"></i>
                                                 Gestionar Grupos
@@ -233,7 +233,7 @@
 
 
                                 <!-- Inicio Preguntas Frecuentes -->
-                                <li class="side-nav-item">
+                                <li class="side-nav-item" id="preguntas_frecuentes-li">
                                     <a href="#PreguntasFrecuentes">
                                         <i class="nav-item-caret"></i>
                                         <i class="nav-item-icon icon ion-document"></i>
@@ -246,14 +246,14 @@
                                                 Preguntas Frecuentes
                                             </a>
                                         </li><!-- /header level2 child -->
-                                        <li class="side-nav-item">
-                                            <a href="#">
+                                        <li class="side-nav-item" id="añadir_pf">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_create_pf')}}">
                                                 <i class="nav-item-icon icon ion-compose"></i>
                                                 Añadir Pregunta Frecuente
                                             </a>
                                         </li><!-- /Añadir pregunta frecuente -->
-                                        <li class="side-nav-item">
-                                            <a href="#">
+                                        <li class="side-nav-item" id="gestionar_pf">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_pf_manage') }}">
                                                 <i class="nav-item-icon icon ion-compose"></i>
                                                 Gestionar Preguntas Frecuentes
                                             </a>
@@ -265,7 +265,7 @@
                         
                         
                                                 <!-- Inicio /Soporte -->
-                        <li class="side-nav-item">
+                        <li class="side-nav-item" id="soporte-li">
                             <a href="#Soporte">
                                 <i class="nav-item-caret"></i>
                                 <i class="nav-item-icon icon ion-ios7-monitor-outline"></i>
@@ -278,13 +278,13 @@
                                         Soporte
                                     </a>
                                 </li><!-- /header soporte child -->
-                                <li class="side-nav-item">
+                                <li class="side-nav-item" id="tematica_soporte">
                                     <a href="layout_blank.html">
                                         <i class="nav-item-icon icon ion-clipboard"></i>
                                         Temática de soporte
                                     </a>
                                 </li><!-- /Gestionar Temática de soporte -->
-                                <li class="side-nav-item">
+                                <li class="side-nav-item" id="miembros_soporte">
                                     <a href="layout_static.html">
                                         <i class="nav-item-icon icon ion-person-stalker"></i>
                                         Miembros de soporte
@@ -295,22 +295,22 @@
                         
                         
                         <!-- Inicio estadisticas -->
-                        <li class="side-nav-item">
-                            <a href="{{ path ('guias_docentes_app_admin_panel_index') }}">
+                        <li class="side-nav-item" id="estadisticas-li">
+                            <a href="{{ path ('guias_docentes_app_admin_panel_statics') }}">
                             <i class="nav-item-icon icon ion-stats-bars"></i>
                             Estadisticas
                             </a>
                         </li><!-- /Estadisticas -->
                         <!-- Inicio Informes -->
-                        <li class="side-nav-item">
-                            <a href="{{ path ('guias_docentes_app_admin_panel_index') }}">
+                        <li class="side-nav-item" id="informes-li">
+                            <a href="{{ path ('guias_docentes_app_admin_panel_statics') }}">
                             <i class="nav-item-icon icon ion-clipboard"></i>
                             Informes
                             </a>
                         </li><!-- /Informes -->
                        
                        <!-- Mantenimiento -->
-                        <li class="side-nav-item">
+                        <li class="side-nav-item" id="mantenimiento-li">
                             <a href="#Mantenimiento">
                                 <i class="nav-item-caret"></i>
                                 <i class="nav-item-icon icon ion-gear-b"></i>
@@ -323,7 +323,7 @@
                                         Mantenimiento
                                     </a>
                                 </li><!-- /header mantenimiento child -->
-                                <li class="side-nav-item">
+                                <li class="side-nav-item" id="limpiar_registro">
                                     <a href="layout_blank.html">
                                         <i class="nav-item-icon icon ion-trash-a"></i>
                                         Limpiar registro consultas

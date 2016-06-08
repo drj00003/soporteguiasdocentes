@@ -31,12 +31,22 @@
                 {{ form_label(form.consulta.hiloid.consultanteemail.nombre , 'Nombre',{ 'label_attr': { 'class': 'control-label'} }) }}
                 {{ form_widget(form.consulta.hiloid.consultanteemail.nombre, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca su nombre', 'name' : 'nombre' } }) }}
                 <span class="text-danger"> {{form_errors (form.consulta.hiloid.consultanteemail.nombre)}} </span>
+                <div class="alert alert-warning alert-icon" id ="alert-nombre" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <div class="icon"><i class="icon ion-ios7-information-empty"></i></div>
+                    Por favor introduzca una cadena compuesta solo por letras.
+                </div>
             </div>
             {#Apellidos#}
             <div class="form-group" id="apellidos">
                 {{ form_label(form.consulta.hiloid.consultanteemail.apellidos, 'Apellidos',{ 'label_attr': { 'class': 'control-label'} }) }}
                 {{ form_widget(form.consulta.hiloid.consultanteemail.apellidos, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca sus apellidos', 'name' : 'apellidos' } }) }}
                 <span class="text-danger"> {{form_errors (form.consulta.hiloid.consultanteemail.apellidos)}} </span>
+                <div class="alert alert-warning alert-icon" id ="alert-apellidos" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <div class="icon"><i class="icon ion-ios7-information-empty"></i></div>
+                    Por favor introduzca una cadena compuesta solo por letras.
+                </div>
             </div>
             {#Tematica#}
             <div class="form-group" id="tematica">
@@ -50,6 +60,11 @@
                 {{ form_widget(form.asignaturaCodigo.codigo, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca el código de la/s asignatura/s', 'name' : 'asignatura' } }) }}
                 <span class="text-danger"> {{form_errors (form.asignaturaCodigo.codigo)}} </span>
                 <p class="help-block">Use punto y coma para separar las asignaturas (1091;368;453)</p>
+                <div class="alert alert-warning alert-icon" id ="alert-asignaturas" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <div class="icon"><i class="icon ion-ios7-information-empty"></i></div>
+                    Deben introducirse un conjunto de números naturales separados por ';'
+                </div>
             </div>
             {#Consulta#}
             <div class="form-group" id="consulta">
@@ -61,7 +76,7 @@
             <div class="captcha-container">
                 <div class="g-recaptcha" data-sitekey={{captchaPubKey}}></div>
                 {#Alerta captcha sin completar#}
-                <div class="alert alert-warning alert-icon">
+                <div class="alert alert-warning alert-icon" id ="alert-captcha" style="display: none;">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     <div class="icon"><i class="icon ion-ios7-information-empty"></i></div>
                     Por favor complete el captcha.

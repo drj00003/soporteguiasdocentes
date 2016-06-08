@@ -28,7 +28,18 @@ class Perfil
      */
     private $orden;
 
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Perfil
+     */
+    // public function setNombre($nombre)
+    // {
+    //     $this->nombre = $nombre;
 
+    //     return $this;
+    // }    
 
     /**
      * Get nombre

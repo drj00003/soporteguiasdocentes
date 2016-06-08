@@ -61,11 +61,11 @@ class Hilo
     }
     
     public function setConsultas (Consulta $consulta){
-        $this->hilos[]=$consulta;
+        $this->consultas[]=$consulta;
     }
     
     public function addConsulta (\GuiasDocentes\AppBundle\Entity\Consulta $consulta){
-        $this->hilos[] = $consulta;
+        $this->consultas[] = $consulta;
     }
     
     public function getConsultas(){

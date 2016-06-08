@@ -26,6 +26,24 @@ class ConsultanteType extends AbstractType
             ->add('nombre', 'text', array('label'=> 'Nombre'))
             ->add('apellidos', 'text', array('label'=> 'Apellidos'))
             ->add('email', 'email', array('label'=> 'Email'))
+            // ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+            //     $client = $event->getData();
+            //     $form = $event->getForm();
+        
+                // if (!$user) {
+                //     return;
+                // }
+        
+                // Check whether the user has chosen to display his email or not.
+                // If the data was submitted previously, the additional value that is
+                // included in the request variables needs to be removed.
+            //     if (true === ctype_alpha($user['apellidos'])) {
+            //         $form->add('email', EmailType::class);
+            //     } else {
+            //         unset($user['email']);
+            //         $event->setData($user);
+            //     }
+            // })
         ;
         // $builder
         //     ->addEventListener(

@@ -1,5 +1,5 @@
 /* Determinamos el tiempo total en segundos */
-var totalTiempo=5;
+var totalTiempo=5000000000000000;
 /* Determinamos la url donde redireccionar */
 var url="/web/app_dev.php/";
 

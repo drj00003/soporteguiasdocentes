@@ -1,0 +1,44 @@
+{% extends 'AdminPanel/base-side-left-header-admin-panel.html.twig' %}
+    {% block breadcrumb %}
+        <ol class="breadcrumb bg-none pull-left hide-xs">
+            <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
+            <li class="active">Añadir Perfil</li>
+        </ol>
+    {% endblock %}
+{% block content_body %}
+
+<div class="magic-layout">
+    <div class="box magic-element width-full">
+        <h2 class="box-heading">
+            Nuevo Perfil
+        </h2>
+        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_create_profile')}}">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input">Nombre de perfil</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required="required" id="input" name="nombre" placeholder="Nombre de perfil" >
+                    </div>
+                </div><!-- /form-group -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input">Orden</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required="required" name="orden" id="input" placeholder="orden" >
+                    </div>
+                </div><!-- /form-group -->
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="reset" class="btn btn-default">Reiniciar</button>
+                        <button type="submit" class="btn btn-primary">Añadir</button>
+                    </div>
+                </div><!-- /form-group -->
+            </fieldset><!-- /fieldset -->
+        </form><!-- /form -->
+    </div><!-- /box -->
+</div>
+
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+    <script src='{{ asset('Resources/AdminPanel/js/addPerfil.js') }}'></script>
+{% endblock %}

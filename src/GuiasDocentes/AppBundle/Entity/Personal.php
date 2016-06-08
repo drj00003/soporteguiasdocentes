@@ -82,7 +82,7 @@ class Personal
         return $this;
     }
     
-        public function addHilos(Hilo $hilo){
+    public function addHilos(Hilo $hilo){
         $this->hilos[] = $hilo;
         return $this;
     }
@@ -96,6 +96,11 @@ class Personal
     
     public function getEnunciado(){
         return $this->getTematicasSoporte()[0]->getEnunciado();
+    }
+    
+    public function setEmail($email){
+        $this->email= email;
+        return $this;
     }
     
     
@@ -183,3 +188,4 @@ class Personal
 
 
 }
+

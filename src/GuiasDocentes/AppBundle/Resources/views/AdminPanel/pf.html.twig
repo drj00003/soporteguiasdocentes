@@ -1,0 +1,80 @@
+{% extends 'AdminPanel/base-side-left-header-admin-panel.html.twig' %}
+    {% block breadcrumb %}
+        <ol class="breadcrumb bg-none pull-left hide-xs">
+            <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
+            <li class="active">Gestionar Preguntas Frecuentes</li>
+        </ol>
+    {% endblock %}
+{% block content_body %}
+    <div class="magic-layout">
+        <div id="data" class="panel panel-default magic-element width-full">
+            <div class="panel-heading">
+                <div class="panel-icon"><i class="icon ion-ios7-photos-outline"></i></div>
+                <div class="panel-actions">
+                    <a role="button" data-refresh="#data" title="refresh" class="btn btn-sm btn-icon">
+                        <i class="icon ion-refresh"></i>
+                    </a>
+                    <a role="button" data-expand="#data" title="expand" class="btn btn-sm btn-icon">
+                        <i class="icon ion-arrow-resize"></i>
+                    </a>
+                    <a role="button" data-collapse="#data" title="collapse" class="btn btn-sm btn-icon">
+                        <i class="icon ion-chevron-down"></i>
+                    </a>
+                    <a role="button" data-close="#data" title="close" class="btn btn-sm btn-icon">
+                        <i class="icon ion-close-round"></i>
+                    </a>
+                </div><!-- /panel-actions -->
+                <h3 class="panel-title">Preguntas Frecuentes</h3>
+            </div><!-- /panel-heading -->
+            <div class="table-responsive">
+                <table class="table table-hover datatables">
+                    <thead>
+                        <tr>
+                            <th>Pregunta</th>
+                            <th>Respuesta</th>
+                            <th>Grupo</th>
+                            <th>Fecha</th>
+                            {#<th>Editada</th>#}
+                            <th>Habilitada</th>
+                            <th>Orden</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pf in pfs %}
+                            <tr class="elemento" id="{{pf.getId}}">
+                                <td class="pregunta">{{pf.getPregunta}}</td>
+                                <td class="respuesta">{{pf.getRespuesta}}</td>
+                                <td class="grupo">{{pf.getGrupoid.getNombre}}</td>
+                                <td class="fecha">{{pf.getFecham| date('d/m/Y')}}</td>
+                                {#<td class="modificador">{{pf.getModificadorid.getUsername}}</td>#}
+                                <td class="habilitada">{{pf.getHabilitada}}</td>
+                                <td class="orden">{{pf.getOrden}}</td>
+                                <td class="acciones">
+                                    <button type="button" class="btn edit btn-icon">
+                                        <i class="icon ion-compose"></i>
+                                    </button>
+                                    <button type="button" class="btn remove btn-icon">
+                                        <i class="icon ion-close-round"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- /panel7 -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+        <script src=" {{ asset('Resources/bootstrap/assets/bootbox/bootbox.js') }}"></script>
+    <script src=" {{ asset('Resources/bootstrap/assets/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src=" {{ asset('Resources/bootstrap/assets/datatables/js/datatables.js') }}"></script>
+    <script src='{{ asset('Resources/AdminPanel/js/pf.js') }}'></script>
+    
+    <!-- Tables editable -->
+    {#<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
+    {#<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
+    {#<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>#}
+{% endblock %}

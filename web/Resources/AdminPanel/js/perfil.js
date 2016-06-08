@@ -1,11 +1,5 @@
 $(document).ready(function(){
-    // $('#data').dataTable( {
-    //         "language": {
-    //             "url": "dataTables.spanish.lang"
-    //         }
-    //     } );
-    // } );
-    
+
     
     // Ajustes sidebar-left
     
@@ -16,27 +10,14 @@ $(document).ready(function(){
     open.removeClass('open');
     // Seleccionamos los distintos niveles (Añadir open a ul -> desplegable, y active li-> elemento seleccionado )
     $('ul#FAQ').addClass('open');
-    var lvl1 = $('#gruposPF-li');
+    var lvl1 = $('#Perfiles-li');
     lvl1.addClass('active');
-    var lvl2= lvl1.children('#GruposPF');
+    var lvl2= lvl1.children('#Perfiles');
     lvl2.addClass("open");
-    lvl2.children('#gestionar_grupos').addClass('active');
+    lvl2.children('#gestionar_perfiles').addClass('active');
     
     // Fin sidebar-left
     
-    // elem.children('ul')
-    // elem.each(function(){
-    //   if($(this).text() == "FAQ"){
-    //       $(this).addClass('active');
-    //       $(this).children('ul').addClass('open');
-    //       var children = $(this).children('li');
-    //       children.each(function(){
-    //           if ($(this).text()=="Gestionar Grupos"){
-    //               $(this).addClass('active');
-    //           } 
-    //       });
-    //   } 
-    // });
     // Funcion de refresco JQuery
     $(function(){
         // panel refresh
@@ -55,23 +36,18 @@ $(document).ready(function(){
             "iDisplayLength": 5,
             "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
         });
-        /** variation datatables style
-        $('.datatables').dataTable({"sPaginationType": "bs_normal"});
-        $('.datatables').dataTable({"sPaginationType": "bs_two_button"});
-        $('.datatables').dataTable({"sPaginationType": "bs_four_button"});
-        $('.datatables').dataTable({"sPaginationType": "bs_full"});
-        */
+
     });    
     
-    // Json para obtener los perfiles defindos para los grupos de PF
-    var perfiles = [];
+    // Json para obtener los grupos de soporte defindos para los perfiles
+    var group_soporte = [];
     // $.getJSON('https://soporteguiasdocentes-utesting.c9users.io/web/app_dev.php/groups/getProfiles')
-     $.getJSON(window.location.pathname+'/getProfiles')
+     $.getJSON(window.location.pathname+'/getGroupSupport')
     .done( function( response ) {
         //done() es ejecutada cuándo se recibe la respuesta del servidor. response es el objeto JSON recibido
         if( response.success ) {
             $.each(response.data, function(key, value){
-                perfiles.push(value);
+                group_soporte.push(value);
             });
         }
     });    
@@ -82,27 +58,27 @@ $(document).ready(function(){
 
     $( ".edit" ).click(function() {
         var selector = $(this).parents('.elemento');
-        var id_grupo_perfil = selector.attr('id');
+        var id_grupo_soporte_perfil = selector.attr('id');
         var nombre = selector.children('.nombre').text();
-        var perfil = selector.children('.perfil').text();
+        var gs = selector.children('.grupo_soporte').text();
         var orden = selector.children('.orden').text();
-        var s = $("<select  name=\"perfil\" />");
-        $.each(perfiles,function(key, value){
-            if (value==perfil){
-                $("<option />", {value: value, text: value, selected:true}).appendTo(s);    
+        var s = $("<select  name=\"grupo_soporte\" />");
+        $.each(group_soporte,function(key, value){
+            if (value==gs){
+                $("<option />", {value: key, text: value, selected:true}).appendTo(s);    
             }else{
-                $("<option />", {value: value, text: value}).appendTo(s);
+                $("<option />", {value: key, text: value}).appendTo(s);
             }
         });
         bootbox.dialog({
-                    title: "Grupo "+nombre,
+                    title: "Perfil "+nombre,
                     message: '<div class="row">  ' +
                         '<div class="col-md-12"> ' +
                         '<form class="form-horizontal grupo_perfil" method="post" action="'+window.location.pathname+'/set'+'"> ' +
                         '<div class="form-group"> ' +
-                        '<label class="col-md-4 control-label" for="perfil">Perfil</label> ' +
+                        '<label class="col-md-4 control-label" for="grupo_soporte">Grupo Soporte</label> ' +
                         '<div class="col-md-4"> ' +
-                        '<select id="perfil" required="required" name="perfil" class="form-control">' +
+                        '<select id="grupo_soporte" required="required" name="grupo_soporte" class="form-control">' +
                         s.html() +
                         '</select>'+
                         '</div> ' +
@@ -127,7 +103,7 @@ $(document).ready(function(){
                         '"class="form-control input-md"> ' +
                         '</div> ' +
                         '</div> ' +
-                        '<input id="id_grupo_perfil" name="id_grupo_perfil" type="hidden" value="'+id_grupo_perfil+'"> ' +
+                        '<input id="id_grupo_soporte_perfil" name="id_grupo_soporte_perfil" type="hidden" value="'+id_grupo_soporte_perfil+'"> ' +
                         '</form> </div>  </div>',
                     buttons: {
                         submit: {

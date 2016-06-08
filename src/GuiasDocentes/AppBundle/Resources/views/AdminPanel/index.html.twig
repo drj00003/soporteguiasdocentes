@@ -8,7 +8,7 @@
                     <i class="pbo-icon icon ion-ios7-plus-empty"></i>
                 </div><!-- /pb-object -->
                 <h3 class="pb-title ">
-                    <span class="text-info">278</span> <small>Consultantes</small>
+                    <span class="text-info">{{num_consultantes}}</span> <small>Consultantes</small>
                 </h3><!-- /pb-title -->
                 <span class="pb-watermark">
                     <i class="icon ion-ios7-personadd-outline"></i>
@@ -22,7 +22,7 @@
                     <i class="pbo-icon icon ion-arrow-graph-up-right"></i>
                 </div><!-- /pb-object -->
                 <h3 class="pb-title ">
-                    <span class="text-success">2,987,433</span> <small>Consultas</small>
+                    <span class="text-success">{{num_consultas}}</span> <small>Consultas</small>
                 </h3><!-- /pb-title -->
                 <span class="pb-watermark">
                     <i class="icon ion-ios7-star-outline"></i>
@@ -47,9 +47,7 @@
             </div><!-- /kits-chart -->
             <div class="panel-body">
                 <div class="text-center">
-                    <button type="button" class="btn btn-ion btn-sm btn-primary">Day</button>
-                    <button type="button" class="btn btn-ion btn-sm btn-primary">Week</button>
-                    <button type="button" class="btn btn-ion btn-sm btn-primary">Month</button>
+                    <button type="button" class="btn btn-ion btn-sm btn-primary" id="año">2016</button>
                 </div>
             </div><!-- /panel-body -->
             <ul class="list-group">
@@ -102,24 +100,24 @@
             <form role="form">
             <div class="panel-body">
                 <div class="panel-body-heading">
-                    <h3 class="pb-title">Quick Mail</h3>
+                    <h3 class="pb-title">Correo Miembros soporte:</h3>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="quick-mail-reseiver">To</label>
-                    <input id="quick-mail-reseiver" name="quick-mail-reseiver" type="text" class="tags" value="johndoe@mail.com,janedoe@mail.com,johnsmith@mail.com,janesmith@mail.com" />
+                    <label class="control-label" for="quick-mail-reseiver">a</label>
+                    <input id="quick-mail-reseiver" name="quick-mail-reseiver" type="text" class="tags" value="{{personal}}" />
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="quick-mail-subject">Subject</label>
                     <input id="quick-mail-subject" name="quick-mail-subject" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <textarea id="quick-mail-content" name="quick-mail-content" class="form-control" style="width:100%" rows="10" placeholder="Enter text ..."></textarea>
+                    <textarea id="quick-mail-content" name="quick-mail-content" class="form-control" style="width:100%" rows="10" placeholder="Introduzca el texto ..."></textarea>
                 </div><!-- /form-group -->
             </div>
             <div class="panel-footer clearfix">
                 <div class="pull-right">
-                    <input type="reset" class="btn btn-default" value="Cancel" />
-                    <input type="submit" class="btn btn-primary" value="Send" />
+                    <input type="reset" class="btn btn-default" value="Cancelar" />
+                    <input type="submit" class="btn btn-primary" value="Enviar" />
                 </div>
             </div>
             </form><!-- /form -->
@@ -183,6 +181,6 @@
 {% block javascripts %}
 {{ parent() }}
         <!-- Custom script index.js -->
+        <script src=" {{ asset('Resources/AdminPanel/js/json.js') }}"></script>
         <script src=" {{ asset('Resources/AdminPanel/js/index.js') }}"></script>
-        <
 {% endblock %}
