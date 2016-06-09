@@ -2,7 +2,7 @@
     {% block breadcrumb %}
         <ol class="breadcrumb bg-none pull-left hide-xs">
             <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
-            <li class="active">Gestionar Preguntas Frecuentes</li>
+            <li class="active">Gestionar Grupos de Soporte</li>
         </ol>
     {% endblock %}
 {% block content_body %}
@@ -24,32 +24,28 @@
                         <i class="icon ion-close-round"></i>
                     </a>
                 </div><!-- /panel-actions -->
-                <h3 class="panel-title">Preguntas Frecuentes</h3>
+                <h3 class="panel-title">Grupos de Soporte</h3>
             </div><!-- /panel-heading -->
             <div class="table-responsive">
                 <table class="table table-hover datatables">
                     <thead>
                         <tr>
+                            <th>Nombre</th>
                             <th>Pregunta</th>
                             <th>Respuesta</th>
-                            <th>Grupo</th>
-                            <th>Fecha</th>
-                            {#<th>Editada</th>#}
-                            <th>Vis.</th>
-                            <th>Or.</th>
+                            <th>Perfil</th>
+                            <th>Hab.</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for pf in pfs %}
-                            <tr class="elemento" id="{{pf.getId}}">
-                                <td class="pregunta">{{pf.getPregunta}}</td>
-                                <td class="respuesta">{{pf.getRespuesta}}</td>
-                                <td class="grupo">{{pf.getGrupoid.getNombre}}</td>
-                                <td class="fecha">{{pf.getFecham| date('d/m/Y')}}</td>
-                                {#<td class="modificador">{{pf.getModificadorid.getUsername}}</td>#}
-                                <td class="habilitada">{{pf.getHabilitada}}</td>
-                                <td class="orden">{{pf.getOrden}}</td>
+                        {% for grupo_soporte in grupos_soporte %}
+                            <tr class="elemento" id="{{grupo_soporte.getId}}">
+                                <td class="nombre">{{grupo_soporte.getGruposoporteid.getNombre}}</td>
+                                <td class="pregunta">{{grupo_soporte.getGruposoporteid.getPregunta}}</td>
+                                <td class="respuesta">{{grupo_soporte.getGruposoporteid.getRespuesta}}</td>
+                                <td class="perfil">{{grupo_soporte.getPerfilnombre.getNombre}}</td>
+                                <td class="habilitada">{{grupo_soporte.getHabilitada}}</td>
                                 <td class="acciones">
                                     <button type="button" class="btn edit btn-icon">
                                         <i class="icon ion-compose"></i>
@@ -71,9 +67,9 @@
         <script src=" {{ asset('Resources/bootstrap/assets/bootbox/bootbox.js') }}"></script>
     <script src=" {{ asset('Resources/bootstrap/assets/datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src=" {{ asset('Resources/bootstrap/assets/datatables/js/datatables.js') }}"></script>
-    <script src='{{ asset('Resources/AdminPanel/js/pf.js') }}'></script>
+    <script src='{{ asset('Resources/AdminPanel/js/grupoSoporte.js') }}'></script>
     
-    <!-- Tables editable -->
+    {#<!-- Tables editable -->#}
     {#<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
     {#<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
     {#<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>#}

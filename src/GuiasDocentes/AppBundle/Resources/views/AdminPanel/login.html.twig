@@ -42,7 +42,7 @@
                                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar" >
                             </div><!-- /form-group -->
                             <div class="form-group">
-                                <input class="iCheck" id="remember_me" name="_remember_me" type="checkbox" checked>
+                                <input class="iCheck" id="remember_me" name="_remember_me" type="checkbox">
                                 <label class="icheck-label" for="remember_me">Recuerdame</label>
                             </div><!-- /form-group -->
                         </form>
@@ -65,10 +65,10 @@
                         <h1 class="sign-brand-name">Panel de Administración - Soporte Guías Docentes</h1>
                     </div><!-- /sign-brand -->
                     <div class="sign-container">
-                        <form role="form" action="index.html">
+                        <form role="form" action="{{ path('guias_docentes_app_admin_panel_recover_pass')}}">
                             <div class="form-group">
                                 <input type="email" class="form-control input-lg" name="recover-email" placeholder="Email" >
-                                <small class="help-block text-inverse">Introduzca la dirección de email sobre la que desea restablecer la contraseña</small>
+                                <small class="help-block text-inverse">Introduzca la dirección de email sobre la que desea recuperar la contraseña</small>
                             </div><!-- /form-group -->
                             <div class="form-group">
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="Enviar" >

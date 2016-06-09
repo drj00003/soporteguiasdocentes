@@ -97,21 +97,21 @@
         </div><!-- /panel -->
     
         <div class="panel panel-default magic-element">
-            <form role="form">
+            <form role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_mailer_action')}}">
             <div class="panel-body">
                 <div class="panel-body-heading">
                     <h3 class="pb-title">Correo Miembros soporte:</h3>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="quick-mail-reseiver">a</label>
-                    <input id="quick-mail-reseiver" name="quick-mail-reseiver" type="text" class="tags" value="{{personal}}" />
+                    <input id="quick-mail-reseiver" name="destinatarios" type="text" class="tags" value="{{personal}}" />
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="quick-mail-subject">Subject</label>
-                    <input id="quick-mail-subject" name="quick-mail-subject" type="text" class="form-control">
+                    <input id="quick-mail-subject" name="subject" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <textarea id="quick-mail-content" name="quick-mail-content" class="form-control" style="width:100%" rows="10" placeholder="Introduzca el texto ..."></textarea>
+                    <textarea id="quick-mail-content" name="texto" class="form-control" style="width:100%" rows="10" placeholder="Introduzca el texto ..."></textarea>
                 </div><!-- /form-group -->
             </div>
             <div class="panel-footer clearfix">

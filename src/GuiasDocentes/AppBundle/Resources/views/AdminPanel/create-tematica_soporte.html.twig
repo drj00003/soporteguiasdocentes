@@ -2,7 +2,7 @@
     {% block breadcrumb %}
         <ol class="breadcrumb bg-none pull-left hide-xs">
             <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
-            <li class="active">Añadir Administrador</li>
+            <li class="active">Añadir Temática de Soporte</li>
         </ol>
     {% endblock %}
 {% block content_body %}
@@ -10,28 +10,32 @@
 <div class="magic-layout">
     <div class="box magic-element width-full">
         <h2 class="box-heading">
-            Nuevo Administrador
+            Nueva Temática de Soporte
         </h2>
-        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_create_admin')}}">
+        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_create_tematica_soporte')}}">
             <fieldset>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input">Nombre de usuario</label>
+                    <label class="col-sm-2 control-label" for="input">Enunciado Temática de soporte</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" required="required" id="input" name="username" placeholder="Nombre de usuario" >
+                        <input type="text" class="form-control" required="required" id="input" name="enunciado" placeholder="Nombre de grupo soporte" >
                     </div>
                 </div><!-- /form-group -->
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input">Email</label>
+                    <label class="col-sm-2 control-label" for="input">Orden</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" required="required" name="email" id="input" placeholder="Email" >
+                        <input type="number" class="form-control" required="required" name="pregunta" id="input" placeholder="Orden" >
                     </div>
                 </div><!-- /form-group -->
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="inputPass">Contraseña</label>
+                <label class="col-sm-2 control-label" for="select">Personal</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" required="required" name="password" id="inputPass" placeholder="Contraseña" />
+                        <select class="select2" name="perfil" style="width:100%">
+                            {% for personal in personales %}
+                                <option value="{{personal.getEmail}}">{{personal.getApellidos}}, {{personal.getNombre}}</option>
+                            {%endfor%}
+                        </select>
                     </div>
-                </div><!-- /form-group -->
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="reset" class="btn btn-default">Reiniciar</button>
@@ -45,6 +49,6 @@
 
 {% endblock %}
 {% block javascripts %}
-    {{ parent()}}
-    <script src='{{ asset('Resources/AdminPanel/js/addAdmin.js') }}'></script>
+{{ parent() }}
+    <script src='{{ asset('Resources/AdminPanel/js/addTemaSop.js') }}'></script>
 {% endblock %}

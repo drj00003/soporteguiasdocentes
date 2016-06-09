@@ -2,7 +2,7 @@
     {% block breadcrumb %}
         <ol class="breadcrumb bg-none pull-left hide-xs">
             <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
-            <li class="active">Añadir Administrador</li>
+            <li class="active">Añadir Miembro de Soporte</li>
         </ol>
     {% endblock %}
 {% block content_body %}
@@ -10,26 +10,32 @@
 <div class="magic-layout">
     <div class="box magic-element width-full">
         <h2 class="box-heading">
-            Nuevo Administrador
+           Nuevo Miembro de Soporte
         </h2>
-        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_create_admin')}}">
+        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_create_miembro_soporte')}}">
             <fieldset>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input">Nombre de usuario</label>
+                    <label class="col-sm-2 control-label" for="input">Nombre</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" required="required" id="input" name="username" placeholder="Nombre de usuario" >
+                        <input type="text" class="form-control" required="required" id="input" name="nombre" placeholder="Nombre" >
                     </div>
                 </div><!-- /form-group -->
                 <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input">Apellidos</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" required="required" name="apellidos" id="input" placeholder="Apellidos" >
+                    </div>
+                </div><!-- /form-group -->
+                                <div class="form-group">
                     <label class="col-sm-2 control-label" for="input">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" required="required" name="email" id="input" placeholder="Email" >
+                        <input type="email" class="form-control" required="required" id="input" name="email" placeholder="Email" >
                     </div>
                 </div><!-- /form-group -->
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="inputPass">Contraseña</label>
+                    <label class="col-sm-2 control-label" for="input">Departamento</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" required="required" name="password" id="inputPass" placeholder="Contraseña" />
+                        <input type="number" class="form-control" required="required" name="departamento" id="input" placeholder="Departamento" >
                     </div>
                 </div><!-- /form-group -->
                 <div class="form-group">
@@ -45,6 +51,6 @@
 
 {% endblock %}
 {% block javascripts %}
-    {{ parent()}}
-    <script src='{{ asset('Resources/AdminPanel/js/addAdmin.js') }}'></script>
+{{ parent() }}
+    <script src='{{ asset('Resources/AdminPanel/js/addSupMemb.js') }}'></script>
 {% endblock %}

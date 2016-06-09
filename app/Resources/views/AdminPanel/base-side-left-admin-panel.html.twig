@@ -147,12 +147,6 @@
                                         Añadir administrador
                                     </a>
                                 </li><!-- /Añadir administrador -->
-                                <li class="side-nav-item" id="gestionar_administradores">
-                                    <a href="layout_static.html">
-                                        <i class="nav-item-icon icon ion-person-stalker"></i>
-                                        Gestionar administradores
-                                    </a>
-                                </li><!-- /Modificar admin -->
                             </ul><!-- Fin Sub elementos administrador -->
                         </li><!-- Fin /Administrador -->
                         
@@ -216,7 +210,7 @@
                                             </a>
                                         </li><!-- /header level2 child -->
                                         <li class="side-nav-item" id="añadir_grupo">
-                                            <a href="#">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_create_group')}}">
                                                 <i class="nav-item-icon icon ion-archive"></i>
                                                 Añadir Grupo
                                             </a>
@@ -260,11 +254,41 @@
                                         </li><!-- /Gestionar preguntas frecuentes -->
                                     </ul><!-- /level2 child -->
                                 </li><!--Fin Preguntas Frecuentes -->
+                                
+                                <!-- Incio Grupos de Soporte -->
+                                <li class="side-nav-item" id="grupos_soporte-li">
+                                    <a href="#GruposSoporte">
+                                        <i class="nav-item-caret"></i>
+                                        <i class="nav-item-icon icon ion-gear-b"></i>
+                                        Grupos de soporte
+                                    </a>
+                                    <ul id="GruposSoporte" class="side-nav-child">
+                                        <li class="side-nav-item-heading">
+                                            <a href="#" class="side-nav-back">
+                                                <i class="nav-item-caret"></i>
+                                                Grupos de Soporte
+                                            </a>
+                                        </li><!-- /header level2 child -->
+                                        <li class="side-nav-item" id="añadir_grupo_soporte">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_create_support_group')}}">
+                                                <i class="nav-item-icon icon ion-compose"></i>
+                                                Añadir Grupo de Soporte
+                                            </a>
+                                        </li><!-- /Añadir Miembro de soporte -->
+                                        <li class="side-nav-item" id="gestionar_grupos_soporte">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_group_support_manag') }}">
+                                                <i class="nav-item-icon icon ion-compose"></i>
+                                                Gestionar Grupos de Soporte
+                                            </a>
+                                        </li><!-- /Gestionar Grupos de Soporte -->
+                                    </ul><!-- /level2 child -->
+                                </li><!-- /Gestionar Grupos de soporte -->
+                                
                             </ul><!-- /level menu child -->
                         </li><!-- Fin FAQ -->
                         
                         
-                                                <!-- Inicio /Soporte -->
+                        <!-- Inicio /Soporte -->
                         <li class="side-nav-item" id="soporte-li">
                             <a href="#Soporte">
                                 <i class="nav-item-caret"></i>
@@ -278,19 +302,61 @@
                                         Soporte
                                     </a>
                                 </li><!-- /header soporte child -->
-                                <li class="side-nav-item" id="tematica_soporte">
-                                    <a href="layout_blank.html">
+                                <li class="side-nav-item" id="tematica_soporte-li">
+                                    <a href="#TematicaSoporte">
+                                        <i class="nav-item-caret"></i>
                                         <i class="nav-item-icon icon ion-clipboard"></i>
                                         Temática de soporte
                                     </a>
+                                    <ul id="TematicaSoporte" class="side-nav-child">
+                                        <li class="side-nav-item-heading">
+                                            <a href="#" class="side-nav-back">
+                                                <i class="nav-item-caret"></i>
+                                                Temática de Soporte
+                                            </a>
+                                        </li><!-- /header level2 child -->
+                                        <li class="side-nav-item" id="añadir_tematica_soporte">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_create_tematica_soporte')}}">
+                                                <i class="nav-item-icon icon ion-compose"></i>
+                                                Añadir Temática de Soporte
+                                            </a>
+                                        </li><!-- /Añadir Temática de soporte -->
+                                        <li class="side-nav-item" id="gestionar_tematica_soporte">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_tematica_soporte_manage') }}">
+                                                <i class="nav-item-icon icon ion-compose"></i>
+                                                Gestionar Temáticas de Soporte
+                                            </a>
+                                        </li><!-- /Gestionar Temática de Soporte -->
+                                    </ul><!-- /level2 child -->
                                 </li><!-- /Gestionar Temática de soporte -->
-                                <li class="side-nav-item" id="miembros_soporte">
-                                    <a href="layout_static.html">
-                                        <i class="nav-item-icon icon ion-person-stalker"></i>
+                                <li class="side-nav-item" id="miembros_soporte-li">
+                                    <a href="#MiembrosSoporte">
+                                        <i class="nav-item-caret"></i>
+                                        <i class="nav-item-icon icon ion-person"></i>
                                         Miembros de soporte
                                     </a>
+                                    <ul id="MiembrosSoporte" class="side-nav-child">
+                                        <li class="side-nav-item-heading">
+                                            <a href="#" class="side-nav-back">
+                                                <i class="nav-item-caret"></i>
+                                                Miembros de Soporte
+                                            </a>
+                                        </li><!-- /header level2 child -->
+                                        <li class="side-nav-item" id="añadir_miembro_soporte">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_create_miembro_soporte')}}">
+                                                <i class="nav-item-icon icon ion-person"></i>
+                                                Añadir Miembro de Soporte
+                                            </a>
+                                        </li><!-- /Añadir Miembro de soporte -->
+                                        <li class="side-nav-item" id="gestionar_miembros_soporte">
+                                            <a href="{{ path('guias_docentes_app_admin_panel_miembro_soporte_manage') }}">
+                                                <i class="nav-item-icon icon ion-person-stalker"></i>
+                                                Gestionar Miembros de Soporte
+                                            </a>
+                                        </li><!-- /Gestionar Miembros de Soporte -->
+                                    </ul><!-- /level2 child -->
                                 </li><!-- /Gestionar miembros de soporte -->
-                            </ul><!-- Fin Sub elementos administrador -->
+                            </ul><!-- Fin Sub elementos Soporte -->
                         </li><!-- Fin /Soporte -->
                         
                         
@@ -324,7 +390,7 @@
                                     </a>
                                 </li><!-- /header mantenimiento child -->
                                 <li class="side-nav-item" id="limpiar_registro">
-                                    <a href="layout_blank.html">
+                                    <a href="{{ path('guias_docentes_app_admin_panel_clean')}}">
                                         <i class="nav-item-icon icon ion-trash-a"></i>
                                         Limpiar registro consultas
                                     </a>

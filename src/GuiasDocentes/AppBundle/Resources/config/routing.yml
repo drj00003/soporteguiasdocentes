@@ -46,6 +46,14 @@ login_check:
 logout:
     pattern:     /logout
     
+guias_docentes_app_admin_panel_mailer_action:
+    path: admin/mail
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:mailerAdmin}
+    
+guias_docentes_app_admin_panel_recover_pass:
+    path: /recover
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:recover}
+    
 # Admin Panel - Administrador
     
 guias_docentes_app_admin_panel_create_admin:
@@ -89,6 +97,10 @@ guias_docentes_app_admin_panel_get_profiles:
 guias_docentes_app_admin_panel_delete_group:
     path:   groups/delete
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GroupDelete }
+
+guias_docentes_app_admin_panel_create_group:
+    path: admin/groups/create
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createGroup }
     
     
 # Admin Panel - Preguntas Frecuentes
@@ -110,6 +122,63 @@ guias_docentes_app_admin_panel_create_pf:
     path:   admin/pf/create
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createPF }
 
+# Admin Panel - Grupos de Soporte
+
+guias_docentes_app_admin_panel_group_support_manag:
+    path:   admin/groupSupport
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:SupportGroup }
+    
+guias_docentes_app_admin_panel_set_support_group:
+    path:   admin/groupSupport/set
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:SupportGroupSet }
+    
+guias_docentes_app_admin_panel_delete_support_group:
+    path:   admin/groupSupport/delete
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:SupportGroupDelete }
+
+guias_docentes_app_admin_panel_create_support_group:
+    path:   admin/groupSupport/create
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createSupportGroup }
+
+
+# Admin Panel - Tematica Soporte
+
+guias_docentes_app_admin_panel_tematica_soporte_manage:
+    path:   admin/tematicaSoporte
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:tematicaSoporte }
+    
+    
+guias_docentes_app_admin_panel_set_tematica_soporte:
+    path:   admin/tematicaSoporte/set
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:TematicaSoporteSet }
+    
+guias_docentes_app_admin_panel_delete_tematica_soporte:
+    path:   admin/tematicaSoporte/delete
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:TematicaSoporteDelete }
+    
+guias_docentes_app_admin_panel_create_tematica_soporte:
+    path:   admin/tematicaSoporte/create
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createTematicaSoporte }
+    
+# Admin Panel - Miembros de Soporte
+
+guias_docentes_app_admin_panel_miembro_soporte_manage:
+    path:   admin/miembroSoporte
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:miembroSoporte }
+    
+    
+guias_docentes_app_admin_panel_set_miembro_soporte:
+    path:   admin/miembroSoporte/set
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:miembroSoporteSet }
+    
+guias_docentes_app_admin_panel_delete_miembro_soporte:
+    path:   admin/miembroSoporte/delete
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:miembroSoporteDelete }
+    
+guias_docentes_app_admin_panel_create_miembro_soporte:
+    path:   admin/miembroSoporte/create
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createMiembroSoporte }
+
 # Admin Panel - Estadisticas
     
 guias_docentes_app_admin_panel_get_Num_Consultas_By_Month:
@@ -120,3 +189,9 @@ guias_docentes_app_admin_panel_get_Num_Consultas_By_Month:
 guias_docentes_app_admin_panel_statics:
     path:   admin/statics
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:Statics }
+    
+# Admin Panel - Limpiar
+
+guias_docentes_app_admin_panel_clean:
+    path: admin/clean
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:clean }

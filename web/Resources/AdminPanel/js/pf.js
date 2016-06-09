@@ -10,11 +10,11 @@ $(document).ready(function(){
     open.removeClass('open');
     // Seleccionamos los distintos niveles (Añadir open a ul -> desplegable, y active li-> elemento seleccionado )
     $('ul#FAQ').addClass('open');
-    var lvl1 = $('#Perfiles-li');
+    var lvl1 = $('#preguntas_frecuentes-li');
     lvl1.addClass('active');
-    var lvl2= lvl1.children('#Perfiles');
+    var lvl2= lvl1.children('#PreguntasFrecuentes');
     lvl2.addClass("open");
-    lvl2.children('#gestionar_perfiles').addClass('active');
+    lvl2.children('#gestionar_pf').addClass('active');
     
     // Fin sidebar-left
     
@@ -33,11 +33,20 @@ $(document).ready(function(){
 
         // datatables
         $('.datatables').dataTable({
-            "iDisplayLength": 5,
-            "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+            "iDisplayLength": 7,
+            "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+"columns": [ { "width": "25px" }, { "width": "25px" }, { "width": "450px" }, { "width": "20px" }, { "width": "20px" }, { "width": "20px" }, { "width": "20px" } ],
         });
+    //         $('.datatables').dataTable({
+    //             "iDisplayLength": 25,
+    //             "bDestroy": true,
+    //             "bJQueryUI": true,
+    //             "sPaginationType": "full_numbers",
+    //             "bAutoWidth": false
+    // });
 
     });    
+
     
     // Json para obtener los grupos de soporte defindos para los perfiles
     var group_soporte = [];

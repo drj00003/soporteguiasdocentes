@@ -78,6 +78,43 @@ class MailerManagementController extends Controller
         // return 1;
         return $this->get('mailer')->send($message);
     }
+    
+    public function sendAdminMessage($email_values){
+            $destinatarios = $this->mailerStringToArray($email_values["destinatarios"]);
+            $message = \Swift_Message::newInstance()
+            ->setSubject($email_values["subject"])
+            ->setFrom($this->getParameter('mailer_user'))
+            ->setcC($destinatarios)
+            ->setBody(
+                $this->renderView(
+                    'GuiasDocentesAppBundle:MailerManagement:layoutAdminEmail.html.twig',
+                    array('email_values' => $email_values)
+                ),
+                'text/html'
+            )
+        ;
+        // return 1;
+        return $this->get('mailer')->send($message);
+    }
+   
+   
+    public function sendRecoverMessage($email_values){
+            $destinatarios = $this->mailerStringToArray($email_values["destinatarios"]);
+            $message = \Swift_Message::newInstance()
+            ->setSubject($email_values["subject"])
+            ->setFrom($this->getParameter('mailer_user'))
+            ->setTo($email_values["recover-email"])
+            ->setBody(
+                $this->renderView(
+                    'GuiasDocentesAppBundle:MailerManagement:layoutRecoverUser.html.twig',
+                    array('email_values' => $email_values)
+                ),
+                'text/html'
+            )
+        ;
+        // return 1;
+        return $this->get('mailer')->send($message);
+    }    
 
     /**
 	 * Función para la codificación de una cadena con el algoritmo Base 64
@@ -89,4 +126,7 @@ class MailerManagementController extends Controller
 		return base64_encode($cadena);
     }
     
+    private function mailerStringToArray($cadena){
+        return explode ($cadena);
+    }
 }
