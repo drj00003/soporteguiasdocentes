@@ -17,3 +17,16 @@
     padding-top: 0px !important;
     padding-left:0px !important;
 }
+
+.pull-right{
+    padding:10px;
+}
+
+li .glyphicon-quote{
+    top:12px;
+    height:12px;
+}
+ul.wysihtml5-toolbar li{
+    margin-right:2px;
+    padding-right: 0px;
+}

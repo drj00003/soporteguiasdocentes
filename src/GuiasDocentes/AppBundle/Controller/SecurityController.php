@@ -9,6 +9,7 @@ namespace GuiasDocentes\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\DependencyInjection\Container;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\SecurityContext;
 use GuiasDocentes\AppBundle\Entity\Administrador;
@@ -19,6 +20,14 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 class SecurityController extends Controller
 {
+    
+    /**
+     * Constructor por defecto de la clase
+     * */
+	 
+    public function __construct(){
+        $this->setContainer(new Container());
+     }
     
     public function loginAction(Request $request)
     {
@@ -60,6 +69,24 @@ class SecurityController extends Controller
     {
         $session = $request->getSession();
         $session->clear();
+    }
+    
+    function generaPass(){
+        $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        $longitudCadena=strlen($cadena);
+         
+        $pass = "";
+        $longitudPass=5;
+         
+        //Creamos la contraseña
+        for($i=1 ; $i<=$longitudPass ; $i++){
+            //Definimos numero aleatorio entre 0 y la longitud de la cadena de caracteres-1
+            $pos=rand(0,$longitudCadena-1);
+         
+            //Vamos formando la contraseña en cada iteraccion del bucle, añadiendo a la cadena $pass la letra correspondiente a la posicion $pos en la cadena de caracteres definida.
+            $pass .= substr($cadena,$pos,1);
+        }
+        return $pass;
     }
 
 }

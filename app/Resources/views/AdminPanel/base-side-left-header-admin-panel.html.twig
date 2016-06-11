@@ -1,4 +1,5 @@
 {% set num_faqs = app.session.get('num_faqs') %}
+{% set uname = app.session.get('usr') %} 
 {% extends 'AdminPanel/base-side-left-admin-panel.html.twig' %}
 {% block content_header %}
     <header class="content-header">
@@ -17,7 +18,7 @@
                             <a class="img-avatar" href="page_profile.html">
                                 <img class="img-circle" src="{{ asset('Resources/bootstrap/assets/app/img/avatar4.png') }}" alt="">
                             </a>
-                            <div class="dp-details">Sr/Sra. {{user.getUsername}}</div>
+                            <div class="dp-details">Sr/Sra. {{uname}}</div>
                         </div>
                     </li>
                     <li>
@@ -28,14 +29,14 @@
                     <li class="dropdown-footer">
                         <div class="clearfix">
                             <a href="{{ path('logout') }}" class="btn btn-sm btn-default pull-right">Cerrar sesión</a>
-                            <a href="#" class="btn btn-sm btn-default pull-left">Perfil</a>
+                            <a href="{{ path ('guias_docentes_app_admin_panel_perfil')}}" class="btn btn-sm btn-default pull-left">Perfil</a>
                         </div>
                     </li><!-- /dropdown-footer -->
                 </ul><!-- /dropdown-extend -->
             </div><!-- /btn-group setting -->
 
             <!-- (recomended: dont change the id value) -->
-            <a id="toggle-aside" class="btn btn-icon" role="button"><i class="icon ion-navicon-round"></i></a>
+            {#<a id="toggle-aside" class="btn btn-icon" role="button"><i class="icon ion-navicon-round"></i></a>#}
         </div><!-- /header actions -->
 
         <!-- header actions -->

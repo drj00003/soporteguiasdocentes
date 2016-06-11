@@ -26,14 +26,14 @@ class HiloType extends AbstractType
                 'class' => 'GuiasDocentes\AppBundle\Entity\Personal',
                 'property' => 'Enunciado',
                 'by_reference' => 'false',
-                'query_builder' => function(PersonalRepository $pr) {
-                    $query= $pr->createQueryBuilder('u')
-                    ;
-                    return $query;
-                },
                 // 'query_builder' => function(PersonalRepository $pr) {
-                //     return $pr->getPersonalOrdered3();
+                //     $query= $pr->createQueryBuilder('u')
+                //     ;
+                //     return $query;
                 // },
+                'query_builder' => function(PersonalRepository $pr) {
+                    return $pr->getPersonalOrdered();
+                },
                 'empty_value' => 'Elija una temática para su consulta:',
                 ))
         ;

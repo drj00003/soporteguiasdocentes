@@ -1,0 +1,67 @@
+{% set num_faqs = app.session.get('num_faqs') %}
+{% extends 'AdminPanel/base-side-left-header-admin-panel.html.twig' %}
+    {% block breadcrumb %}
+        <ol class="breadcrumb bg-none pull-left hide-xs">
+            <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
+            <li class="active">Perfil {{uname}}</li>
+        </ol>
+    {% endblock %}
+{% block content_body %}
+    <!-- app content here -->
+    <div class="profile-cover">
+        <div class="pc-img">
+            <img src="{{ asset('Resources/bootstrap/assets/app/img/cover.jpg')}}" alt=""><!-- /img cover -->
+        </div><!-- /profile-cover-img -->
+
+        <div class="pc-details">
+            <img class="pc-details-bg" src="{{ asset('Resources/bootstrap/assets/app/img/cover-blur.jpg')}}" alt=""><!-- /as bg pc-details -->
+            <div class="pc-details-content">
+                <div class="pc-details-pp">
+                    <img src="{{ asset('Resources/bootstrap/assets/app/img/avatar4.png')}}" alt="" class="img-circle" width="128" /><!-- /photo profile -->
+                </div>
+                <h3>Mr. {{user.getUsername}}</h3>
+                <p>Administrador</p>
+
+            </div><!-- /profile-cover-details-content -->
+        </div><!-- /profile-cover-details -->
+    </div><!-- /profile-cover -->
+    
+
+    <div class="profile-actions">
+        <ul class="nav nav-pills nav-justified">
+            <li class="active"><a href="#">Datos de contacto</a></li>
+        </ul>
+    </div><!-- /profile-actions -->
+
+    
+    <!-- magic-layout -->
+    <div class="magic-layout">
+        <div class="panel panel-default magic-element">
+            <div class="bordered-smart"></div>
+            <div class="panel-body">
+                <div class="panel-body-heading">
+                    <h3 class="pb-title">Información general</h3>
+                </div>
+                <dl class="dl-horizontal">
+                    <dt>Nombre de usuario</dt>
+                        <dd>{{user.getUsername}}</dd>
+                    <dt>Email</dt>
+                        <dd>{{user.getEmail}}</dd>
+                    <dt>Activo</dt>
+                        {% if user.getIsActive %}
+                            <dd>Activo</dd>
+                        {% else %}
+                            <dd>Inactivo</dd>
+                        {% endif %}
+                    <dt>Número de Faq gestionadas</dt>
+                        <dd>{{num_faqs}}</dd>
+                </dl>
+            </div><!-- /panel-body -->
+        </div><!-- /panel -->
+
+    </div><!-- /magic-layout -->
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+{% endblock %}

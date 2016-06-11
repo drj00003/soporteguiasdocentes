@@ -93,15 +93,13 @@ class MailerManagementController extends Controller
                 'text/html'
             )
         ;
-        // return 1;
         return $this->get('mailer')->send($message);
     }
    
    
     public function sendRecoverMessage($email_values){
-            $destinatarios = $this->mailerStringToArray($email_values["destinatarios"]);
             $message = \Swift_Message::newInstance()
-            ->setSubject($email_values["subject"])
+            ->setSubject('Recuperación de contraseña')
             ->setFrom($this->getParameter('mailer_user'))
             ->setTo($email_values["recover-email"])
             ->setBody(
@@ -112,7 +110,6 @@ class MailerManagementController extends Controller
                 'text/html'
             )
         ;
-        // return 1;
         return $this->get('mailer')->send($message);
     }    
 
@@ -127,6 +124,6 @@ class MailerManagementController extends Controller
     }
     
     private function mailerStringToArray($cadena){
-        return explode ($cadena);
+        return explode (',', $cadena);
     }
 }

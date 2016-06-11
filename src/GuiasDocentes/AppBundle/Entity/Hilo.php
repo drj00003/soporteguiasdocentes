@@ -29,7 +29,7 @@ class Hilo
     /**
      * @var \GuiasDocentes\AppBundle\Entity\Personal
      *
-     * @ORM\ManyToOne(targetEntity="Personal", inversedBy="hilos", cascade ={"ALL"})
+     * @ORM\ManyToOne(targetEntity="Personal", inversedBy="hilos", cascade = {"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="personalEmail", referencedColumnName="email")
      * })

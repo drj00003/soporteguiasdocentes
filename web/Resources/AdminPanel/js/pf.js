@@ -49,70 +49,102 @@ $(document).ready(function(){
 
     
     // Json para obtener los grupos de soporte defindos para los perfiles
-    var group_soporte = [];
+    var group = [];
     // $.getJSON('https://soporteguiasdocentes-utesting.c9users.io/web/app_dev.php/groups/getProfiles')
-     $.getJSON(window.location.pathname+'/getGroupSupport')
+     $.getJSON(window.location.pathname+'/getGroup')
     .done( function( response ) {
         //done() es ejecutada cuándo se recibe la respuesta del servidor. response es el objeto JSON recibido
         if( response.success ) {
-            $.each(response.data, function(key, value){
-                group_soporte.push(value);
-            });
+            // $.each(response.data, function(key, value){
+            //     group.push(value);
+            // });
+            group = response.data;
         }
     });    
     
+
+
+
 
 
 // Boton de edición
 
     $( ".edit" ).click(function() {
         var selector = $(this).parents('.elemento');
-        var id_grupo_soporte_perfil = selector.attr('id');
-        var nombre = selector.children('.nombre').text();
-        var gs = selector.children('.grupo_soporte').text();
+        var id_pf = selector.attr('id');
+        var pregunta = selector.children('.pregunta').text();
+        var respuesta = selector.children('.respuesta').text();
+        var grupo = selector.children('.grupo').text();
+        var habilitada = selector.children('.habilitada').text();
         var orden = selector.children('.orden').text();
-        var s = $("<select  name=\"grupo_soporte\" />");
-        $.each(group_soporte,function(key, value){
-            if (value==gs){
-                $("<option />", {value: key, text: value, selected:true}).appendTo(s);    
-            }else{
-                $("<option />", {value: key, text: value}).appendTo(s);
-            }
+        
+                                //     <optgroup label="{{key}}">
+                                // {%for key,p in perfil %}
+                                //     <option value="{{key}}">{{p}}</option>
+                                // {%endfor%}
+                            // </optgroup>
+        var s = $("<select  name=\"grupo\" />");
+        $.each(group,function(key, value){
+            $("<optgroup />", {label: key}).appendTo(s);
+            $.each (value, function(k,v){
+                $("<option />", {value:k, text: v}).appendTo(s);    
+            })
         });
         bootbox.dialog({
-                    title: "Perfil "+nombre,
+                    title: "Pregunta Frecuente",
                     message: '<div class="row">  ' +
                         '<div class="col-md-12"> ' +
-                        '<form class="form-horizontal grupo_perfil" method="post" action="'+window.location.pathname+'/set'+'"> ' +
+                        '<form class="form-horizontal pf" method="post" action="'+window.location.pathname+'/set'+'"> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="grupo_soporte">Grupo Soporte</label> ' +
-                        '<div class="col-md-4"> ' +
-                        '<select id="grupo_soporte" required="required" name="grupo_soporte" class="form-control">' +
+                        '<div class="col-md-8"> ' +
+                        '<select id="grupo" required="required" name="grupo" class="form-control">' +
                         s.html() +
                         '</select>'+
                         '</div> ' +
                         '</div> ' +
                         '<div class="form-group"> ' +
-                        '<label class="col-md-4 control-label" for="nombre">Nombre</label> ' +
-                        '<div class="col-md-4"> ' +
-                        '<input id="name" required="required" name="nombre" type="text" placeholder="'
-                        +nombre+ 
+                        '<label class="col-md-4 control-label" for="pregunta">Pregunta</label> ' +
+                        '<div class="col-md-8"> ' +
+                        '<textarea id="pregunta" required="required" name="pregunta"'+
                         '" value="'
-                        +nombre+
-                        '"class="form-control input-md"> ' +
+                        +pregunta+
+                        '" rows="7" cols="7" class="form-control"> ' +
+                        '"'+pregunta+
+                        '"</textarea>'+
+                        '</div> ' +
+                        '</div> ' +
+                        '<div class="form-group"> ' +
+                        '<label class="col-md-4 control-label" for="respuesta">Respuesta</label> ' +
+                        '<div class="col-md-8"> ' +
+                        '<textarea id="respuesta" required="required" name="respuesta"' +
+                        '" value="'+
+                        '" rows="7" cols="7" class="form-control"> ' +
+                        '"'+respuesta+
+                        '"</textarea>'+
+                        '</div> ' +
+                        '</div> ' +
+                        '<div class="form-group"> ' +
+                        '<label class="col-md-4 control-label" for="habilitada">Habilitada</label> ' +
+                        '<div class="col-md-8"> ' +
+                        '<input id="habilitada" name="habilitada" type="checkbox" value="'+ 
+                        +habilitada+ 
+                        '" checked="'+
+                        habilitada+
+                        '">'+
                         '</div> ' +
                         '</div> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="orden">Orden</label> ' +
-                        '<div class="col-md-4"> ' +
-                        '<input id="name" required="required" name="orden" type="text" placeholder="'
+                        '<div class="col-md-8"> ' +
+                        '<input id="orden" required="required" name="orden" type="number" placeholder="'
                         +orden+
                         '" value="'
                         +orden+
                         '"class="form-control input-md"> ' +
                         '</div> ' +
                         '</div> ' +
-                        '<input id="id_grupo_soporte_perfil" name="id_grupo_soporte_perfil" type="hidden" value="'+id_grupo_soporte_perfil+'"> ' +
+                        '<input id="id_pf" name="id_pf" type="hidden" value="'+id_pf+'"> ' +
                         '</form> </div>  </div>',
                     buttons: {
                         submit: {
@@ -120,15 +152,15 @@ $(document).ready(function(){
                             className: "btn-success",
                             type: "submit",
                             callback: function () {
-                                $('.grupo_perfil').submit();
-                                $('.col-md-12').append('<span class="alert">La consulta ha sido envida </span>');
+                                $('.pf').submit();
+                                $('.col-md-12').append('<span class="alert">La pf ha sido editada </span>');
                                 // var name = $('#name').val();
                                 // var answer = $("input[name='awesomeness']:checked").val()
                                 // Example.show("Hello " + name + ". You've chosen <b>" + answer + "</b>");
                             }
                         },
                         "Cancelar": {
-                            className: "btn-danger close",
+                            className: "btn-danger",
                             callback: function() {
                                 bootbox.hideAll();
                             }
@@ -141,16 +173,13 @@ $(document).ready(function(){
     //Boton Borrado
     $( ".remove" ).click(function() {
         var selector = $(this).parents('.elemento');
-        var id_grupo_perfil = selector.attr('id');
-        var nombre = selector.children('.nombre').text();
-        var perfil = selector.children('.perfil').text();
-        var orden = selector.children('.orden').text();
+        var id_pf = selector.attr('id');
         bootbox.dialog( {
             title: "Eliminar registro",
             message:
-                "¿Esta seguro de que desea eliminar el grupo "+nombre+"?"+
-                '<form class="grupo_perfil" method="post" action="'+window.location.pathname+'/delete'+'"> ' +
-                '<input id="id_grupo_perfil" name="id_grupo_perfil" type="hidden" value="'+id_grupo_perfil+'"> ' +
+                "¿Esta seguro de que desea eliminar la pregunta frecuente?"+
+                '<form class="pf" method="post" action="'+window.location.pathname+'/delete'+'"> ' +
+                '<input id="id_pf" name="id_pf" type="hidden" value="'+id_pf+'"> ' +
                 '</form>',
             buttons: {
                 submit: {
@@ -158,7 +187,7 @@ $(document).ready(function(){
                     className: "btn-success",
                     type: "submit",
                     callback: function (result) {
-                        $('.grupo_perfil').submit();
+                        $('.pf').submit();
                     
                     }
                 },

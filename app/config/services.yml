@@ -11,3 +11,7 @@ services:
         class: GuiasDocentes\AppBundle\Controller\MailerManagementController
         calls:
             - [ setContainer, [ @service_container ]]
+    security:
+        class: GuiasDocentes\AppBundle\Controller\SecurityController
+        calls:
+            - [ setContainer, [ @service_container ]]

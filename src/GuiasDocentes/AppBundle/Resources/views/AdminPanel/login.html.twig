@@ -65,15 +65,19 @@
                         <h1 class="sign-brand-name">Panel de Administración - Soporte Guías Docentes</h1>
                     </div><!-- /sign-brand -->
                     <div class="sign-container">
-                        <form role="form" action="{{ path('guias_docentes_app_admin_panel_recover_pass')}}">
+                        <form id="recover-form" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_recover_pass')}}">
                             <div class="form-group">
                                 <input type="email" class="form-control input-lg" name="recover-email" placeholder="Email" >
-                                <small class="help-block text-inverse">Introduzca la dirección de email sobre la que desea recuperar la contraseña</small>
+                                <small class="help-block text-inverse">Introduzca la dirección de correo sobre la que desea recuperar la contraseña</small>
                             </div><!-- /form-group -->
                             <div class="form-group">
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Enviar" >
+                                <input type="submit" class="btn btn-lg btn-success btn-block" id="recover" value="Enviar" >
                             </div><!-- /form-group -->
                         </form>
+                        <div id="success-recover" class="alert alert-success">
+                            <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>¡Usuario Recuperado!</strong> Revise su correo para encontrar la nueva contraseña
+                         </div>
                     </div><!-- /sign-container -->
                 </div><!-- /col -->
             </div><!-- /row -->
@@ -92,6 +96,7 @@
 
     <!-- theme app main.js -->
     <script src="{{ asset('Resources/bootstrap/assets/app/js/main.js') }}"></script>
+    <script src="{{ asset('Resources/AdminPanel/js/login.js') }}"></script>
 
     <script type="text/javascript">
     $(function() {

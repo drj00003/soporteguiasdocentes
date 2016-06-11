@@ -54,6 +54,10 @@ guias_docentes_app_admin_panel_recover_pass:
     path: /recover
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:recover}
     
+guias_docentes_app_admin_panel_perfil:
+    path: admin/perfil
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:perfil}
+    
 # Admin Panel - Administrador
     
 guias_docentes_app_admin_panel_create_admin:
@@ -109,14 +113,18 @@ guias_docentes_app_admin_panel_pf_manage:
     path:   admin/pf
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:pf }
     
-# guias_docentes_app_admin_panel_get_support_group:
-#     path:   admin/profiles/getGroupSupport
-#     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GetSupportGroup }
-#     methods: GET
+guias_docentes_app_admin_panel_get_group:
+    path:   admin/pf/getGroup
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GetGroup }
+    methods: GET
     
 guias_docentes_app_admin_panel_set_pf:
     path:   admin/pf/set
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:PFSet }
+    
+guias_docentes_app_admin_panel_delete_pf:
+    path:   admin/pf/delete
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:PFDelete }
     
 guias_docentes_app_admin_panel_create_pf:
     path:   admin/pf/create
@@ -140,6 +148,11 @@ guias_docentes_app_admin_panel_create_support_group:
     path:   admin/groupSupport/create
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createSupportGroup }
 
+guias_docentes_app_admin_panel_get_profiles_grupos_soporte:
+    path:   admin/groupSupport/getProfiles
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:GetProfilesSoporte }
+    methods: GET
+
 
 # Admin Panel - Tematica Soporte
 
@@ -159,6 +172,11 @@ guias_docentes_app_admin_panel_delete_tematica_soporte:
 guias_docentes_app_admin_panel_create_tematica_soporte:
     path:   admin/tematicaSoporte/create
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createTematicaSoporte }
+    
+guias_docentes_app_admin_panel_get_personal:
+    path:   admin/tematicaSoporte/getPersonales
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:getPersonales }
+    methods: GET
     
 # Admin Panel - Miembros de Soporte
 

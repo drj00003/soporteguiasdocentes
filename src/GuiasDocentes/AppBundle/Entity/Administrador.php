@@ -82,6 +82,7 @@ class Administrador implements UserInterface, \Serializable
         $this->isActive = true;
         $this->pfs = new ArrayCollection();
     }
+    
 
     /**
      * @inheritDoc

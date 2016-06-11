@@ -17,7 +17,7 @@
                 <div class="form-group">
                 <label class="col-sm-2 control-label" for="select">Perfiles</label>
                     <div class="col-sm-10">
-                        <select class="select2" name="perfil" style="width:100%">
+                        <select class="select2" name="personal" style="width:100%">
                             {% for personal in personales %}
                                 <option value="{{personal.getEmail}}">{{personal.getApellidos}}, {{personal.getNombre}}</option>
                             {%endfor%}
@@ -31,6 +31,19 @@
                 </div><!-- /form-group -->
             </fieldset><!-- /fieldset -->
         </form><!-- /form -->
+        {%if ok != null %}
+            {%if ok==true %}
+                <div id="success-recover" class="alert alert-success">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>¡Hecho!</strong> Registro de consultas limpio
+                 </div>
+            {% else %}
+                <div id="success-recover" class="alert alert-danger">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>¡Error!</strong> No se ha podido realizar la acción, pongase en contacto con el administrador de la aplicación.
+                </div>
+            {% endif %}
+        {%endif%}
     </div><!-- /box -->
 </div>
 

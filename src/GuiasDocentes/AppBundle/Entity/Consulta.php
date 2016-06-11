@@ -49,7 +49,7 @@ class Consulta
     /**
      * @var \Hilo
      *
-     * @ORM\ManyToOne(targetEntity="Hilo", inversedBy="consultas", cascade={"ALL"})
+     * @ORM\ManyToOne(targetEntity="Hilo", inversedBy="consultas", cascade={"persist", "remove"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="hiloId", referencedColumnName="id")
      * })
