@@ -46,9 +46,10 @@ $(document).ready(function(){
     .done( function( response ) {
         //done() es ejecutada cuándo se recibe la respuesta del servidor. response es el objeto JSON recibido
         if( response.success ) {
-            $.each(response.data, function(key, value){
-                group_soporte.push(value);
-            });
+            // $.each(response.data, function(key, value){
+            //     group_soporte.push(value);
+            // });
+            group_soporte = response.data;
         }
     });    
     
@@ -74,7 +75,7 @@ $(document).ready(function(){
                     title: "Perfil "+nombre,
                     message: '<div class="row">  ' +
                         '<div class="col-md-12"> ' +
-                        '<form class="form-horizontal grupo_perfil" method="post" action="'+window.location.pathname+'/set'+'"> ' +
+                        '<form class="form-horizontal grupo_perfil" method="POST" action="'+window.location.pathname+'/set'+'"> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="grupo_soporte">Grupo Soporte</label> ' +
                         '<div class="col-md-4"> ' +
@@ -96,7 +97,7 @@ $(document).ready(function(){
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="orden">Orden</label> ' +
                         '<div class="col-md-4"> ' +
-                        '<input id="name" required="required" name="orden" type="text" placeholder="'
+                        '<input id="name" required="required" name="orden" type="number" placeholder="'
                         +orden+
                         '" value="'
                         +orden+
@@ -119,7 +120,7 @@ $(document).ready(function(){
                             }
                         },
                         "Cancelar": {
-                            className: "btn-danger close",
+                            className: "btn-danger",
                             callback: function() {
                                 bootbox.hideAll();
                             }
@@ -132,16 +133,16 @@ $(document).ready(function(){
     //Boton Borrado
     $( ".remove" ).click(function() {
         var selector = $(this).parents('.elemento');
-        var id_grupo_perfil = selector.attr('id');
+        var id_grupo_soporte_perfil = selector.attr('id');
         var nombre = selector.children('.nombre').text();
         var perfil = selector.children('.perfil').text();
         var orden = selector.children('.orden').text();
         bootbox.dialog( {
             title: "Eliminar registro",
             message:
-                "¿Esta seguro de que desea eliminar el grupo "+nombre+"?"+
+                "¿Esta seguro de que desea eliminar el perfil "+nombre+"? Se eliminaran los grupos de soporte asociados al mismo"+
                 '<form class="grupo_perfil" method="post" action="'+window.location.pathname+'/delete'+'"> ' +
-                '<input id="id_grupo_perfil" name="id_grupo_perfil" type="hidden" value="'+id_grupo_perfil+'"> ' +
+                '<input id="id_grupo_soporte_perfil" name="id_grupo_soporte_perfil" type="hidden" value="'+id_grupo_soporte_perfil+'"> ' +
                 '</form>',
             buttons: {
                 submit: {

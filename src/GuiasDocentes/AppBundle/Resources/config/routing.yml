@@ -79,6 +79,10 @@ guias_docentes_app_admin_panel_set_profile:
     path:   admin/profiles/set
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:ProfileSet }
     
+guias_docentes_app_admin_panel_delete_profile:
+    path:   admin/profiles/delete
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:ProfileDelete }
+    
 guias_docentes_app_admin_panel_create_profile:
     path:   admin/profiles/create
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createProfile }
@@ -196,6 +200,12 @@ guias_docentes_app_admin_panel_delete_miembro_soporte:
 guias_docentes_app_admin_panel_create_miembro_soporte:
     path:   admin/miembroSoporte/create
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:createMiembroSoporte }
+    
+# Admin Panel - Informes
+
+guias_docentes_app_admin_panel_informe:
+    path:   admin/informe
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:informe }
 
 # Admin Panel - Estadisticas
     
@@ -213,3 +223,9 @@ guias_docentes_app_admin_panel_statics:
 guias_docentes_app_admin_panel_clean:
     path: admin/clean
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:clean }
+
+# PDF
+
+guias_docentes_app_admin_panel_historial:
+    path: admin/historial
+    defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:layoutPDF }

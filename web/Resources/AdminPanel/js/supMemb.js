@@ -17,6 +17,27 @@ $(document).ready(function(){
     lvl2.children('#gestionar_miembros_soporte').addClass('active');
     
     
+        // Funcion de refresco JQuery
+    $(function(){
+        // panel refresh
+        $('.panel [data-refresh]').on('click', function(){
+            var $this = $(this),
+                panel = $this.attr('data-refresh');
+
+            setTimeout(function(){
+                $(panel).find('.panel-progress').remove();  // remove proggress spinner
+            }, 1000 );
+        });
+
+
+        // datatables
+        $('.datatables').dataTable({
+            "iDisplayLength": 5,
+            "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+        });
+
+    });    
+    
     // Boton de edición
 
     $( ".edit" ).click(function() {

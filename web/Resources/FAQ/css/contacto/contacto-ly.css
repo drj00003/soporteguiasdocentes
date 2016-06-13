@@ -55,21 +55,12 @@ textarea.form-control{
 
 
 
-/*.g-recaptcha{*/
-/*    width: auto;*/
-/*}*/
-
-
 /* Historico */
 
-/*.historico-content{*/
-/*    margin-left: 50px;*/
-/*    margin-right: 20px;*/
-/*}*/
-
-/*.historico-content h3{*/
-/*    margin-left:0;*/
-/*}*/
+form.respuesta .form-historico-respuesta, form.respuesta .form-historico-consulta{
+    max-width: 580px;
+    min-height: 130px;
+}
 
 .datos-consultante, .datos-consulta{
     margin-left: 2em;

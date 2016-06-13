@@ -60,6 +60,19 @@
                 </div><!-- /form-group -->
             </fieldset><!-- /fieldset -->
         </form><!-- /form -->
+        {%if ok != 0 %}
+            {%if ok==1 %}
+                <div id="success-create-support-group" class="alert alert-success">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>¡Hecho!</strong> Nuevo Grupo de Soporte creado.
+                 </div>
+            {% else %}
+                <div id="fail-create-support-group" class="alert alert-danger">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>¡Error!</strong> No se ha podido realizar la acción, por favor pongase en contacto con el administrador de la aplicación.
+                </div>
+            {% endif %}
+        {% endif %}
     </div><!-- /box -->
 </div>
 

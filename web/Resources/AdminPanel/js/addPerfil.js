@@ -16,4 +16,15 @@ $(document).ready(function(){
     lvl2.addClass("open");
     lvl2.children('#añadir_perfil').addClass('active');
     
+    $('.select2').select2();
+    
+    $('.a').hide();
+    
+    $('.añadir-grupo-soporte').click(function(){
+         var desplegable = $('.a');
+        //  $('.añadir-grupo-soporte .form-group').not(desplegable).slideUp('fast');
+          desplegable.slideToggle('fast');
+          event.preventDefault();
+    })
+    
 });

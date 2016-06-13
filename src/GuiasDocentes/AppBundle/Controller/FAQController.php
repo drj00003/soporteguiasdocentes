@@ -40,50 +40,59 @@ class FAQController extends Controller
     }
     
     public function gfaqAction(Request $request){
-        $session = $request->getSession();
-        $perfil = $session->get('perfil');
-        if ((!isset($_POST['perfil'])) && (!isset($perfil))) {
-            return $this->indexAction();
-            
-        }elseif(isset($_POST['perfil'])) {
-            $perfil = $_POST['perfil'];
-            /* Gestion de atributos de sesion */
+        try{
             $session = $request->getSession();
-            $session->set('perfil', $perfil);
-        }
-        
-        /* Obtenemos las ids de los distintos grupos asociados a un perfil */
-        $em = $this->getDoctrine()->getManager();
-        $idgrupos = $em->getRepository('GuiasDocentesAppBundle:PerfilGrupoOrder')
-        ->getDistinctGroupsByPerfilOrdered($perfil);
-        
-        if (!$idgrupos) {
-             throw $this->createNotFoundException(
-                'No existen gurpos para el perfil seleccionado '.$perfil);
+            $perfil = $session->get('perfil');
+            if ((!isset($_POST['perfil'])) && (!isset($perfil))) {
+                return $this->indexAction();
                 
-        }else{
-            foreach ($idgrupos as $idgrupo){
-                /* Dados los diferentes ids de grupos generamos un array de grupos */
-                $grupos[]=$em->getRepository('GuiasDocentesAppBundle:Grupo')
-                ->getGrupoById($idgrupo[1]);
-                /* Dados los diferentes ids de grupos generamos un array indizado con las diferentes pf correspondientes al id grupal de indice*/
-                $collectionPF[$idgrupo[1]] = $em->getRepository('GuiasDocentesAppBundle:Pf')
-                ->getCollectionPFByGroupOrdered($idgrupo[1]);
+            }elseif(isset($_POST['perfil'])) {
+                $perfil = $_POST['perfil'];
+                /* Gestion de atributos de sesion */
+                $session = $request->getSession();
+                $session->set('perfil', $perfil);
             }
             
-            /* Extraigamos el/los grupos de soporte para el perfil dado (Generalmente será uno) */
-            /* Primeramente el id */
-            $gs_ids = $em->getRepository('GuiasDocentesAppBundle:GrupoSoporteHasPerfil')
-            ->findByPerfilnombre($perfil); /*Necesito comprobar si esta habilitado*/
+            /* Obtenemos las ids de los distintos grupos asociados a un perfil */
+            $em = $this->getDoctrine()->getManager();
+            $idgrupos = $em->getRepository('GuiasDocentesAppBundle:PerfilGrupoOrder')
+            ->getDistinctGroupsByPerfilOrdered($perfil);
+            
+            if (!$idgrupos) {
+                 throw $this->createNotFoundException(
+                    'No existen gurpos para el perfil seleccionado '.$perfil);
+                    
+            }else{
+                foreach ($idgrupos as $idgrupo){
+                    /* Dados los diferentes ids de grupos generamos un array de grupos */
+                    $grupos[]=$em->getRepository('GuiasDocentesAppBundle:Grupo')
+                    ->getGrupoById($idgrupo[1]);
+                    /* Dados los diferentes ids de grupos generamos un array indizado con las diferentes pf correspondientes al id grupal de indice*/
+                    $collectionPF[$idgrupo[1]] = $em->getRepository('GuiasDocentesAppBundle:Pf')
+                    ->getCollectionPFByGroupOrdered($idgrupo[1]);
+                }
+                
+                /* Extraigamos el/los grupos de soporte para el perfil dado (Generalmente será uno) */
+                /* Primeramente el id */
+                $gs_ids = $em->getRepository('GuiasDocentesAppBundle:GrupoSoporteHasPerfil')
+                ->findByPerfilnombre($perfil); /*Necesito comprobar si esta habilitado*/
+                if (!empty($gs_ids)){
+                    /* Una vez tenemos el/los ids extraigamos el/los objetos grupo soporte*/
+                    foreach ($gs_ids as $gs_id){
+                        $gs[] = $em->getRepository('GuiasDocentesAppBundle:GrupoSoporte')
+                        ->findOneById($gs_id->getGruposoporteid());
+                    }
+                }else{
+                    $gs =[];
+                }
 
-            /* Una vez tenemos el/los ids extraigamos el/los objetos grupo soporte*/
-            foreach ($gs_ids as $gs_id){
-                $gs[] = $em->getRepository('GuiasDocentesAppBundle:GrupoSoporte')
-                ->findOneById($gs_id->getGruposoporteid());
             }
-
             return $this->render('GuiasDocentesAppBundle:FAQ:gfaq.html.twig', array('perfil' => $perfil, 'grupos'=> $grupos, 'PF' => $collectionPF, 'grupos_soporte' => $gs));
+        }catch(\Exception $e){
+                $result = -1;
+                throw $e;
         }
+
     }
 
     public function contactoAction (Request $request){
@@ -297,6 +306,7 @@ class FAQController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->getConnection()->beginTransaction();
                 $hilo = $em->getRepository('GuiasDocentesAppBundle:Hilo')->findOneById($cod_hilo);
+                $personal = $hilo->getPersonalemail();
                 $params = $this->getRequest()->request->all();
                 $role = $params["role"];
                 //Necesitamos las asignaturas de las anteriores consultas o meter un boton añadir
@@ -306,15 +316,18 @@ class FAQController extends Controller
                 }
                 
                 $consulta = new Consulta();
-                $consulta->setTexto($params["respuesta"]);
-                foreach ($asignatura as $asignaturas){
+                $consulta->setTexto($params["consulta"]);
+                $consulta->setHiloid($hilo);
+                foreach ($asignaturas as $asignatura){
                     $consulta_has_asignatura= new ConsultaHasAsignatura();
                     $consulta_has_asignatura->setConsulta($consulta);
-                    $consulta_has_asignatura->setConsulta($asignatura);
+                    $consulta_has_asignatura->setAsignaturaCodigo($asignatura);
                     $em->persist($consulta_has_asignatura);
+                    $asig[] = $asignatura->getCodigo();
                 }
-                $email_values= array ('consulta' => $form_request["consulta"]["texto"], 'asignaturas' => $asignaturas, 'consultante' => $consultante, 'personal' => $personal, 'hilo' => $hilo);
-                if ($this->sendReplyToConsultante($email_values) == 1) {
+                $email_values= array ('consulta' => $params["consulta"], 'personal'=>$personal, 'asignaturas' => $asig, 'hilo' => $hilo);
+                $mailerService = $this->get('mailer_management');
+                if ($mailerService->sendMessageToSupport($email_values) == 1) {
                     $em->flush();
                     $em->getConnection()->commit();
                     // $session->getFlashBag()->add('notice', 'Profile updated');

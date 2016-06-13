@@ -6,6 +6,19 @@
         </ol>
     {% endblock %}
 {% block content_body %}
+    {%if ok != 0 %}
+        {%if ok==1 %}
+            <div id="success-create-profile" class="alert alert-success">
+                <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Operación realizada correctamente</strong> 
+             </div>
+        {% else %}
+            <div id="fail-create-profile" class="alert alert-danger">
+                <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>¡Error!</strong> No se ha podido realizar la acción, por favor pongase en contacto con el administrador de la aplicación.
+            </div>
+        {% endif %}
+    {% endif %}
     <div class="magic-layout">
         <div id="data" class="panel panel-default magic-element width-full">
             <div class="panel-heading">
@@ -33,7 +46,7 @@
                             <th>Perfil</th>
                             <th>Grupo</th>
                             <th>Orden</th>
-                            <th>Editar</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>

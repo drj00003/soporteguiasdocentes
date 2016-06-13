@@ -1,0 +1,22 @@
+{%for hilo in hilos%}
+<h1>Informe consultas/respuestas {{hilo.getPersonalEmail.getNombre}}</H1>
+<span>Informe generado : {{ "now"|date("m/d/Y") }}</span>
+<h3>Datos personal de soporte:</h3>
+<div>
+    <span>Nombre: {{hilo.getPersonalEmail.getNombre}}</span>
+    <span>Apellidos: {{hilo.getPersonalEmail.getApellidos}}</span>
+    <span>Departamento: {{hilo.getPersonalEmail.getDepartamento}}</span>
+</div>
+<div>
+    <h3>Datos consultante:</h3>
+
+    <div>
+        <span>Nombre: {{hilo.getConsultanteemail.getNombre}}</span>
+        <span>Apellidos: {{hilo.getConsultanteemail.getApellidos}}</span>
+        <span>Email: {{hilo.getConsultanteemail.getEmail}}</span>
+    </div>
+    {#<div>#}
+    {#    <span>Consulta: {{hilo.getCon </span>#}
+    {#</div>#}
+</div>
+{%endfor%}

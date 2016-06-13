@@ -38,7 +38,7 @@ class TematicaSoporte
     /**
      * @var \Personal
      *
-     * @ORM\ManyToOne(targetEntity="Personal", inversedBy="tematicasSoporte", cascade={"ALL"})
+     * @ORM\ManyToOne(targetEntity="Personal", inversedBy="tematicasSoporte", cascade = {"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="personalEmail", referencedColumnName="email")
      * })

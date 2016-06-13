@@ -29,19 +29,17 @@ class SecurityController extends Controller
         $this->setContainer(new Container());
      }
     
+    /**
+	 * Función de login para el acceso a la sección de administración
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return html Página de lógin
+	 * */
+    
     public function loginAction(Request $request)
     {
-        // $authenticationUtils = $this->get('security.authentication_utils');
-        // // get the login error if there is one
-        // $error = $authenticationUtils->getLastAuthenticationError();
-    
-        // // last username entered by the user
-        // $lastUsername = $authenticationUtils->getLastUsername();
-        
+
         $session = $request->getSession();
-        // var_dump($session);
-        // var_dump($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR));
-        // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(
                 SecurityContext::AUTHENTICATION_ERROR
@@ -64,14 +62,22 @@ class SecurityController extends Controller
     
     /**
      * @Route("/logout", name="logout")
-     */
+	 * Función de deslogueo en el panel de administración
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * */
     public function logoutAction(Request $request)
     {
         $session = $request->getSession();
         $session->clear();
     }
     
-    function generaPass(){
+    /**
+	 * Función para generar un nuevo pass para la funcion de recuperacion de usuario
+	 * @return strin Nuevo pass
+	 * */    
+    
+    private function generaPass(){
         $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         $longitudCadena=strlen($cadena);
          

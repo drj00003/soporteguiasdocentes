@@ -15,6 +15,29 @@ $(document).ready(function(){
     var lvl2= lvl1.children('#GruposSoporte');
     lvl2.addClass("open");
     lvl2.children('#gestionar_grupos_soporte').addClass('active');
+    
+    
+        // Funcion de refresco JQuery
+    $(function(){
+        // panel refresh
+        $('.panel [data-refresh]').on('click', function(){
+            var $this = $(this),
+                panel = $this.attr('data-refresh');
+
+            setTimeout(function(){
+                $(panel).find('.panel-progress').remove();  // remove proggress spinner
+            }, 1000 );
+        });
+
+
+        // datatables
+        $('.datatables').dataTable({
+            "iDisplayLength": 5,
+            "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+        });
+
+    });    
+    
 
     // Json para obtener los perfiles defindos para los grupos de PF
     var perfiles = [];
@@ -52,7 +75,7 @@ $(document).ready(function(){
                     title: "Grupo Soporte"+ nombre,
                     message: '<div class="row">  ' +
                         '<div class="col-md-12"> ' +
-                        '<form class="form-horizontal grupos_soporte_has_perfil" method="post" action="'+window.location.pathname+'/set'+'"> ' +
+                        '<form class="form-horizontal grupos_soporte_has_perfil" method="POST" action="'+window.location.pathname+'/set'+'"> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="perfil">Perfil</label> ' +
                         '<div class="col-md-8"> ' +
@@ -77,9 +100,8 @@ $(document).ready(function(){
                         '<textarea id="pregunta" required="required" name="pregunta"' +
                         '" value="'
                         +pregunta+
-                        '" rows="7" cols="7" class="form-control"> ' +
-                        '"'+pregunta+
-                        '"</textarea>'+
+                        '" rows="7" cols="7" class="form-control">'+
+                        +pregunta+'</textarea>'+
                         '</div> ' +
                         '</div> ' +
                         '<div class="form-group"> ' +
@@ -87,17 +109,18 @@ $(document).ready(function(){
                         '<div class="col-md-8"> ' +
                         '<textarea id="respuesta" required="required" name="respuesta"' +
                         '" value="'+
-                        '" rows="7" cols="7" class="form-control"> ' +
-                        '"'+respuesta+
-                        '"</textarea>'+
+                        '" rows="7" cols="7" class="form-control">'+
+                        +respuesta+'</textarea>'+
                         '</div> ' +
                         '</div> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="habilitada">Habilitada</label> ' +
-                        '<div class="checkbox"> ' +
+                        '<div class="col-md-8"> ' +
                         '<input id="habilitada" name="habilitada" type="checkbox" value="'+ 
                         +habilitada+ 
-                        '" class="form-control" checked>'+
+                        '" checked="'+
+                        habilitada+
+                        '">'+
                         '</div> ' +
                         '</div> ' +
                         '<input id="id_grupo_soporte_perfil" name="id_grupo_soporte_perfil" type="hidden" value="'+id_grupo_soporte_perfil+'"> ' +
@@ -108,7 +131,7 @@ $(document).ready(function(){
                             className: "btn-success",
                             type: "submit",
                             callback: function () {
-                                $('.grupo_soporte_has_perfil').submit();
+                                $('.grupos_soporte_has_perfil').submit();
                                 $('.col-md-12').append('<span class="alert">El grupo de Soporte ha sido actualizado con exito </span>');
                                 // var name = $('#name').val();
                                 // var answer = $("input[name='awesomeness']:checked").val()
@@ -134,7 +157,7 @@ $(document).ready(function(){
         bootbox.dialog( {
             title: "Eliminar registro",
             message:
-                "¿Esta seguro de que desea eliminar el grupo de soporte"+ nombre+ "?"+
+                "¿Esta seguro de que desea eliminar el grupo de soporte "+ nombre+ "?"+
                 '<form class="grupo_soporte_has_perfil" method="post" action="'+window.location.pathname+'/delete'+'"> ' +
                 '<input id="id_grupo_soporte_perfil" name="id_grupo_soporte_perfil" type="hidden" value="'+id_grupo_soporte_perfil+'"> ' +
                 '</form>',

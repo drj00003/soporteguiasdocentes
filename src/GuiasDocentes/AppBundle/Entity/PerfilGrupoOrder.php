@@ -31,7 +31,7 @@ class PerfilGrupoOrder
     /**
      * @var \Grupo
      *
-     * @ORM\ManyToOne(targetEntity="Grupo")
+     * @ORM\ManyToOne(targetEntity="Grupo", cascade = {"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="grupoId", referencedColumnName="id")
      * })
@@ -41,7 +41,7 @@ class PerfilGrupoOrder
     /**
      * @var \Perfil
      *
-     * @ORM\ManyToOne(targetEntity="Perfil")
+     * @ORM\ManyToOne(targetEntity="Perfil", cascade = {"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="perfilNombre", referencedColumnName="nombre")
      * })

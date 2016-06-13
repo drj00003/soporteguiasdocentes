@@ -73,26 +73,26 @@ document.getElementById("guiasdocentes_appbundle_consultahasasignatura_save").ad
   //     document.myForm.name.focus();
   //     return false;
   // }
-  if (!/^[a-zA-Z]*$/g.test(document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_nombre").value)) {
-      document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_nombre").focus();
-      $('#alert-nombre').show();
-      event.preventDefault();
-  }
-  if (!/^[a-zA-Z]*$/g.test(document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_apellidos").value)) {
-      document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_apellidos").focus();
-      $('#alert-apellidos').show();
-      event.preventDefault();
-  }
-  if (!/^[0-9;]*$/g.test(document.getElementById("guiasdocentes_appbundle_consultahasasignatura_asignaturaCodigo_codigo").value)) {
-      document.getElementById("guiasdocentes_appbundle_consultahasasignatura_asignaturaCodigo_codigo").focus();
-      $('#alert-asignaturas').show();
-      event.preventDefault();
-  }else{
-      if (isNaturalNumber(document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_nombre").value) === false){
-          $('#alert-asignaturas').show();
-          event.preventDefault(); 
-      }
-  }
+  // if (!/^[a-zA-Z]*$/g.test(document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_nombre").value)) {
+  //     document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_nombre").focus();
+  //     $('#alert-nombre').show();
+  //     event.preventDefault();
+  // }
+  // if (!/^[a-zA-Z]*$/g.test(document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_apellidos").value)) {
+  //     document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_apellidos").focus();
+  //     $('#alert-apellidos').show();
+  //     event.preventDefault();
+  // }
+  // if (!/^[0-9;]*$/g.test(document.getElementById("guiasdocentes_appbundle_consultahasasignatura_asignaturaCodigo_codigo").value)) {
+  //     document.getElementById("guiasdocentes_appbundle_consultahasasignatura_asignaturaCodigo_codigo").focus();
+  //     $('#alert-asignaturas').show();
+  //     event.preventDefault();
+  // }else{
+  //     if (isNaturalNumber(document.getElementById("guiasdocentes_appbundle_consultahasasignatura_consulta_hiloid_consultanteemail_nombre").value) === false){
+  //         $('#alert-asignaturas').show();
+  //         event.preventDefault(); 
+  //     }
+  // }
   if ($('.g-recaptcha-response').val()==""){
     // alert("Por favor, complete el captcha.");
     //podemos cambiar el estilo aquí de g-recaptcha o g-recaptcha-response y ponerle borde rojo o fondo amarillo y meter un evento que al click not robot 

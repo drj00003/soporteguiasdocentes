@@ -57,7 +57,7 @@
             {#Asignaturas#}
             <div class="form-group" id="asignatura">
                 {{ form_label(form.asignaturaCodigo.codigo) }}
-                {{ form_widget(form.asignaturaCodigo.codigo, { 'attr': { 'class': 'form-control', 'placeholder' : 'Introduzca el código de la/s asignatura/s', 'name' : 'asignatura' } }) }}
+                {{ form_widget(form.asignaturaCodigo.codigo, { 'attr': { 'class': 'form-control', 'type': 'number', 'placeholder' : 'Introduzca el código de la/s asignatura/s', 'name' : 'asignatura' } }) }}
                 <span class="text-danger"> {{form_errors (form.asignaturaCodigo.codigo)}} </span>
                 <p class="help-block">Use punto y coma para separar las asignaturas (1091;368;453)</p>
                 <div class="alert alert-warning alert-icon" id ="alert-asignaturas" style="display: none;">

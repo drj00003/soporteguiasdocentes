@@ -23,7 +23,23 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="input">Orden</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" required="required" name="orden" id="input" placeholder="orden" >
+                        <input type="number" class="form-control" required="required" name="orden" id="input" placeholder="Orden" >
+                    </div>
+                </div><!-- /form-group -->
+                <hr>
+                <div class="">
+                    <button href="#" class="añadir-grupo-soporte btn btn-default btn-extend be-left"><i class="glyphicon glyphicon-plus"></i> Añadir Grupo Soporte Existente</a>
+                </div>
+                </br>
+                <div class="form-group a">
+                    <label class="col-sm-2 control-label" for="input">Grupo Soporte</label>
+                    <div class="col-sm-10">
+                        <select class="select2" name="grupo_soporte" style="width:100%" >
+                            <option value="" disabled selected>Seleccione un grupo</option>
+                            {% for grupo_soporte in grupos_soporte %}
+                                <option value="{{grupo_soporte.getId}}">{{grupo_soporte.getNombre}}</option>
+                            {%endfor%}
+                        </select>
                     </div>
                 </div><!-- /form-group -->
                 <div class="form-group">
@@ -32,8 +48,21 @@
                         <button type="submit" class="btn btn-primary">Añadir</button>
                     </div>
                 </div><!-- /form-group -->
-            </fieldset><!-- /fieldset -->
+            </fieldset>
         </form><!-- /form -->
+        {%if ok != 0 %}
+            {%if ok==1 %}
+                <div id="success-create-profile" class="alert alert-success">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>¡Hecho!</strong> Nuevo Perfil registrado
+                 </div>
+            {% else %}
+                <div id="fail-create-profile" class="alert alert-danger">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>¡Error!</strong> No se ha podido realizar la acción, por favor pongase en contacto con el administrador de la aplicación.
+                </div>
+            {% endif %}
+        {% endif %}
     </div><!-- /box -->
 </div>
 

@@ -53,7 +53,7 @@
                         {% endfor %}
                         <span id="nueva-respuesta" class="respuesta">Añadir respuesta:</span>
                 		<form class="respuesta" method="post" name= "envio" action="{{ path('guias_docentes_app_historico_soporte_add_respuesta', { 'slug': slug, 'token': token, 'role': role }) }}">
-                	    	<textarea name="respuesta"  class="form-control" placeholder="Introduzca aquí el texto correspondiente a su respuesta."></textarea>
+                	    	<textarea name="respuesta"  class="form-control form-historico-respuesta" placeholder="Introduzca aquí el texto correspondiente a su respuesta."></textarea>
                 	   	    <input type="hidden" name="id_consulta" value= "{{consulta.getId}}">
                 	   	    <input type="hidden" name="role" value= "{{role}}">
                 		    <button type="submit" class="btn-success" name="envio">Enviar</button>
@@ -71,19 +71,20 @@
                 {% for consulta in hilo.getConsultas %}
                     <div class="datos-consulta">
                         <dl class="grupo-consulta">
-                            <dt class="pregunta visto-{{consulta.getVisto}}">
+                            <dt class="pregunta">
                                 {{consulta.getFecha|date("d/m/Y")}}: {{consulta.getTexto}}
                             </dt> 
                             {% for respuesta in consulta.getRespuestas %}
                                 <dd class="respuesta"><span class="fecha-respuesta">({{respuesta.getFecha|date("d/m/Y")}}):</span> {{respuesta.getTexto}}</dd>
                             {% endfor %}
-                        </dl>
-                        <span id="nueva-consulta" class="consulta">Nueva consulta:</span>
-                		<form class="consulta" method="post" name= "envio" action="{{ path('guias_docentes_app_historico_soporte_add_consulta', { 'slug': token, 'token': role}) }}">
-                	    	<textarea name="consulta" class="form-control" placeholder="Introduzca aquí el texto correspondiente a su consulta."></textarea>
-                	   	    <input type="hidden" name="id_consulta" value= "{{consulta.getId}}">
-                		    <button type="submit" class="btn-success" name="envio">Enviar</button>
-                		</form>
+                            <span id="nueva-consulta" class="respuesta">Nueva consulta:</span>
+                    		<form class="respuesta" method="post" name= "envio" action="{{ path('guias_docentes_app_historico_soporte_add_consulta', { 'slug': slug, 'token': token}) }}">
+                    	    	<textarea name="consulta" class="form-control form-historico-consulta" placeholder="Introduzca aquí el texto correspondiente a su consulta."></textarea>
+                    	   	    <input type="hidden" name="id_consulta" value= "{{consulta.getId}}">
+                    	        <input type="hidden" name="role" value= "{{role}}">
+                    		    <button type="submit" class="btn-success" name="envio">Enviar</button>
+                    		</form>
+                	   </dl>
             		</div>
                 {% endfor %}
             </div>

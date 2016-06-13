@@ -1,0 +1,46 @@
+{% extends 'AdminPanel/base-side-left-header-admin-panel.html.twig' %}
+    {% block breadcrumb %}
+        <ol class="breadcrumb bg-none pull-left hide-xs">
+            <li><a href="{{ path ('guias_docentes_app_admin_panel_index') }}">Home</a></li>
+            <li class="active">Generar informe</li>
+        </ol>
+    {% endblock %}
+{% block content_body %}
+
+<div class="magic-layout">
+    <div class="box magic-element width-full">
+        <h2 class="box-heading">
+            Generar Informe
+        </h2>
+        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_clean')}}">
+            <fieldset>
+                <div class="form-group">
+                <label class="col-sm-2 control-label" for="select">Perfiles</label>
+                    <div class="col-sm-10">
+                        <select class="select2" name="personal" style="width:100%">
+                            {% for personal in personales %}
+                                <option value="{{personal.getEmail}}">{{personal.getApellidos}}, {{personal.getNombre}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" disabled>Generar Informe</button>
+                    </div>
+                </div><!-- /form-group -->
+            </fieldset><!-- /fieldset -->
+        </form><!-- /form -->
+                <div id="success-recover" class="alert alert-danger">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Temporalmente deshabilitado</strong> Esta función se encuentra deshabilitada en el servidor de pruebas.
+                    </br>
+                    Por favor para ponerla en funcionamiento descarge la función completa e instalela en el servidor de producción.
+    </div><!-- /box -->
+</div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script src='{{ asset('Resources/AdminPanel/js/informe.js') }}'></script>
+{% endblock %}

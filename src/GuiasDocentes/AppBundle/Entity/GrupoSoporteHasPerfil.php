@@ -31,7 +31,7 @@ class GrupoSoporteHasPerfil
     /**
      * @var \GrupoSoporte
      *
-     * @ORM\ManyToOne(targetEntity="GrupoSoporte")
+     * @ORM\ManyToOne(targetEntity="GrupoSoporte", cascade={"all"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="grupoSoporteId", referencedColumnName="id")
      * })
@@ -41,7 +41,7 @@ class GrupoSoporteHasPerfil
     /**
      * @var \Perfil
      *
-     * @ORM\ManyToOne(targetEntity="Perfil")
+     * @ORM\ManyToOne(targetEntity="Perfil", cascade={"all"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="perfilNombre", referencedColumnName="nombre")
      * })

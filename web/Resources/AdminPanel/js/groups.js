@@ -7,6 +7,7 @@ $(document).ready(function(){
     // } );
     
     
+    
     // Ajustes sidebar-left
     
     // Eliminamos las etiquetas active y open provinientes del index
@@ -21,6 +22,8 @@ $(document).ready(function(){
     var lvl2= lvl1.children('#GruposPF');
     lvl2.addClass("open");
     lvl2.children('#gestionar_grupos').addClass('active');
+    
+    lvl2.children('#gestionar_grupos').click();  
     
     // Fin sidebar-left
     
@@ -101,7 +104,7 @@ $(document).ready(function(){
                         '<form class="form-horizontal grupo_perfil" method="post" action="'+window.location.pathname+'/set'+'"> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="perfil">Perfil</label> ' +
-                        '<div class="col-md-4"> ' +
+                        '<div class="col-md-8"> ' +
                         '<select id="perfil" required="required" name="perfil" class="form-control">' +
                         s.html() +
                         '</select>'+
@@ -109,7 +112,7 @@ $(document).ready(function(){
                         '</div> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="nombre">Nombre</label> ' +
-                        '<div class="col-md-4"> ' +
+                        '<div class="col-md-8"> ' +
                         '<input id="name" required="required" name="nombre" type="text" placeholder="'
                         +nombre+ 
                         '" value="'
@@ -119,12 +122,12 @@ $(document).ready(function(){
                         '</div> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="orden">Orden</label> ' +
-                        '<div class="col-md-4"> ' +
-                        '<input id="name" required="required" name="orden" type="text" placeholder="'
+                        '<div class="col-md-8"> ' +
+                        '<input id="name" required="required" name="orden" type="number" placeholder="'
                         +orden+
                         '" value="'
                         +orden+
-                        '"class="form-control input-md"> ' +
+                        '"class="form-control"> ' +
                         '</div> ' +
                         '</div> ' +
                         '<input id="id_grupo_perfil" name="id_grupo_perfil" type="hidden" value="'+id_grupo_perfil+'"> ' +
@@ -143,7 +146,7 @@ $(document).ready(function(){
                             }
                         },
                         "Cancelar": {
-                            className: "btn-danger close",
+                            className: "btn-danger",
                             callback: function() {
                                 bootbox.hideAll();
                             }

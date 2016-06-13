@@ -79,6 +79,13 @@ class MailerManagementController extends Controller
         return $this->get('mailer')->send($message);
     }
     
+    
+    /**
+	 * Función para el envio de mensajes personalizados y masivos desde el apartado de administración
+	 * @param array $email_values datos del correo ( asunto, destinatarios y texto)
+	 * @return bool Todo correcto 1, algún error 0.
+	 * */
+    
     public function sendAdminMessage($email_values){
             $destinatarios = $this->mailerStringToArray($email_values["destinatarios"]);
             $message = \Swift_Message::newInstance()
@@ -96,7 +103,12 @@ class MailerManagementController extends Controller
         return $this->get('mailer')->send($message);
     }
    
-   
+    /**
+	 * Función para el del correo de recuperación
+	 * @param array $email_values datos del personal a recuperar
+	 * @return bool Todo correcto 1, algún error 0.
+	 * */
+	 
     public function sendRecoverMessage($email_values){
             $message = \Swift_Message::newInstance()
             ->setSubject('Recuperación de contraseña')
@@ -122,6 +134,12 @@ class MailerManagementController extends Controller
     public function encodeCadena($cadena){
 		return base64_encode($cadena);
     }
+    
+    /**
+	 * Función para conversión de una cadena de correos separados por comas a un array de los mismos
+	 * @param string $cadena cadena con los correos separados por comas
+	 * @return array Array de emails.
+	 * */
     
     private function mailerStringToArray($cadena){
         return explode (',', $cadena);

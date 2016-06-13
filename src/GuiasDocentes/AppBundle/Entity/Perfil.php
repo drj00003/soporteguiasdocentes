@@ -17,7 +17,6 @@ class Perfil
      *
      * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $nombre;
 
@@ -34,12 +33,12 @@ class Perfil
      * @param string $nombre
      * @return Perfil
      */
-    // public function setNombre($nombre)
-    // {
-    //     $this->nombre = $nombre;
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
 
-    //     return $this;
-    // }    
+        return $this;
+    }    
 
     /**
      * Get nombre
@@ -50,6 +49,8 @@ class Perfil
     {
         return $this->nombre;
     }
+    
+    
 
     /**
      * Set orden

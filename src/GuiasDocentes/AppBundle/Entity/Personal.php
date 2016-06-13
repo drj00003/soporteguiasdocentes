@@ -20,7 +20,6 @@ class Personal
      *
      * @ORM\Column(name="email", type="string", length=50, nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $email;
 
@@ -99,7 +98,7 @@ class Personal
     }
     
     public function setEmail($email){
-        $this->email= email;
+        $this->email= $email;
         return $this;
     }
     

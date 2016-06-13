@@ -89,6 +89,7 @@ class Pf
     
     public function __construct(){
         $this->setFecham(new \Datetime());
+        $this->setHabilitada(1);
     }
     
     /* end customized code */

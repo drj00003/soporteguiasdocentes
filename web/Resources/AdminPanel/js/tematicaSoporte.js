@@ -16,15 +16,35 @@ $(document).ready(function(){
     lvl2.children('#gestionar_tematica_soporte').addClass('active');
     
     
+        // Funcion de refresco JQuery
+    $(function(){
+        // panel refresh
+        $('.panel [data-refresh]').on('click', function(){
+            var $this = $(this),
+                panel = $this.attr('data-refresh');
+
+            setTimeout(function(){
+                $(panel).find('.panel-progress').remove();  // remove proggress spinner
+            }, 1000 );
+        });
+
+
+        // datatables
+        $('.datatables').dataTable({
+            "iDisplayLength": 5,
+            "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+        });
+
+    });    
+    
+    
     var personales = [];
     // $.getJSON('https://soporteguiasdocentes-utesting.c9users.io/web/app_dev.php/groups/getProfiles')
      $.getJSON(window.location.pathname+'/getPersonales')
     .done( function( response ) {
         //done() es ejecutada cuándo se recibe la respuesta del servidor. response es el objeto JSON recibido
         if( response.success ) {
-            $.each(response.data, function(key, value){
-                personales.push(value);
-            });
+            personales = response.data;
         }
     });  
     
@@ -64,9 +84,8 @@ $(document).ready(function(){
                         '<textarea id="enunciado" required="required" name="enunciado"'+
                         '" value="'
                         +enunciado+
-                        '" rows="7" cols="7" class="form-control"> ' +
-                        '"'+enunciado+
-                        '"</textarea>'+
+                        '" rows="7" cols="7" class="form-control">'+
+                        +enunciado+'</textarea>'+
                         '</div> ' +
                         '</div> ' +
                         '<div class="form-group"> ' +
@@ -115,8 +134,8 @@ $(document).ready(function(){
             title: "Eliminar Registro",
             message:
                 "¿Esta seguro de que desea eliminar tematica de soporte "+enunciado+ "?"+
-                '<form class="personal" method="post" action="'+window.location.pathname+'/delete'+'"> ' +
-                '<input id="email" name="email" type="hidden" value="'+id_tematica_soporte+'"> ' +
+                '<form class="tematica_soporte" method="post" action="'+window.location.pathname+'/delete'+'"> ' +
+                '<input id="id_tematica_soporte" name="id_tematica_soporte" type="hidden" value="'+id_tematica_soporte+'"> ' +
                 '</form>',
             buttons: {
                 submit: {
@@ -124,7 +143,7 @@ $(document).ready(function(){
                     className: "btn-success",
                     type: "submit",
                     callback: function (result) {
-                        $('.personal').submit();
+                        $('.tematica_soporte').submit();
                     
                     }
                 },

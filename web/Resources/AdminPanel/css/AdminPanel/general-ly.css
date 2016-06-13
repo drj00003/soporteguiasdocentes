@@ -22,11 +22,27 @@
     padding:10px;
 }
 
-li .glyphicon-quote{
+li .glyphicon-quote, div.pull-left .btn-icon{
     top:12px;
     height:12px;
 }
 ul.wysihtml5-toolbar li{
     margin-right:2px;
     padding-right: 0px;
+}
+
+.clearfix .pull-left{
+    height: 40px;
+    width: 97px;
+    padding-top: 10px;
+}
+
+.alert-info{
+    margin-right:30px;
+    margin-bottom: 0px;
+}
+
+#inform-comillas{
+    margin: 0;    
+    margin-top: 5px;
 }

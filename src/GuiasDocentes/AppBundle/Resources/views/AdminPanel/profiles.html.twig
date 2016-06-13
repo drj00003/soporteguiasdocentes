@@ -6,6 +6,10 @@
         </ol>
     {% endblock %}
 {% block content_body %}
+    <div id="inform-profiles" class="alert alert-info alert-icon">
+        <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Aviso,</strong> solo se muestran los perfiles completos, es decir, los que poseen un grupo de soporte. Para completarlo dirigase al apartado de gestión de grupos de soporte.
+    </div>
     <div class="magic-layout">
         <div id="data" class="panel panel-default magic-element width-full">
             <div class="panel-heading">
@@ -55,6 +59,19 @@
                     </tbody>
                 </table>
             </div>
+        {%if ok != 0 %}
+            {%if ok==1 %}
+                <div id="success-create-profile" class="alert alert-success">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Operación realizada correctamente</strong> 
+                 </div>
+            {% else %}
+                <div id="fail-create-profile" class="alert alert-danger">
+                    <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>¡Error!</strong> No se ha podido realizar la acción, por favor pongase en contacto con el administrador de la aplicación.
+                </div>
+            {% endif %}
+        {% endif %}
         </div><!-- /panel7 -->
     </div>
 {% endblock %}

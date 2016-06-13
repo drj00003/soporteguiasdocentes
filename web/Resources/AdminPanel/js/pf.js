@@ -107,21 +107,20 @@ $(document).ready(function(){
                         '<label class="col-md-4 control-label" for="pregunta">Pregunta</label> ' +
                         '<div class="col-md-8"> ' +
                         '<textarea id="pregunta" required="required" name="pregunta"'+
-                        '" value="'
-                        +pregunta+
-                        '" rows="7" cols="7" class="form-control"> ' +
-                        '"'+pregunta+
-                        '"</textarea>'+
+                        '" rows="7" cols="7" class="form-control">'+
+                        '"'+pregunta+'"</textarea>'+
                         '</div> ' +
                         '</div> ' +
                         '<div class="form-group"> ' +
                         '<label class="col-md-4 control-label" for="respuesta">Respuesta</label> ' +
                         '<div class="col-md-8"> ' +
                         '<textarea id="respuesta" required="required" name="respuesta"' +
-                        '" value="'+
-                        '" rows="7" cols="7" class="form-control"> ' +
-                        '"'+respuesta+
-                        '"</textarea>'+
+                        '" rows="7" cols="7" class="form-control">' +
+                        '"'+respuesta+'"</textarea>'+
+                        '<div id="inform-comillas" class="alert alert-info alert-icon">'+
+                        '<a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+                        'Por favor introduzca el texto separado por comillas.'+
+                        '</div>'+
                         '</div> ' +
                         '</div> ' +
                         '<div class="form-group"> ' +
@@ -152,7 +151,16 @@ $(document).ready(function(){
                             className: "btn-success",
                             type: "submit",
                             callback: function () {
+                                var val = $('textarea#pregunta').val();
+                                $('textarea#pregunta').val(val.substring(2, val.length-2));
+                                var val = $('textarea#respuesta').val();
+                                $('textarea#respuesta').val(val.substring(2, val.length-2));
                                 $('.pf').submit();
+                                // var val = $('textarea.pregunta').html();
+                                
+
+// var val = $("span").html();
+// $("span").html(val.substring(1, val.length));
                                 $('.col-md-12').append('<span class="alert">La pf ha sido editada </span>');
                                 // var name = $('#name').val();
                                 // var answer = $("input[name='awesomeness']:checked").val()
