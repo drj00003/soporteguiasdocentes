@@ -77,7 +77,7 @@ class SecurityController extends Controller
 	 * @return strin Nuevo pass
 	 * */    
     
-    private function generaPass(){
+    public function generaPass(){
         $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         $longitudCadena=strlen($cadena);
          

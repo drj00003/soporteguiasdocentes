@@ -46,9 +46,6 @@ $(document).ready(function(){
     .done( function( response ) {
         //done() es ejecutada cuándo se recibe la respuesta del servidor. response es el objeto JSON recibido
         if( response.success ) {
-            // $.each(response.data, function(key, value){
-            //     group_soporte.push(value);
-            // });
             group_soporte = response.data;
         }
     });    

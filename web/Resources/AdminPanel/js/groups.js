@@ -1,13 +1,5 @@
 $(document).ready(function(){
-    // $('#data').dataTable( {
-    //         "language": {
-    //             "url": "dataTables.spanish.lang"
-    //         }
-    //     } );
-    // } );
-    
-    
-    
+
     // Ajustes sidebar-left
     
     // Eliminamos las etiquetas active y open provinientes del index
@@ -26,20 +18,7 @@ $(document).ready(function(){
     lvl2.children('#gestionar_grupos').click();  
     
     // Fin sidebar-left
-    
-    // elem.children('ul')
-    // elem.each(function(){
-    //   if($(this).text() == "FAQ"){
-    //       $(this).addClass('active');
-    //       $(this).children('ul').addClass('open');
-    //       var children = $(this).children('li');
-    //       children.each(function(){
-    //           if ($(this).text()=="Gestionar Grupos"){
-    //               $(this).addClass('active');
-    //           } 
-    //       });
-    //   } 
-    // });
+
     // Funcion de refresco JQuery
     $(function(){
         // panel refresh
@@ -140,9 +119,6 @@ $(document).ready(function(){
                             callback: function () {
                                 $('.grupo_perfil').submit();
                                 $('.col-md-12').append('<span class="alert">La consulta ha sido envida </span>');
-                                // var name = $('#name').val();
-                                // var answer = $("input[name='awesomeness']:checked").val()
-                                // Example.show("Hello " + name + ". You've chosen <b>" + answer + "</b>");
                             }
                         },
                         "Cancelar": {

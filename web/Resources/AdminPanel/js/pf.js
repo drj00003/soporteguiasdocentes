@@ -33,6 +33,7 @@ $(document).ready(function(){
 
         // datatables
         $('.datatables').dataTable({
+            // "aaSorting": [[ 3, "desc" ]],
             "iDisplayLength": 7,
             "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
 "columns": [ { "width": "25px" }, { "width": "25px" }, { "width": "450px" }, { "width": "20px" }, { "width": "20px" }, { "width": "20px" }, { "width": "20px" } ],
@@ -78,11 +79,6 @@ $(document).ready(function(){
         var habilitada = selector.children('.habilitada').text();
         var orden = selector.children('.orden').text();
         
-                                //     <optgroup label="{{key}}">
-                                // {%for key,p in perfil %}
-                                //     <option value="{{key}}">{{p}}</option>
-                                // {%endfor%}
-                            // </optgroup>
         var s = $("<select  name=\"grupo\" />");
         $.each(group,function(key, value){
             $("<optgroup />", {label: key}).appendTo(s);
@@ -90,6 +86,7 @@ $(document).ready(function(){
                 $("<option />", {value:k, text: v}).appendTo(s);    
             })
         });
+        // Será necesario añadir comillas a pregunta y respuesta ya que incorporan etiquetas html que serían interpretadas en el navegador sin estas
         bootbox.dialog({
                     title: "Pregunta Frecuente",
                     message: '<div class="row">  ' +
@@ -151,20 +148,14 @@ $(document).ready(function(){
                             className: "btn-success",
                             type: "submit",
                             callback: function () {
+                                // Eliminamos las comillas de inicio y fin para que no persistan el BBDD
                                 var val = $('textarea#pregunta').val();
                                 $('textarea#pregunta').val(val.substring(2, val.length-2));
                                 var val = $('textarea#respuesta').val();
                                 $('textarea#respuesta').val(val.substring(2, val.length-2));
                                 $('.pf').submit();
-                                // var val = $('textarea.pregunta').html();
-                                
 
-// var val = $("span").html();
-// $("span").html(val.substring(1, val.length));
                                 $('.col-md-12').append('<span class="alert">La pf ha sido editada </span>');
-                                // var name = $('#name').val();
-                                // var answer = $("input[name='awesomeness']:checked").val()
-                                // Example.show("Hello " + name + ". You've chosen <b>" + answer + "</b>");
                             }
                         },
                         "Cancelar": {

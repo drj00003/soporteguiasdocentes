@@ -527,6 +527,14 @@ class AdminPanelController extends Controller
         return $this->render('GuiasDocentesAppBundle:AdminPanel:create-profile.html.twig', array('ok' => $result, 'grupos_soporte' => $grupos_soporte));
     }
     
+    
+    /**
+	 * Función para la actualización de perfiles de acceso a la FAQ
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirecciona a la routa de gestión de perfiles.
+	 * */
+    
     public function ProfileSetAction(Request $request){
        try{
             if ($request->isMethod('POST')){
@@ -556,6 +564,13 @@ class AdminPanelController extends Controller
         $session->set('result', $result);
         return $this->redirect($this->generateUrl('guias_docentes_app_admin_panel_profiles_manage'));
     }
+    
+    /**
+	 * Función para el borrado de perfiles de acceso a la FAQ
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirecciona a la routa de gestión de perfiles.
+	 * */
     
     public function ProfileDeleteAction(Request $request){
        $result = 0;
@@ -587,6 +602,13 @@ class AdminPanelController extends Controller
     *                                   *
     */
     
+    
+    /**
+	 * Función para la creación de preguntas frecuentes
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return html HTML con el formulario de creación de preguntas frecuentes
+	 * */
     
     public function createPFAction(Request $request){
         $result = 0;
@@ -626,6 +648,13 @@ class AdminPanelController extends Controller
         return $this->render('GuiasDocentesAppBundle:AdminPanel:create-pf.html.twig', array('perfiles_grupos' => $p, 'ok' => $result));
     }
     
+    /**
+	 * Función para la actualización de preguntas frecuentes
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirección a la routa que sirve la web para la gestión de preguntas frecuentes
+	 * */
+    
     public function PFSetAction(Request $request){
         $usr= $this->get('security.context')->getToken()->getUser();
         $result = 0;
@@ -659,6 +688,14 @@ class AdminPanelController extends Controller
         return $this->redirect($this->generateUrl('guias_docentes_app_admin_panel_pf_manage'));
     }
     
+    
+    /**
+	 * Función para el borrado de preguntas frecuentes
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirección a la routa que sirve la web para la gestión de preguntas frecuentes
+	 * */
+    
     public function PFDeleteAction(Request $request){
       $result = 0;
       try{
@@ -688,6 +725,13 @@ class AdminPanelController extends Controller
     *       Grupos Soporte          *
     *                               *
     */
+    
+    /**
+	 * Función para la de los grupos especiales denominados de soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return html HTML con el formulario de creación de grupos de soporte
+	 * */
     
     public function createSupportGroupAction(Request $request){
         $result = 0;
@@ -723,6 +767,14 @@ class AdminPanelController extends Controller
         return $this->render('GuiasDocentesAppBundle:AdminPanel:create-support_group.html.twig', array('perfiles' => $perfiles, 'ok' => $result));
     }
     
+    
+    /**
+	 * Función para la actualización de los grupos especiales denominados de soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirección a la función para la gestión de preguntas frecuentes
+	 * */
+    
     public function SupportGroupSetAction(Request $request){
         $usr= $this->get('security.context')->getToken()->getUser();
         $result = 0;
@@ -756,6 +808,14 @@ class AdminPanelController extends Controller
         $session->set('result', $result);
         return $this->redirect($this->generateUrl('guias_docentes_app_admin_panel_group_support_manag'));
     }
+
+    /**
+	 * Función para el borrado de los grupos especiales denominados de soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirección a la función para la gestión de preguntas frecuentes
+	 * */
+
     
     public function SupportGroupDeleteAction(Request $request){
       $result = 0;
@@ -785,6 +845,13 @@ class AdminPanelController extends Controller
     *       Temática Soporte            *
     *                                   *
     */
+
+    /**
+	 * Función para la creación de una temática de soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return html Formulario para la creación de temáticas de soporte
+	 * */
     
     public function createTematicaSoporteAction(Request $request){
         $result = 0;
@@ -814,6 +881,13 @@ class AdminPanelController extends Controller
         return $this->render('GuiasDocentesAppBundle:AdminPanel:create-tematica_soporte.html.twig', array('personales' => $personales, 'ok' => $result));
     }
     
+    /**
+	 * Función para la actualización de una temática de soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirección a la función para la gestión de temáticas de soporte
+	 * */   
+	 
     public function TematicaSoporteSetAction(Request $request){
       $result = 0;
       try{
@@ -841,6 +915,13 @@ class AdminPanelController extends Controller
         $session->set('result', $result);
         return $this->redirect($this->generateUrl('guias_docentes_app_admin_panel_tematica_soporte_manage'));
     }
+
+    /**
+	 * Función para el borrado de una temática de soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirección a la función para la gestión de temáticas de soporte
+	 * */   
     
     public function TematicaSoporteDeleteAction(Request $request){
       $result = 0;
@@ -872,6 +953,13 @@ class AdminPanelController extends Controller
     *                                   *
     */
     
+    /**
+	 * Función de alta de un personal soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return HTML Formulario para la creación de un personal de soporte
+	 * */ 
+	 
     public function createMiembroSoporteAction(Request $request){
         $result = 0;
         try{
@@ -898,6 +986,14 @@ class AdminPanelController extends Controller
 
         return $this->render('GuiasDocentesAppBundle:AdminPanel:create-miembro_soporte.html.twig', array('ok' => $result));
     }
+
+    /**
+	 * Función para la actualización de un miembro de soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirección a la función para la visualización de los diferentes miembros de soporte
+	 * */ 
+
     
     public function MiembroSoporteSetAction(Request $request){
       $result = 0;
@@ -925,6 +1021,13 @@ class AdminPanelController extends Controller
         $session->set('result', $result);
         return $this->redirect($this->generateUrl('guias_docentes_app_admin_panel_miembro_soporte_manage'));
     }
+
+    /**
+	 * Función para el borrado de un miembro de soporte
+	 * @param request $request Objeto de la clase request que entre otros funcionalidades de validación y seguridad nos sirver para recuperar informac
+	 * de contexto y sesión
+	 * @return Route Redirección a la función para la visualización de los diferentes miembros de soporte
+	 * */ 
     
     public function MiembroSoporteDeleteAction(Request $request){
       $result = 0;
@@ -955,7 +1058,12 @@ class AdminPanelController extends Controller
 
 
    
-// Funciones de JSON
+/************************** FUNCIONES JSON **************************************/
+
+    /**
+	 * Función para obtener los diferentes perfiles de acceso a la FAQ dados de alta en el sistema
+	 * @return Json  Json array con el conjunto de nombres de perfiles dados de alta en la FAQ
+	 * */ 
 
     public function getProfilesAction(){
         $em = $this->getDoctrine()->getManager();
@@ -970,6 +1078,12 @@ class AdminPanelController extends Controller
         ));
         return $response;
     }
+
+    /**
+	 * Función para obtener los diferentes grupos de soporte dados de alta en el sistema
+	 * @return JSON Json array de grupos de soporte, con clave id grupo y valor el nombre del mismo
+	 * */ 
+
     
     public function GetSupportGroupAction(){
         $em = $this->getDoctrine()->getManager();
@@ -985,7 +1099,11 @@ class AdminPanelController extends Controller
         return $response;
     }
     
-    
+    /**
+	 * Función para obtener los diferentes grupos  dados de alta en el sistema
+	 * @return JSON Json array multidimensional de grupos, clave de primer nivel perfil nombre, clave de segundo nivel id del grupo y valor el nombre
+	 * de grupo correspondiente
+	 * */     
     public function GetGroupAction(){
         $em = $this->getDoctrine()->getManager();
         $response = new JsonResponse();
@@ -1002,6 +1120,12 @@ class AdminPanelController extends Controller
         return $response;
     }
 
+
+    /**
+	 * Función para obtener los diferentes miembros de soporte dados de alta en el sistema
+	 * @return JSON Json array de personal, clave email del personal, valor el email del mismo
+	 * de grupo correspondiente
+	 * */   
     public function getPersonalesAction(){
         $em = $this->getDoctrine()->getManager();
         $response = new JsonResponse();
@@ -1015,16 +1139,16 @@ class AdminPanelController extends Controller
         return $response;
     }
     
-    
+    /**
+	 * Función para obtener el número de consultas generadas en un año natural clasificadas por meses
+	 * @return JSON Json array con el número de consultas, clave concatenación del año y el mes en numerico (2016-1), 
+	 * número de consultas para dicho mes y año.
+	 * */   
     public function getNumConsultasByMonthAction(){
         $em = $this->getDoctrine()->getManager();
-        // var_dump($year);
         $num_consultasByMoth = $em->getRepository('GuiasDocentesAppBundle:Consulta')
         ->getNumConsultasByMonth('2016');
-        // var_dump($num_consultasByMoth);
-            // $cbm = [];
         foreach ($num_consultasByMoth as $key => $value) {
-            // $cbm[]=array("mes" => $key.'-2016', "valor" => $value); 
             $cad = '2016-'.$key;
             $cbm[$cad]=$value;
         }
@@ -1043,8 +1167,13 @@ class AdminPanelController extends Controller
 
 /************ Fin Funciones JSON ***********************/
 
-// Funciones Auxiliares
+/**************** Funciones Auxiliares **********************/
 
+    /**
+	 * Función para la conversión de correos a una cadena entendible para el servicio de correo de administración
+	 * @params Array $consultantes Array de destinatarios de la consulta
+	 * @return String $cadena Cadena compuesta por la concatenación de los destinatios del correo
+	 * */  
   
     private function consultantesToString($consultantes){
         $cadena ="";
@@ -1055,3 +1184,5 @@ class AdminPanelController extends Controller
     }
     
 }
+
+/**************** Fin de funciones Auxiliares **********************/
