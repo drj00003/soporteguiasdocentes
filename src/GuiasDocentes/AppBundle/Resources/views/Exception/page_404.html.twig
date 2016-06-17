@@ -1,0 +1,28 @@
+{% extends 'AdminPanel/base-admin-panel.html.twig' %}
+{% block title %}Error{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+    <style>
+    body{
+        overflow: hidden; /* just for Sign page */
+        background-color: #000;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+    <section id="wrapper" class="container">
+        <section class="error-msg">
+            <div class="error-container">
+                <h2 class="error-status">Error <span class="error-code">404</span> <small><strong>¡Lo sentimos!</strong> La página solicitada no ha sido encontrada</small></h2>
+                <div class="text-center">
+                    <a href={{path('guias_docentes_app_homepage')}} role="button" class="btn btn-ion btn-primary"><i class="icon ion-home"></i> Volver al inicio</a>
+                </div>
+            </div><!-- /error-container -->
+        </section><!-- /error-msg -->
+    </section><!-- /wrapper -->
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}   
+
+    <script src="{{ asset('Resources/bootstrap/assets/app/js/main.js') }}"></script>
+{% endblock %}

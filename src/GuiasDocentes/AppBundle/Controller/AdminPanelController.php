@@ -1183,6 +1183,18 @@ class AdminPanelController extends Controller
         return $cadena;
     }
     
-}
+
 
 /**************** Fin de funciones Auxiliares **********************/
+
+/****************** Control de excepciones ************************/
+
+    public function pageNotFoundAction()
+    {
+        // throw new NotFoundHttpException();
+       return $this->render('GuiasDocentesAppBundle:Exception:page_404.html.twig');
+    }
+
+
+/******************** Fin de excepciones **************************/
+}

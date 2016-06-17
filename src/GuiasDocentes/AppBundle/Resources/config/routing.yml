@@ -2,6 +2,15 @@
 guias_docentes_app_homepage:
     path:     /
     defaults: { _controller: GuiasDocentesAppBundle:FAQ:index }
+
+
+#Exceptions FAQ
+
+# pageNotFoundFAQ:
+#     pattern:  /{path}
+#     defaults: { _controller: GuiasDocentesAppBundle:FAQ:pageNotFound, path: '' }
+#     requirements:
+#         path: .*
     
 guias_docentes_app_gfaq:
     path: /gfaq
@@ -230,3 +239,11 @@ guias_docentes_app_admin_panel_clean:
 guias_docentes_app_admin_panel_historial:
     path: admin/historial
     defaults: {_controller: GuiasDocentesAppBundle:AdminPanel:layoutPDF }
+
+#Exceptions 
+
+pageNotFoundAdminPanel:
+    pattern:  /{path}
+    defaults: { _controller: GuiasDocentesAppBundle:AdminPanel:pageNotFound, path: '' }
+    requirements:
+        path: .*
