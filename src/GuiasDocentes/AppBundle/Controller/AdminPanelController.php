@@ -17,6 +17,8 @@ use GuiasDocentes\AppBundle\Entity\Respuesta;
 use GuiasDocentes\AppBundle\Entity\Grupo;
 use GuiasDocentes\AppBundle\Entity\Asignatura;
 use GuiasDocentes\AppBundle\Entity\PersonalRepository;
+use GuiasDocentes\AppBundle\Entity\ConsultaRepository;
+use GuiasDocentes\AppBundle\Entity\RespuestaRepository;
 use GuiasDocentes\AppBundle\Entity\GrupoRepository;
 use GuiasDocentes\AppBundle\Entity\ConsultaHasAsignatura;
 use GuiasDocentes\AppBundle\Entity\GrupoSoporteHasPerfil;
@@ -204,7 +206,8 @@ class AdminPanelController extends Controller
         $em = $this->getDoctrine()->getManager();
         $miembros_soporte = $em->getRepository('GuiasDocentesAppBundle:Personal')
         ->findAll();
-        return $this->render('GuiasDocentesAppBundle:AdminPanel:informe.html.twig', array('personales' => $miembros_soporte));      
+        $ok = 0;
+        return $this->render('GuiasDocentesAppBundle:AdminPanel:informe.html.twig', array('personales' => $miembros_soporte, 'ok' => $ok));      
     }
 
 /***** FIN de REGEX ****/
@@ -322,10 +325,42 @@ class AdminPanelController extends Controller
 	 
     public function layoutPDFAction(Request $request){
         $em = $this->getDoctrine()->getManager();
-        // $miembros_soporte = $em->getRepository('GuiasDocentesAppBundle:Personal')->findOneByEmail($email_soporte);
-        $hilos = $em->getRepository('GuiasDocentesAppBundle:Hilo')->findByPersonalemail("drj00003@gmail.com");
-        return $this->render('GuiasDocentesAppBundle:AdminPanel:layoutPDF.html.twig', array('hilos' => $hilos));         
+        $ok = 0;
+        $miembros_soporte = $em->getRepository('GuiasDocentesAppBundle:Personal')->findAll();
+        // $hilos = $em->getRepository('GuiasDocentesAppBundle:Hilo')->findByPersonalemail("drj00003@gmail.com");
+        try{
+            if ($request->isMethod('POST')){
+                $params = $this->getRequest()->request->all();
+                $personal = $em->getRepository('GuiasDocentesAppBundle:Personal')->findOneByEmail($params["personal"]);
+                $hilos = $em->getRepository('GuiasDocentesAppBundle:Hilo')->findByPersonalemail($params["personal"]);
+                if (empty($hilos)){
+                    $ok = -1;
+                    return $this->render('GuiasDocentesAppBundle:AdminPanel:informe.html.twig', array('personales' => $miembros_soporte, 'ok' => $ok));
+                }else{
+                    foreach ($hilos as $hilo){
+                        // var_dump($hilo->getId());die;
+                        $repoConsultas[$hilo->getId()] = $em->getRepository('GuiasDocentesAppBundle:Consulta')->getConsultasByHilo($hilo->getId());
+                    }
+                    foreach ($repoConsultas as $consultas){
+                        foreach ($consultas as $consulta){
+                            $repoRespuestas[$consulta->getId()] = $em->getRepository('GuiasDocentesAppBundle:Respuesta')->getRespuestasByConsulta($consulta->getId());   
+                        }
+                    }
+                    // var_dump($repoConsultas);
+                    return $this->render('GuiasDocentesAppBundle:AdminPanel:layoutPDF.html.twig', array('hilos' => $hilos, 'repoConsultas' => $repoConsultas, 'repoRespuestas' => $repoRespuestas, 'personal' => $personal));  
+                }
+            }else{
+                $ok = -1;
+                return $this->render('GuiasDocentesAppBundle:AdminPanel:informe.html.twig', array('personales' => $miembros_soporte, 'ok' => $ok)); 
+            }
+        }catch (\Exception $e){
+            throw $e;
+            $ok = -1;
+            return $this->render('GuiasDocentesAppBundle:AdminPanel:informe.html.twig', array('personales' => $miembros_soporte, 'ok' => $ok));
+        }
+        return $this->render('GuiasDocentesAppBundle:AdminPanel:layoutPDF.html.twig', array('hilos' => $hilos, 'repoConsultas' => $repoConsultas, 'repoRespuestas' => $repoRespuestas, 'personal' => $personal));         
     }
+
 
     /******************** SETER, DELETES AND CREATES ACTIONS *************************************/
     

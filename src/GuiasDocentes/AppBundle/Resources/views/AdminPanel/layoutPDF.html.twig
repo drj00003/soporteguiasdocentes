@@ -1,22 +1,51 @@
-{%for hilo in hilos%}
-<h1>Informe consultas/respuestas {{hilo.getPersonalEmail.getNombre}}</H1>
-<span>Informe generado : {{ "now"|date("m/d/Y") }}</span>
-<h3>Datos personal de soporte:</h3>
-<div>
-    <span>Nombre: {{hilo.getPersonalEmail.getNombre}}</span>
-    <span>Apellidos: {{hilo.getPersonalEmail.getApellidos}}</span>
-    <span>Departamento: {{hilo.getPersonalEmail.getDepartamento}}</span>
+   <link href="{{ asset('Resources/AdminPanel/css/AdminPanel/informe-ly.css') }}" rel="stylesheet" />
+    <link href="{{ asset('Resources/AdminPanel/css/AdminPanel/informe-sb.css') }}" rel="stylesheet" />
+<div class="cabecera"></div>
+    <img class="escudo-ujaen" src="{{ asset('Resources/AdminPanel/img/logo_color.gif') }}" alt=""> 
+    <h1 class="titulo">Informe consultas/respuestas {{personal.getNombre}}</h1>
 </div>
-<div>
-    <h3>Datos consultante:</h3>
-
-    <div>
-        <span>Nombre: {{hilo.getConsultanteemail.getNombre}}</span>
-        <span>Apellidos: {{hilo.getConsultanteemail.getApellidos}}</span>
-        <span>Email: {{hilo.getConsultanteemail.getEmail}}</span>
+<div class="cuerpo">
+        <span class="date">Informe generado : {{ "now"|date("d/m/Y") }}</span>
+    {#{% endblock %}#}
+    <div class="magic-layout">
+    <h2 class="cuadro-titulo">Datos personal de soporte:</h2>
+    <div class="cuadro"> 
+        <span>Nombre: {{personal.getNombre}}</span>
+        <span>Apellidos: {{personal.getApellidos}}</span>
+        <span>Departamento: {{personal.getDepartamento}}</span>
     </div>
-    {#<div>#}
-    {#    <span>Consulta: {{hilo.getCon </span>#}
-    {#</div>#}
+    <hr>
+    {%for hilo in hilos%}
+        <h2 class="cuadro-titulo">Datos consultante:</h2>
+    
+        <div>
+            <span>Nombre: {{hilo.getConsultanteemail.getNombre}}</span>
+            <span>Apellidos: {{hilo.getConsultanteemail.getApellidos}}</span>
+            <span>Email: {{hilo.getConsultanteemail.getEmail}}</span>
+        </div>
+        <hr>
+        <h3>Histórico de Consultas:</h3>
+        {% set consultas = repoConsultas[hilo.getId] %}
+        {% for consulta in consultas %}
+            <ul>
+            <li>
+            <span>El día {{consulta.getFecha |date("d/m/Y")}} {{hilo.getConsultanteemail.getNombre}} escribió:</span>
+            <span class="consulta">"{{consulta.getTexto}}"</span>
+            </li>
+            {% set respuestas = repoRespuestas[consulta.getId] %}
+            <ul>
+            {% if respuestas %}
+                {% for respuesta in respuestas %}
+                    <li>
+                        <span>Recibiendo el día {{respuesta.getFecha |date("d/m/Y")}} la siguiente respuesta: </span>
+                        <span class="respuesta">"{{respuesta.getTexto}}"</span>
+                    </li>
+                {% endfor %}
+            {%endif%}
+            </ul>
+            </ul>
+        {% endfor %}
+    </div>
+    {%endfor%}
+    </div>
 </div>
-{%endfor%}

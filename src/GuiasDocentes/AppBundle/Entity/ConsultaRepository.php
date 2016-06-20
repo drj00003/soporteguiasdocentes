@@ -39,4 +39,8 @@ class ConsultaRepository extends EntityRepository
         }
         return $num_consultas;
     }
+    
+    public function getConsultasByHilo($id_hilo){
+        return $this->findBy(array('hiloid' => $id_hilo), array('fecha' => 'ASC'));
+    }
 }

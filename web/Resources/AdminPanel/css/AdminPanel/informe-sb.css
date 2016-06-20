@@ -1,0 +1,6 @@
+.date, .respuesta, .consulta{
+    font-style: italic;
+}
+.titulo{
+    text-decoration:underline;
+}

@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block meta %}
-		<meta name=viewport content="width=device-width, initial-scale=1"/>
+		<meta name=viewport content="width=device-width, initial-scale=1">
 {% endblock %}
 {% block stylesheets %}
         <!-- Estilos generales FAQ (sabor y layout) -->
@@ -19,7 +19,7 @@
                       <span>Universidad de Jaén</span>
                   </a>
               </h1>
-              <img class="banner-calidad" src="{{asset('Resources/FAQ/img/banner_superior.png')}}" >
+              <img class="banner-calidad" src="{{asset('Resources/FAQ/img/banner_superior.png')}}" alt="Universidad de Jaén" >
               <ul class="mainNav">
 			     <li><a href="http://www.ujaen.es" class="active"><span id="pageHome">&nbsp;</span></a></li>
 		        {% block barraNavegacion %}
@@ -46,7 +46,7 @@
         {% block footer %}
           <div id="footer">
           	<div id="footer-inner">
-          	    <div id="footer-logo"><img src="{{ asset('Resources/FAQ/img/logofooter.png') }}"></div>
+          	    <div id="footer-logo"><img src="{{ asset('Resources/FAQ/img/logofooter.png') }}" alt="Universidad de Jaén"></div>
             	<div id="footer-message"> Universidad de Ja&eacute;n </div>
             </div>
           </div>

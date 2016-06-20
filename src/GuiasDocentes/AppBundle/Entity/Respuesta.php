@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
  * Respuesta
  *
  * @ORM\Table(name="respuesta", indexes={@ORM\Index(name="fk_Respuesta_Consulta1_idx", columns={"ConsultaId"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GuiasDocentes\AppBundle\Entity\RespuestaRepository")
  */
 class Respuesta
 {

@@ -6,13 +6,25 @@
         </ol>
     {% endblock %}
 {% block content_body %}
-
+    {%if ok != 0 %}
+        {%if ok==1 %}
+            <div id="success-create-profile" class="alert alert-success">
+                <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Operación realizada correctamente</strong> 
+             </div>
+        {% else %}
+            <div id="fail-create-profile" class="alert alert-danger">
+                <a href="#"  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>¡Error!</strong> No existen consultas para el miembro de soporte solicitado.
+            </div>
+        {% endif %}
+    {% endif %}
 <div class="magic-layout">
     <div class="box magic-element width-full">
         <h2 class="box-heading">
             Generar Informe
         </h2>
-        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_clean')}}">
+        <form class="form-horizontal" role="form" method="POST" action="{{ path('guias_docentes_app_admin_panel_historial')}}">
             <fieldset>
                 <div class="form-group">
                 <label class="col-sm-2 control-label" for="select">Perfiles</label>
