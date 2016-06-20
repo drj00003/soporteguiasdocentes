@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     var data1 = [];
     //  $.getJSON('https://soporteguiasdocentes-utesting.c9users.io/web/app_dev.php/admin/getNumConsultasByMonth')
-    $.getJSON(window.location.pathname+'/getProfiles')
+     $.getJSON(window.location.pathname+'/getNumConsultasByMonth')
     .done( function( response ) {
         //done() es ejecutada cuándo se recibe la respuesta del servidor. response es el objeto JSON recibido
         if( response.success ) {
@@ -22,7 +22,7 @@ $(function () {
 
         $('#año').click(function(){
             // $('#revenue-chart').show();
-            console.log($(this).text());
+            // console.log($(this).text());
                 data1,
                 revenueChart = Morris.Line({
                     element: 'revenue-chart',
